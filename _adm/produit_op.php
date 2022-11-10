@@ -1,6 +1,7 @@
 <?php 
 include("../status/connected.php");
 include("header_op.php"); 
+include("../config.php");
 ?>
 <html>
 <head>
@@ -15,14 +16,6 @@ $idget = ($_GET["id"]);
 echo "<br><br><h2>Affichage produit</h2><br>";
 echo "Vous êtes actuellement sur le produit n°".$idget;
 echo "<br><br><br>";
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "jbropp_01";
-    $conn = mysqli_connect($servername, $username, $password,$db);
-    if (!$conn) {
-       die("Connection failed: " . mysqli_connect_error());
-    }
 ?>
 
 <?php

@@ -1,6 +1,7 @@
 <?php 
 include("status/idle.php");
 include("header.php"); 
+include("config.php"); 
 ?>
 <html>
 <head>
@@ -20,18 +21,6 @@ include("header.php");
 
 <div class="first">
 <h2 id=filtre>🔎 Filtrer les produits 🔍</h2>
-<?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "jbropp_01";
-    $conn = mysqli_connect($servername, $username, $password,$db);
-    if (!$conn) {
-       die("Connection failed: " . mysqli_connect_error());
-    }
-//error_reporting(0);
-//ini_set('display_errors', 0);
-?>
 
 <form method="post">
 <div id=formulaire>

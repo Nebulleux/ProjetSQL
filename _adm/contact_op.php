@@ -20,35 +20,13 @@ include("header_op.php");
         <br>
         <h1>Qui sommes-nous ?</h1>
 
-        <p>Diplômé d'un BAC S options Sciences de l'ingénieur, je me tourne vers les nouvelles technologies en étant
-        étudiant en IUT Réseaux et Télécommunications à Belfort-Montbéliard.
-        </p>
+        <p> ROPP Jean-Baptiste 0620235881</p>
+        <br>
+        <p> MICHEL Loïc, fils de Jean MICHEL 0620235881</p>
+        <br>
+        <p> BENNOUR Yanis 0620235881</p>
         <br><br><br>
 
-    </div>
-
-    <h1>Informations de contact</h1>
-    <div class="contact">
-        <p>Nom :
-        <br>
-        ROPP Jean-Baptiste
-        <br>
-        <hr>
-        Adresse :
-        <br>
-        9 Rue Louis Bertrand - 70200 Magny-Vernois
-        <br>
-        <hr>
-        Téléphone :
-        <br>
-        07 69 01 87 71
-        <br>
-        <hr>
-        Mail :
-        <br>
-        <a href="mailto:jbropp@gmail.com">jbropp@gmail.com</a>
-        <br><br>
-    </p>    
     </div>
 
 
