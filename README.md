@@ -87,8 +87,8 @@
 
 ### Built With
 
-* [![Html][HTML]][HTML-url]
-* [![PHP][PHP]][PHP-url]
+* HTML
+* PHP
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
