@@ -2,6 +2,7 @@
 include("status/idle.php");
 include("header.php"); 
 include("config.php"); 
+include("configCSS.html");
 ?>
 <html>
 <head>
@@ -9,12 +10,7 @@ include("config.php");
 
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<title>Grossiste3D [Invite]</title>
-	<link rel="icon" type="image/x-icon" href="../assets/icon.ico">
-	<link rel="stylesheet" href="assets/style.css">
-	<link rel="stylesheet" href="assets/header-login-signup.css">
-
 </head>
 
 <br>

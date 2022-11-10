@@ -2,12 +2,11 @@
 include("../status/connected.php");
 include("header_op.php"); 
 include("../config.php");
+include("configCSS_adm.html");
 ?>
 <html>
 <head>
 <title>Page produit</title>
-<link rel="stylesheet" href="../assets/style.css">
-	<link rel="stylesheet" href="../assets/header-user-dropdown.css">
 </head>
 <body>
 

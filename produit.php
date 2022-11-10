@@ -2,12 +2,12 @@
 include("status/idle.php");
 include("header.php"); 
 include("config.php");
+include("configCSS.html");
 ?>
+
 <html>
 <head>
 <title>Page produit</title>
-<link rel="stylesheet" href="assets/style.css">
-	<link rel="stylesheet" href="assets/header-login-signup.css">
 </head>
 <body>
 
@@ -16,9 +16,7 @@ $idget = ($_GET["id"]);
 echo "<br><br><h2>Affichage produit</h2><br>";
 echo "Vous êtes actuellement sur le produit n°".$idget;
 echo "<br><br><br>";
-?>
 
-<?php
 $connectaumax = $conn->query("SELECT * FROM product WHERE id = ".$idget);
 while ($row = $connectaumax->fetch_assoc()) {
     echo (empty($row['image'])) ? 'NA' : '<img class="fit-picture"'."src=".$row['image'].">";

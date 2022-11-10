@@ -2,14 +2,13 @@
 include("../status/connected.php");
 include("header_op.php"); 
 include("../config.php");
+include("configCSS_adm.html");
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Insertion d'un produit</title>
-    <link rel="stylesheet" href="../assets/style.css">
-	<link rel="stylesheet" href="../assets/header-user-dropdown.css">
   </head>
   
   <body>

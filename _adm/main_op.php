@@ -2,20 +2,15 @@
 include("../status/connected.php");
 include("header_op.php"); 
 include("../config.php");
+include("configCSS_adm.html");
 ?>
 
 <html>
 <head>
 <title>Catalogue</title>
-
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<title>Grossiste3D [Admin]</title>
-
-	<link rel="stylesheet" href="../assets/style.css">
-	<link rel="stylesheet" href="../assets/header-user-dropdown.css">
-
 </head>
 
 <br>

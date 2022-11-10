@@ -1,14 +1,13 @@
 <?php 
 include("../status/connected.php");
 include("header_op.php"); 
+include("configCSS_adm.html");
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-    <link rel="stylesheet" href="../assets/style.css">
-    <link rel="stylesheet" href="../assets/header-user-dropdown.css">
 
     <meta charset="UTF-8">
     <title>Contact</title>

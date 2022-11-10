@@ -1,5 +1,6 @@
 <?php
 include("../config.php");
+include("configCSS_adm.html");
 ?>
 
 <!DOCTYPE html>
@@ -7,8 +8,6 @@ include("../config.php");
   <head>
     <meta charset="utf-8">
     <title>Modification d'un produit</title>
-	<link rel="stylesheet" href="../assets/style.css">
-	<link rel="stylesheet" href="../assets/header-user-dropdown.css">
   </head>
   
   <body>

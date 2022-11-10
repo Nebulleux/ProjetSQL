@@ -2,6 +2,7 @@
 include("status/idle.php");
 include("header.php"); 
 include("config.php");
+include("configCSS.html");
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +10,6 @@ include("config.php");
   <head>
     <meta charset="utf-8">
     <title>Inscription</title>
-    <link rel="stylesheet" href="assets/style.css">
-	  <link rel="stylesheet" href="assets/header-login-signup.css">
   </head>
   
   <body>

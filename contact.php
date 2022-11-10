@@ -1,15 +1,13 @@
 <?php 
 include("status/idle.php");
 include("header.php"); 
+include("configCSS.html");
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="assets/header-login-signup.css">
-
     <meta charset="UTF-8">
     <title>Contact</title>
 
