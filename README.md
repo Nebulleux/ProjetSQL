@@ -31,15 +31,11 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/nebulleux/ProjetSQL">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">ProjectSQL</h3>
 
   <p align="center">
-    project_description
+    First SQL group project with PHP integrations done for UTBM
     <br />
     <a href="https://github.com/nebulleux/ProjetSQL"><strong>Explore the docs »</strong></a>
     <br />
@@ -87,7 +83,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `nebulleux`, `ProjetSQL`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `nebulleux`, `ProjetSQL`, `twitter_handle`, `jbropp`, `jbropp@gmail.com`, `jbropp@gmail.com`, `ProjectSQL`, `First SQL group project with PHP integrations done for UTBM`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -196,9 +192,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 ## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
 Project Link: [https://github.com/nebulleux/ProjetSQL](https://github.com/nebulleux/ProjetSQL)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -217,7 +210,7 @@ Project Link: [https://github.com/nebulleux/ProjetSQL](https://github.com/nebull
 [license-shield]: https://img.shields.io/github/license/nebulleux/ProjetSQL.svg?style=for-the-badge
 [license-url]: https://github.com/nebulleux/ProjetSQL/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://linkedin.com/in/jbropp
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
