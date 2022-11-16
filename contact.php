@@ -18,11 +18,11 @@ include("configCSS.html");
         <br>
         <h1>Qui sommes-nous ?</h1>
 
-        <p> ROPP Jean-Baptiste 0620235881</p>
+        <p> ROPP Jean-Baptiste</p>
         <br>
-        <p> MICHEL Loïc, fils de Jean MICHEL 0620235881</p>
+        <p> MICHEL Loïc</p>
         <br>
-        <p> BENNOUR Yanis 0620235881</p>
+        <p> BENNOUR Yanis</p>
         <br><br><br>
 
     </div>

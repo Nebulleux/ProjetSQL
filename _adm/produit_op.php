@@ -18,8 +18,7 @@ echo "<br><br><br>";
 
 $connectaumax = $conn->query("SELECT * FROM product WHERE id = ".$idget);
 while ($row = $connectaumax->fetch_assoc()) {
-	echo (empty($row['image'])) ? 'NA' : '<img class="fit-picture"'."src=".$row['image'].">";		
-
+	echo (empty($row['image'])) ? '<img class="fit-picture"'."src=../assets/no_image.jpg".">" : '<img class="fit-picture"'."src=../".$row['image'].">";		
 	echo "<br>";
 	
 	echo "Libellé: ";

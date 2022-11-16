@@ -65,6 +65,7 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				$foo = true;
 			}
 	}
@@ -75,6 +76,7 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				$foo = true;
 			}
 	}
@@ -86,6 +88,7 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				$foo = true;
 			}
 	}
@@ -95,6 +98,7 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 		echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 		echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 		echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+		echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 		$foo = true;
 	}
 }

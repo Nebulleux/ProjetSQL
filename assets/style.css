@@ -7,7 +7,9 @@ html{
 body{
 	font:14px/1.5 Arial, Helvetica, sans-serif;
 	padding:0;
-	margin:0;
+	margin:20px auto;
+  color: black;
+  font-family:verdana;
 }
 
 .menu{
@@ -132,12 +134,6 @@ table, td, th{
     color: white;
   }
   
-  body {
-    color: black;
-    font-family:verdana;
-    
-  }
-  
   #line:hover {
     background-color: grey;
     cursor: pointer;
@@ -203,10 +199,13 @@ table, td, th{
   
   .delete:hover {
     background-color: grey;
+    text-decoration: none;
+
   }
   
   .modify {
     font-size: 75px;
+    text-decoration: none;
   }
   
   a:link {

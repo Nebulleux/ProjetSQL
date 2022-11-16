@@ -58,10 +58,11 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 	if (!empty($priceminentre) && !empty($pricemaxentre)) {
 	
 			if ((($value['price']*1.2) > $priceminentre) && (($value['price']*1.2) < $pricemaxentre) && ($foo == false)) {
-				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
+				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
@@ -70,9 +71,10 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 	if (!empty($priceminentre) && empty($pricemaxentre)) {
 	
 			if ((($value['price']*1.2) > $priceminentre) && ($foo == false)) {
-				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
@@ -82,10 +84,11 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 	if (empty($priceminentre) && !empty($pricemaxentre)) {
 	
 			if ((($value['price']*1.2) < $pricemaxentre) && ($foo == false)) {
-				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
+				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
@@ -93,10 +96,11 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 	}
 
 	if (empty($priceminentre) && empty($pricemaxentre)) {
-		echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
+		echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
 			echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 			echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 			echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+			echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 			echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 			echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 			$foo = true;

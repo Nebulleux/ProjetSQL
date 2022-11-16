@@ -77,7 +77,6 @@ echo '<input type="text" name="image" value="'.$ima.'"> <br>"';
 
 <?php
 if (!empty($_POST)) {
-//    if (!empty($_POST['category']) && (!empty($_POST['label'])) && !empty($_POST['description']) && !empty($_POST['poids']) && !empty($_POST['couleur']) && !empty($_POST['dimensions']) && !empty($_POST['diamètre_filament']) && !empty($_POST['prix_HT']) && !empty($_POST['précision']) && !empty($_POST['temperature_transi_vitreuse']) && !empty($_POST['temperature_point_de_fusion'])) {
 	    $sql = "UPDATE product SET catégorie='".$_POST['category']."', libellé='".$_POST['label']."', description='".$_POST['description']."', poids='".$_POST['poids']."', couleur='".$_POST['couleur']."', dimensions='".$_POST['dimensions']."', diamètre_filament='".$_POST['diamètre_filament']."', précision='".$_POST['précision']."', temperature_transi_vitreuse='".$_POST['temperature_transi_vitreuse']."', temperature_point_de_fusion='".$_POST['temperature_point_de_fusion']."', prix_HT=".$_POST['prix_HT'].", image='".$_POST['image']."' WHERE id=".$_GET['id'];
 	    if (mysqli_query($conn, $sql)) {
       		echo "Produit modifié avec succès";
@@ -122,7 +121,6 @@ if (empty($_POST['temperature_point_de_fusion'])) {
 if (empty($_POST['image'])) {
 	echo "image manquante ! <br>";	
 	}
-//}
 
 ?>
 
