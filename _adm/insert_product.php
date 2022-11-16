@@ -14,6 +14,79 @@ include("configCSS_adm.html");
   <body>
 	<h2>📥 Ajouter un nouvel article 📥</h2>
 
+  <script>
+List = new Array();
+function Remplir(valeur){
+  var sel="";
+  sel ="<select size='1' name='souscat'>";
+  // Parcourir le tableau
+  for (var i=0;i<List.length;i++)
+   {
+     // tester si la ligne du tableau (Sous-catégorie) correspond à la valeur de la catéhorie
+     if (List[i][1]==valeur)
+     {
+       // Ajouter une rubrique sous-catégorie au variable SEL
+       sel= sel + "<option value="+List[i][0]+">"+List[i][2]+"</option>";
+     }
+
+   }
+   sel =sel + "</select>";
+   // Modifier le DIV scat par la nouvelle List à partir du variable SEL
+   document.getElementById('scat').innerHTML=sel;
+}
+</script>
+</head>
+<body>
+
+<form method="POST" action="Ajout6.php3">
+  <select size="1" name="cat" OnChange="Remplir(cat.value)">
+<?php
+// Paramètres de la Connexion à la base MYSQL
+$i=0; // variable de test
+$j=0; // variable pour garder la valeur du premier enregistrement catégorie pour l'affichage
+
+// Séléction de tous les enregistrements de la table Catégorie
+$rq="Select * from categorie order by designation;";
+$result= mysqli_query ($rq) or die ("Select impossible");
+
+while ($dt=mysqli_fetch_row($result))
+{
+ // Remplir la liste déroulante des catégorie
+ echo "\t\t<option value=".($dt[0]).">".($dt[1])."</option>";
+ if ($i==0) { $j=$dt[0]; $i=1; } // garder la valeur du premier enregistrement
+}
+
+?>
+
+</select><br><br>
+
+<DIV id="scat">
+<select size="1" name="souscat">
+</select>
+</DIV>
+
+<?php
+
+// Séléction de tous les enregistrements de la table Sous-Catégorie
+$rq="Select * from sous_categorie order by designation;";
+$result= mysqli_query ($rq) or die ("Select impossible");
+// $i = initialise le variable i
+$i=0;
+while ($dt=mysqli_fetch_row($result))
+{
+ // Remplir le tableau (array) en javascript
+ // ex : List[1]=new Array (1,1,"Sous-catégorie 1");
+ // ex : List[2]=new Array (2,1,"Sous-catégorie 2");
+ echo "<script>List[".$i."] = new Array(".($dt[0]).",".($dt[1]).",'".($dt[2])."');</script>";
+ $i=$i+1; // Incrémentation de $i
+}
+echo "<script>Remplir ($j); </script>"; // Remplir la deuxième liste de choix avec les données
+                                        // des sous-catégories en utilisant la valeur j
+?>
+<br><br>
+  <input type="submit" name="Send" value="Envoyer">
+</form>
+  <!--
     <form action="insert_product.php" class="centre" method="POST">
         Catégorie : <br>
         <input type="text" name="category"> <br>
@@ -55,6 +128,8 @@ include("configCSS_adm.html");
 
 	<input type="button" onclick="location.href='./main.php';" value="Retour liste" />
     </form>
+
+-->
 
 <?php
 if (!empty($_POST['category']) && (!empty($_POST['label'])) && !empty($_POST['description']) && !empty($_POST['poids']) && !empty($_POST['couleur']) && !empty($_POST['dimensions']) && !empty($_POST['diamètre_filament']) && !empty($_POST['prix_HT']) && !empty($_POST['précision']) && !empty($_POST['temperature_transi_vitreuse']) && !empty($_POST['temperature_point_de_fusion'])) {
