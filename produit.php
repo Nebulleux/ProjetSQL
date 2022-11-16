@@ -19,6 +19,22 @@ echo "<br><br><br>";
 
 $connectaumax = $conn->query("SELECT * FROM product WHERE id = ".$idget);
 while ($row = $connectaumax->fetch_assoc()) {
+	echo "Libellé: ";
+	echo $row['name'];
+	echo "<br>";
+
+	echo "Catégorie: ";
+	echo $row['description'];
+	echo "<br>";
+
+	echo "Prix: ";
+	echo $row['price'];
+	echo "<br>";
+
+	echo "Note: ";
+	echo $row['rating'];
+	echo "<br>";
+	/*
     echo (empty($row['image'])) ? 'NA' : '<img class="fit-picture"'."src=".$row['image'].">";
 	echo "<br>";
 	echo "catégorie: ";
@@ -57,6 +73,8 @@ while ($row = $connectaumax->fetch_assoc()) {
 	echo "temperature point de fusion: ";
 	echo (empty($row['temperature_point_de_fusion'])) ? 'NA' : $row['temperature_point_de_fusion'];
 	echo "<br>";
+	*/
+
 }
 ?>
 
