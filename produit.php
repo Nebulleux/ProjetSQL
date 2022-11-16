@@ -27,7 +27,11 @@ while ($row = $connectaumax->fetch_assoc()) {
 	echo $row['description'];
 	echo "<br>";
 
-	echo "Prix: ";
+	echo "Prix TTC: ";
+	echo $row['price']*1.2;
+	echo "<br>";
+
+	echo "Prix sans TVA: ";
 	echo $row['price'];
 	echo "<br>";
 

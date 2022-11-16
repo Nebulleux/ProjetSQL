@@ -49,11 +49,11 @@ include("configCSS.html");
 <h2>🛒 Articles Disponibles 🛒</h2>
 <table>
 <tr>
-<th>image</th>
-<th>catégorie</th>
-<th>libellé</th>
-<th>description</th>
-<th>prix TTC</th>
+<th>Image</th>
+<th>Libellé</th>
+<th>Description</th>
+<th>Prix TTC</th>
+<th>Note</th>
 </tr>
 
 <?php
@@ -62,8 +62,8 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 	
 			if ((($value['price']*1.2) > $prixminentre) && (($value['price']*1.2) < $prixmaxentre) && ($foo == false)) {
 				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-				echo "<td>".$value['name']."</td>";
-				echo "<td>".$value['description']."</td>";
+				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 				$foo = true;
 			}
@@ -72,8 +72,8 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 	
 			if ((($value['price']*1.2) > $prixminentre) && ($foo == false)) {
 				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-				echo "<td>".$value['name']."</td>";
-				echo "<td>".$value['description']."</td>";
+				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 				$foo = true;
 			}
@@ -83,8 +83,8 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 	
 			if ((($value['price']*1.2) < $prixmaxentre) && ($foo == false)) {
 				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-				echo "<td>".$value['name']."</td>";
-				echo "<td>".$value['description']."</td>";
+				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 				$foo = true;
 			}
@@ -92,8 +92,8 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 
 	if (empty($prixminentre) && empty($prixmaxentre)) {
 			echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-			echo "<td>".$value['name']."</td>";
-			echo "<td>".$value['description']."</td>";
+			echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+			echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 			echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 			$foo = true;
 	}
