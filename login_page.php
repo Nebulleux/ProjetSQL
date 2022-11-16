@@ -39,6 +39,7 @@ $login_submit = ($_POST['login_submit']);
 if ($login_submit){
 
   $sql = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
+  $sql2 = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
 
   $login_query = mysqli_query ($conn,$sql);
   // mae the query, now we check if the user exists

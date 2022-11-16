@@ -63,7 +63,7 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
-				echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
+				echo "<td><a href='main_op.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
 			}
@@ -75,7 +75,7 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
-				echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
+				echo "<td><a href='main_op.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
 			}
@@ -89,7 +89,7 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
-				echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
+				echo "<td><a href='main_op.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
 			}
@@ -101,7 +101,7 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 			echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 			echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 			echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
-			echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
+			echo "<td><a href='main_op.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 			echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 			$foo = true;
 	}
@@ -151,7 +151,7 @@ echo "</tr>";
 if (isset($_GET['delete'])){
     $del = "DELETE FROM product WHERE id=".$_GET['delete'];
     $conn->query($del);
-    header('Location:main.php');
+    header('Location:main_op.php');
 }
 ?>
 
