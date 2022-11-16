@@ -42,9 +42,9 @@ include("configCSS.html");
 if (!empty($_POST['login']) && (!empty($_POST['password']))) {
 $signup_submit = ($_POST['signup_submit']);
 if ($signup_submit){
-  $sql = "SELECT * FROM users WHERE login = '".$_POST['login']."' AND password = '".$_POST['password']."'";
+  $sql = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
 
-  $sql2 = "INSERT INTO Users (login, password, email) VALUES ( '".$_POST['login']."',  '".$_POST['password']."', '".$_POST['email']."')";
+  $sql2 = "INSERT INTO utilisateur (username, password, email) VALUES ( '".$_POST['login']."',  '".$_POST['password']."', '".$_POST['email']."')";
 
   $signup_query = mysqli_query ($conn,$sql);
   $check_user = mysqli_num_rows ($signup_query);

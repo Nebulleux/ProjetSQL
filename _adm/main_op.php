@@ -54,11 +54,11 @@ include("configCSS_adm.html");
 </tr>
 
 <?php
-function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
-	if (!empty($prixminentre) && !empty($prixmaxentre)) {
+function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
+	if (!empty($priceminentre) && !empty($pricemaxentre)) {
 	
-			if ((($value['prix_HT']*1.2) > $prixminentre) && (($value['prix_HT']*1.2) < $prixmaxentre) && ($foo == false)) {
-				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
+			if ((($value['price']*1.2) > $priceminentre) && (($value['price']*1.2) < $pricemaxentre) && ($foo == false)) {
+				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
@@ -67,10 +67,10 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				$foo = true;
 			}
 	}
-	if (!empty($prixminentre) && empty($prixmaxentre)) {
+	if (!empty($priceminentre) && empty($pricemaxentre)) {
 	
-			if ((($value['prix_HT']*1.2) > $prixminentre) && ($foo == false)) {
-				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
+			if ((($value['price']*1.2) > $priceminentre) && ($foo == false)) {
+				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
@@ -80,10 +80,10 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 			}
 	}
 	
-	if (empty($prixminentre) && !empty($prixmaxentre)) {
+	if (empty($priceminentre) && !empty($pricemaxentre)) {
 	
-			if ((($value['prix_HT']*1.2) < $prixmaxentre) && ($foo == false)) {
-				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
+			if ((($value['price']*1.2) < $pricemaxentre) && ($foo == false)) {
+				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
@@ -93,8 +93,8 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 			}
 	}
 
-	if (empty($prixminentre) && empty($prixmaxentre)) {
-			echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
+	if (empty($priceminentre) && empty($pricemaxentre)) {
+			echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
 			echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 			echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 			echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
@@ -113,11 +113,11 @@ $foo = false;
 
 <?php
 if (!empty($_POST) && isset($_POST['price_min']) && isset($_POST['price_max']) ) {
-	$prixminentre = $_POST['price_min'];
-	$prixmaxentre = $_POST['price_max'];
+	$priceminentre = $_POST['price_min'];
+	$pricemaxentre = $_POST['price_max'];
 } else {
-	$prixminentre=0;
-	$prixmaxentre=PHP_INT_MAX;
+	$priceminentre=0;
+	$pricemaxentre=PHP_INT_MAX;
 }
 ?>
 
@@ -125,7 +125,7 @@ if (!empty($_POST) && isset($_POST['price_min']) && isset($_POST['price_max']) )
 //==============================================================================
 if (!empty($_POST['bobine'])) {
     if ($value['catégorie']=="bobine") {
-			grande_fonction($value,$prixminentre,$prixmaxentre,$foo);
+			grande_fonction($value,$priceminentre,$pricemaxentre,$foo);
     }
 }
 ?>
@@ -133,14 +133,14 @@ if (!empty($_POST['bobine'])) {
 <?php
 if (!empty($_POST['machine'])) {
     if ($value['catégorie']=="machine") {
-			grande_fonction($value,$prixminentre,$prixmaxentre,$foo);
+			grande_fonction($value,$priceminentre,$pricemaxentre,$foo);
     }
 }
 ?>
 
 <?php
 if (empty($_POST['bobine']) && empty($_POST['machine'])) {
-	grande_fonction($value,$prixminentre,$prixmaxentre,$foo);
+	grande_fonction($value,$priceminentre,$pricemaxentre,$foo);
 }
 echo "</tr>";
 }
