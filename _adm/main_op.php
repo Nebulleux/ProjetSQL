@@ -46,13 +46,11 @@ include("configCSS_adm.html");
 <h2>🛒 Articles Disponibles 🛒</h2>
 <table>
 <tr>
-<th>image</th>
-<th>catégorie</th>
-<th>libellé</th>
-<th>description</th>
-<th>prix TTC</th>
-<th>suppression</th>
-<th>modification</th>
+<th>Image</th>
+<th>Libellé</th>
+<th>Description</th>
+<th>Prix TTC</th>
+<th>Note</th>
 </tr>
 
 <?php
@@ -61,10 +59,9 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 	
 			if ((($value['prix_HT']*1.2) > $prixminentre) && (($value['prix_HT']*1.2) < $prixmaxentre) && ($foo == false)) {
 				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-				echo "<td>".$value['catégorie']."</td>";
-				echo "<td>".$value['libellé']."</td>";
-				echo "<td>".$value['description']."</td>";
-				echo (empty($value['prix_HT'])) ? "<td>".'NA'."</td>" : "<td>".($value['prix_HT']*1.2)."</td>";
+				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
+				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 				echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
@@ -74,10 +71,9 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 	
 			if ((($value['prix_HT']*1.2) > $prixminentre) && ($foo == false)) {
 				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-				echo "<td>".$value['catégorie']."</td>";
-				echo "<td>".$value['libellé']."</td>";
-				echo "<td>".$value['description']."</td>";
-				echo (empty($value['prix_HT'])) ? "<td>".'NA'."</td>" : "<td>".($value['prix_HT']*1.2)."</td>";
+				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
+				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 				echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
@@ -88,10 +84,9 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 	
 			if ((($value['prix_HT']*1.2) < $prixmaxentre) && ($foo == false)) {
 				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-				echo "<td>".$value['catégorie']."</td>";
-				echo "<td>".$value['libellé']."</td>";
-				echo "<td>".$value['description']."</td>";
-				echo (empty($value['prix_HT'])) ? "<td>".'NA'."</td>" : "<td>".($value['prix_HT']*1.2)."</td>";
+				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
+				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 				echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
@@ -100,10 +95,9 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 
 	if (empty($prixminentre) && empty($prixmaxentre)) {
 			echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-			echo "<td>".$value['catégorie']."</td>";
-			echo "<td>".$value['libellé']."</td>";
-			echo "<td>".$value['description']."</td>";
-			echo (empty($value['prix_HT'])) ? "<td>".'NA'."</td>" : "<td>".($value['prix_HT']*1.2)."</td>";
+			echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+			echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
+			echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
 			echo "<td><a href='main.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 			echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 			$foo = true;
