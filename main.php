@@ -6,7 +6,7 @@ include("configCSS.html");
 ?>
 <html>
 <head>
-<title>Catalogue</title>
+<title>Catalogue [Invite]</title>
 
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

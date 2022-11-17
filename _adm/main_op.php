@@ -7,7 +7,7 @@ include("configCSS_adm.html");
 
 <html>
 <head>
-<title>Catalogue</title>
+<title>Catalogue [Admin]</title>
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Grossiste3D [Admin]</title>

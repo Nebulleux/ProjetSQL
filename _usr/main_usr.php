@@ -6,11 +6,11 @@ include("configCSS_usr.html");
 ?>
 <html>
 <head>
-<title>Catalogue</title>
+<title>Catalogue [User]</title>
 
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Grossiste3D [Invite]</title>
+	<title>Grossiste3D [User]</title>
 </head>
 
 <br>
