@@ -1,6 +1,8 @@
 <?php 
-include("../status/idle.php");
-include("header.php"); 
+include("../status/connected.php");
+include("header_usr.php"); 
+include("../config.php");
+include("configCSS_usr.html");
 ?>
 <html>
 <head>
@@ -8,30 +10,13 @@ include("header.php");
 
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<title>Grossiste3D [Invite]</title>
-	<link rel="icon" type="image/x-icon" href="../assets/icon.ico">
-	<link rel="stylesheet" href="assets/style.css">
-	<link rel="stylesheet" href="assets/header-login-signup.css">
-
 </head>
 
 <br>
 
 <div class="first">
 <h2 id=filtre>🔎 Filtrer les produits 🔍</h2>
-<?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "jbropp_01";
-    $conn = mysqli_connect($servername, $username, $password,$db);
-    if (!$conn) {
-       die("Connection failed: " . mysqli_connect_error());
-    }
-//error_reporting(0);
-//ini_set('display_errors', 0);
-?>
 
 <form method="post">
 <div id=formulaire>
@@ -64,57 +49,57 @@ include("header.php");
 <h2>🛒 Articles Disponibles 🛒</h2>
 <table>
 <tr>
-<th>image</th>
-<th>catégorie</th>
-<th>libellé</th>
-<th>description</th>
-<th>prix TTC</th>
+<th>Image</th>
+<th>Libellé</th>
+<th>Description</th>
+<th>Prix TTC</th>
+<th>Note</th>
 </tr>
 
 <?php
 function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 	if (!empty($prixminentre) && !empty($prixmaxentre)) {
 	
-			if ((($value['prix_HT']*1.2) > $prixminentre) && (($value['prix_HT']*1.2) < $prixmaxentre) && ($foo == false)) {
-				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-				echo "<td>".$value['catégorie']."</td>";
-				echo "<td>".$value['libellé']."</td>";
-				echo "<td>".$value['description']."</td>";
-				echo (empty($value['prix_HT'])) ? "<td>".'NA'."</td>" : "<td>".($value['prix_HT']*1.2)."</td>";
+			if ((($value['price']*1.2) > $prixminentre) && (($value['price']*1.2) < $prixmaxentre) && ($foo == false)) {
+				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
+				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
+				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				$foo = true;
 			}
 	}
 	if (!empty($prixminentre) && empty($prixmaxentre)) {
 	
-			if ((($value['prix_HT']*1.2) > $prixminentre) && ($foo == false)) {
-				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-				echo "<td>".$value['catégorie']."</td>";
-				echo "<td>".$value['libellé']."</td>";
-				echo "<td>".$value['description']."</td>";
-				echo (empty($value['prix_HT'])) ? "<td>".'NA'."</td>" : "<td>".($value['prix_HT']*1.2)."</td>";
+			if ((($value['price']*1.2) > $prixminentre) && ($foo == false)) {
+				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
+				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
+				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				$foo = true;
 			}
 	}
 	
 	if (empty($prixminentre) && !empty($prixmaxentre)) {
 	
-			if ((($value['prix_HT']*1.2) < $prixmaxentre) && ($foo == false)) {
-				echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-				echo "<td>".$value['catégorie']."</td>";
-				echo "<td>".$value['libellé']."</td>";
-				echo "<td>".$value['description']."</td>";
-				echo (empty($value['prix_HT'])) ? "<td>".'NA'."</td>" : "<td>".($value['prix_HT']*1.2)."</td>";
+			if ((($value['price']*1.2) < $prixmaxentre) && ($foo == false)) {
+				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
+				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
+				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				$foo = true;
 			}
 	}
 
 	if (empty($prixminentre) && empty($prixmaxentre)) {
-			echo (empty($value['image'])) ? "<td>".'NA'."</td>" : "<td>".'<img class="fit-picture"'."src=".$value['image'].">"."</td>";
-			echo "<td>".$value['catégorie']."</td>";
-			echo "<td>".$value['libellé']."</td>";
-			echo "<td>".$value['description']."</td>";
-			echo (empty($value['prix_HT'])) ? "<td>".'NA'."</td>" : "<td>".($value['prix_HT']*1.2)."</td>";
-			$foo = true;
+		echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";
+		echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
+		echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
+		echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+		echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
+		$foo = true;
 	}
 }
 $foo = false;

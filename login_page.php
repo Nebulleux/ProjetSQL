@@ -36,23 +36,31 @@ include("configCSS.html");
 if (!empty($_POST['login']) && (!empty($_POST['password']))) {
 
 $login_submit = ($_POST['login_submit']);
+$login = ($_POST['login']);
+$password = ($_POST['password']);
+
 if ($login_submit){
 
-  $sql = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
-  $sql2 = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
-  $sql3 = "SELECT groupe.id, utilisateur.username FROM groupe, utilisateur, groupuser WHERE groupuser.idGroup = groupe.id AND utilisateur.id = groupuser.idUser";
+  $sql = "SELECT * FROM utilisateur WHERE username = '$login' AND password = '$password'";
+  $sql2 = "SELECT groupe.id, utilisateur.username FROM groupe, utilisateur, groupuser WHERE groupuser.idGroup = groupe.id AND utilisateur.id = groupuser.idUser AND groupe.id=2 AND utilisateur.username = '$login'";
 
+    // USER CHECK
   $login_query = mysqli_query ($conn,$sql);
-  // make the query, now we check if the user exists
   $check_user = mysqli_num_rows ($login_query);
+    // ADMIN CHECK
+  $login_query2 = mysqli_query ($conn,$sql2);
+  $check_user2 = mysqli_num_rows ($login_query2);
 
-  if ($check_user == 1) {
-      // if there is a valid user in the db, if the results returned are one row, then log the user in, otherwise error
+        // if there is a valid user in the db, if the results returned are one row, then log the user in, otherwise error
       // we need to create to session variables for  user so the user can log in, save details etc.
+  if ($check_user == 1 && $check_user2 == 1) { //User exists and not admin
       $_SESSION["user_login"]=$login_submit;
       header("Location: _adm/main_op.php");
-      echo "logged in";
-  
+
+  } else if ($check_user == 1 && $check_user2 != 1) {
+      $_SESSION["user_login"]=$login_submit;
+      header("Location: _usr/main_usr.php");
+
   } else {?>
     <div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Accès refusé !</div>
   <?php }
