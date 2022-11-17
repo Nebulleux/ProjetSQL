@@ -198,14 +198,17 @@ table, td, th{
   }
   
   .delete:hover {
-    background-color: grey;
     text-decoration: none;
-
+    transform: scale(1.5);
   }
   
   .modify {
     font-size: 75px;
+  }
+
+  .modify:hover {
     text-decoration: none;
+    transform: scale(1.5);
   }
   
   a:link {

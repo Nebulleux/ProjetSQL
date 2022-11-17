@@ -6,7 +6,7 @@
         <h1><a <?php if($connected) { echo 'href="main_usr.php"'; } else { echo 'href="main.php"'; }?>>🌌Grossiste<span>3D🌌</span></a></h1>
 
         <nav>
-            <a href="contact_op.php">Nous contacter</a>
+            <a href="contact_usr.php">Nous contacter</a>
             <a href="#"><div>
                 <input type="button" onclick="location.href='./insert_product.php';" value="Ajouter un produit" />
             </div></a>
