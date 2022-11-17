@@ -17,45 +17,41 @@ include("configCSS.html");
 <br>
 
 <div class="first">
-<table>
-        <tr>
-            <td><h2 id=filtre>🔎 Filtrer les produits 🔍</h2>
+<h2 id=filtre>🔎 Filtrer les produits 🔍</h2>
 
-			<form method="post">
-				<div id=formulaire>
-					<div>
-						<label for="price">💸 Prix minimum : </label>
-							<input type="price" id="min" name="price_min"> €
-					</div>
-					<div>
-						<label for="price">💳 Prix maximum :</label>
-						<input type="price" id="max" name="price_max"> €
-					</div>
+<div class="box">
+<form method="post">
+<div class="col">
+	<div id=formulaire>
+	<div>
+		<label for="price">💸 Prix minimum : </label>
+		<input type="price" id="min" name="price_min"> €
+	</div>
+	<div>
+		<label for="price">💳 Prix maximum :</label>
+		<input type="price" id="max" name="price_max"> €
+	</div>
 
-					<div>
-						<label for="bobine">🧵 Bobines  </label>
-						<input type="checkbox" id="bobine" name="bobine">
-					</div>
-					<div>
-						<label for="machine">📠 Machines</label>
-						<input type="checkbox" id="machine" name="machine">
-					</div>
-					<br>
-					<input type="submit" value="Trier">
-					<input type="reset" value="Effacer les champs">
-					</div>
-			</form></td>
-            <td><img class="gif" src="assets/bg.gif"></td>
-        </tr>
-</table>
-
+	<div>
+		<label for="bobine">🧵 Bobines  </label>
+		<input type="checkbox" id="bobine" name="bobine">
+	</div>
+	<div>
+		<label for="machine">📠 Machines</label>
+		<input type="checkbox" id="machine" name="machine">
+	</div>
+	<br>
+	<input type="submit" value="Trier">
+	<input type="reset" value="Effacer les champs">
+	</div>
+</div>
+</form>
+<div class="col">
+<img class="gif" src="assets/bg.gif">
+</div>
+</div>
 </div>
 
-<<<<<<< HEAD
-
-=======
-<img class="gif" src="assets/bg.gif">
->>>>>>> 30747b2d1b365ee491d114654b636e18a54396fe
 
 <h2>🛒 Articles Disponibles 🛒</h2>
 <table>
