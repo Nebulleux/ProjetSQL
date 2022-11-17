@@ -15,7 +15,7 @@ include("configCSS.html");
   <body>
 	<h2>📥 Inscription 📥</h2>
 
-    <form action="signup_page.php" class="centre" method="POST">
+    <form action="signup_page.php" class="form-container" method="POST">
         Email : <br>
         <input type="text" name="email"> <br>
 
