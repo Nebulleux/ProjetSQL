@@ -1,5 +1,13 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
+.gif {
+  position:absolute;
+  margin-left: 45%;
+  max-width: 1200px;
+  border-radius: 25px ;
+  border: 5px solid #6a0902;
+}
+
 html{
 	background-color: #eaf0f2;
 }
