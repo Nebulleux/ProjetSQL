@@ -17,35 +17,41 @@ include("configCSS.html");
 <br>
 
 <div class="first">
-<h2 id=filtre>🔎 Filtrer les produits 🔍</h2>
+<table>
+        <tr>
+            <td><h2 id=filtre>🔎 Filtrer les produits 🔍</h2>
 
-<form method="post">
-<div id=formulaire>
-	<div>
-		<label for="price">💸 Prix minimum : </label>
-		<input type="price" id="min" name="price_min"> €
-	</div>
-	<div>
-		<label for="price">💳 Prix maximum :</label>
-		<input type="price" id="max" name="price_max"> €
-	</div>
+			<form method="post">
+				<div id=formulaire>
+					<div>
+						<label for="price">💸 Prix minimum : </label>
+							<input type="price" id="min" name="price_min"> €
+					</div>
+					<div>
+						<label for="price">💳 Prix maximum :</label>
+						<input type="price" id="max" name="price_max"> €
+					</div>
 
-	<div>
-		<label for="bobine">🧵 Bobines  </label>
-		<input type="checkbox" id="bobine" name="bobine">
-	</div>
-	<div>
-		<label for="machine">📠 Machines</label>
-		<input type="checkbox" id="machine" name="machine">
-	</div>
-	<br>
-	<input type="submit" value="Trier">
-	<input type="reset" value="Effacer les champs">
+					<div>
+						<label for="bobine">🧵 Bobines  </label>
+						<input type="checkbox" id="bobine" name="bobine">
+					</div>
+					<div>
+						<label for="machine">📠 Machines</label>
+						<input type="checkbox" id="machine" name="machine">
+					</div>
+					<br>
+					<input type="submit" value="Trier">
+					<input type="reset" value="Effacer les champs">
+					</div>
+			</form></td>
+            <td><img class="gif" src="assets/bg.gif"></td>
+        </tr>
+</table>
+
 </div>
-</form>
-</div>
 
-<?php //<img class="gif" src="assets/bg.gif"> ?>
+
 
 <h2>🛒 Articles Disponibles 🛒</h2>
 <table>
