@@ -51,7 +51,11 @@ include("configCSS.html");
 
 </div>
 
+<<<<<<< HEAD
 
+=======
+<img class="gif" src="assets/bg.gif">
+>>>>>>> 30747b2d1b365ee491d114654b636e18a54396fe
 
 <h2>🛒 Articles Disponibles 🛒</h2>
 <table>

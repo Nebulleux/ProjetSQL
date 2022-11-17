@@ -55,7 +55,8 @@ if ($login_submit){
       // we need to create to session variables for  user so the user can log in, save details etc.
   if ($check_user == 1 && $check_user2 == 1) { //User exists and not admin
       $_SESSION["user_login"]=$login_submit;
-      header("Location: _adm/main_op.php");
+      //header("Location: _adm/main_op.php");
+      header("Location: loading.php");
 
   } else if ($check_user == 1 && $check_user2 != 1) {
       $_SESSION["user_login"]=$login_submit;
