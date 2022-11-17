@@ -40,13 +40,13 @@ if ($login_submit){
 
   $sql = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
   $sql2 = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
+  $sql3 = "SELECT groupe.id, utilisateur.username FROM groupe, utilisateur, groupuser WHERE groupuser.idGroup = groupe.id AND utilisateur.id = groupuser.idUser";
 
   $login_query = mysqli_query ($conn,$sql);
-  // mae the query, now we check if the user exists
+  // make the query, now we check if the user exists
   $check_user = mysqli_num_rows ($login_query);
 
   if ($check_user == 1) {
-
       // if there is a valid user in the db, if the results returned are one row, then log the user in, otherwise error
       // we need to create to session variables for  user so the user can log in, save details etc.
       $_SESSION["user_login"]=$login_submit;
