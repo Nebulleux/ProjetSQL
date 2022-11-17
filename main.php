@@ -45,7 +45,7 @@ include("configCSS.html");
 </form>
 </div>
 
-<?php //<img class="gif" src="assets/bg.gif"> ?>
+<img class="gif" src="assets/bg.gif">
 
 <h2>🛒 Articles Disponibles 🛒</h2>
 <table>
