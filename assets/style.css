@@ -1,5 +1,6 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
+
 .box {
   display: flex;
 }
@@ -27,7 +28,7 @@ html{
 body{
 	font:14px/1.5 Arial, Helvetica, sans-serif;
 	padding:0;
-	margin:20px auto;
+	margin:0px auto;
   color: black;
   font-family:verdana;
 }
@@ -40,7 +41,7 @@ body{
 
 .menu img{
 	opacity: 0.4;
-	margin: 20px auto;
+	margin: 0px auto;
 }
 
 .menu h1{

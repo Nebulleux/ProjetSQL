@@ -1,5 +1,5 @@
 <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-<body>
+
     <header class="header-user-dropdown">
     
     <div class="header-limiter">
