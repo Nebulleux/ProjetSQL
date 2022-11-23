@@ -60,10 +60,16 @@ include("configCSS.html");
 <th>Libellé</th>
 <th>Description</th>
 <th>Prix TTC</th>
+<th>Notation</th>
 </tr>
 
 <?php
+
 function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
+	include("config.php"); 
+		$sql2 = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 2)) as MOY FROM rating,product WHERE rating.idProduct ='.$value['id'];
+		$resultat= $conn->query($sql2);
+
 
 	if (!empty($prixminentre) && !empty($prixmaxentre)) {
 	
@@ -72,6 +78,9 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				while($ligne=mysqli_fetch_array($resultat)){
+					echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
+				}
 				$foo = true;
 			}
 	}
@@ -82,6 +91,9 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				while($ligne=mysqli_fetch_array($resultat)){
+					echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
+				}
 				$foo = true;
 			}
 	}
@@ -93,6 +105,9 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+				while($ligne=mysqli_fetch_array($resultat)){
+					echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
+				}
 				$foo = true;
 			}
 	}
@@ -102,6 +117,9 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 		echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 		echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 		echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
+		while($ligne=mysqli_fetch_array($resultat)){
+			echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
+		}
 		$foo = true;
 	}
 }
