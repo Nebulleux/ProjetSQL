@@ -3,42 +3,6 @@ include("status/idle.php");
 include("header.php"); 
 include("config.php");
 include("configCSS.html");
-
-if (isset($_FILES['image']['name'])) {
-  echo '<img src="'.$src.'">';
-  echo '<br>';
-  /***********************************************************
-   * 1 - Upload Original Image To Server
-   ***********************************************************/
-  //Get Name | Size | Temp Location
-  $ImageName = $_FILES['image']['name'];
-  $ImageSize = $_FILES['image']['size'];
-  $ImageTempName = $_FILES['image']['tmp_name'];
-
-  //Get File Ext
-  $ImageType = @explode('/', $_FILES['image']['type']);
-  $type = $ImageType[1]; //file type
-  //Set Upload directory
-  $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/Halpper/';
-  //Set File name
-  $file_temp_name = $profile_id . '_original.' . md5(time()) . 'n' . $type; //the temp file name
-  $fullpath = $uploaddir . "/" . $file_temp_name; // the temp file path
-  $file_name = $profile_id . '_temp.jpeg'; //$profile_id.'_temp.'.$type; // for the final resized image
-  $finalname = $profile_id . md5(time());
-  $fullpath_2 = "assets/" . $finalname . "n.jpg"; //for the final resized image
-  //Move the file to correct location
-  if (move_uploaded_file($ImageTempName, $uploaddir . $fullpath_2)) {
-      chmod($uploaddir . $fullpath_2, 0777);
-  }
-  //Check for valid uplaod
-  if (!$move) {
-      die ('File didnt upload');
-  } else {
-      $imgSrc = "assets/" . $file_name; // the image to display in crop area
-      $msg = "Upload Complete!";   //message to page
-      $src = $file_name;          //the file name to post from cropping form to the resize
-  }
-}
 ?>
 
 <!DOCTYPE html>

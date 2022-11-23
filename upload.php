@@ -47,5 +47,5 @@ if ($uploadOk == 0) {
   }
 }
 
-header("Location: /signup_page.php")
+header("Location: signup_page.php?image=$target_file")
 ?>
