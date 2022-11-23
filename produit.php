@@ -18,6 +18,7 @@ echo "Vous êtes actuellement sur le produit n°".$idget;
 echo "<br><br><br>";
 
 $connectaumax = $conn->query("SELECT * FROM product WHERE id = ".$idget);
+
 while ($row = $connectaumax->fetch_assoc()) {
 	echo (empty($row['image'])) ? '<img class="fit-picture"'."src=assets/no_image.jpg".">" : '<img class="fit-picture"'."src=".$row['image'].">";		
 	echo "<br>";
@@ -37,9 +38,13 @@ while ($row = $connectaumax->fetch_assoc()) {
 	echo "Prix sans TVA: ";
 	echo $row['price'];
 	echo "<br>";
-
-	echo "Note: ";
-	echo $row['rating'];
+}
+	echo "Moyenne des notes: ";
+	$sql2 = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 2)) as MOY FROM rating,product WHERE rating.idProduct ='.$idget;
+	$resultat= $conn->query($sql2);
+	while($ligne=mysqli_fetch_array($resultat)){
+		echo (empty($ligne['MOY'])) ? "0/5" : $ligne['MOY']."/5";
+	}
 	echo "<br>";
 	/*
     echo (empty($row['image'])) ? 'NA' : '<img class="fit-picture"'."src=".$row['image'].">";
@@ -81,9 +86,28 @@ while ($row = $connectaumax->fetch_assoc()) {
 	echo (empty($row['temperature_point_de_fusion'])) ? 'NA' : $row['temperature_point_de_fusion'];
 	echo "<br>";
 	*/
-
-}
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </body>
