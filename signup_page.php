@@ -16,16 +16,21 @@ include("configCSS.html");
 	<h2>📥 Inscription 📥</h2>
 
     <form action="signup_page.php" class="form-container" method="POST">
-        Email : <br>
+        Email* : <br>
         <input type="text" name="email"> <br>
 
-        Login : <br>
+        Login* : <br>
         <input type="text" name="login"> <br>
         
-        Mot de passe : <br>
+        Mot de passe* : <br>
         <input type="text" name="password"> <br>
+
+        Photo de profil (formats acceptés: png,gif,jpeg): <br>
+        <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg" />
+
         <input type="submit" name="signup_submit" value="S'inscrire">
     </form>
+  <p style="color:#FF0000">*Champs obligatoires !!</p>
 
 <?php
   if (empty($_POST['login']) && isset($_POST['login'])) { ?>
@@ -52,7 +57,7 @@ if ($signup_submit){
 
     $login_query = mysqli_query ($conn,$sql2);
       $_SESSION["user_login"]=$signup_submit;
-      header("Location: _adm/main_op.php");
+      header("Location: _adm/main_usr.php");
       echo "logged in";
   }
 }
