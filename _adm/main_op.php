@@ -50,11 +50,15 @@ include("configCSS_adm.html");
 <th>Libellé</th>
 <th>Description</th>
 <th>Prix TTC</th>
-<th>Note</th>
+<th>Notation</th>
 </tr>
 
 <?php
 function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
+	include("../config.php"); 
+	$sql2 = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 1)) as MOY FROM rating,product WHERE rating.idProduct ='.$value['id'];
+	$resultat= $conn->query($sql2);
+
 	if (!empty($priceminentre) && !empty($pricemaxentre)) {
 	
 			if ((($value['price']*1.2) > $priceminentre) && (($value['price']*1.2) < $pricemaxentre) && ($foo == false)) {
@@ -62,7 +66,9 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
-				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
+				while($ligne=mysqli_fetch_array($resultat)){
+					echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
+				}
 				echo "<td><a href='main_op.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
@@ -74,7 +80,9 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 				echo (empty($value['image'])) ? "<td>".'<img class="fit-picture"'."src=../assets/no_image.jpg".">"."</td>" : "<td>".'<img class="fit-picture"'."src=../".$value['image'].">"."</td>";				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
-				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
+				while($ligne=mysqli_fetch_array($resultat)){
+					echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
+				}
 				echo "<td><a href='main_op.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
@@ -88,7 +96,9 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
-				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
+				while($ligne=mysqli_fetch_array($resultat)){
+					echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
+				}
 				echo "<td><a href='main_op.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 				$foo = true;
@@ -100,7 +110,9 @@ function grande_fonction($value,$priceminentre,$pricemaxentre,$foo) {
 			echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 			echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 			echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
-			echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
+			while($ligne=mysqli_fetch_array($resultat)){
+				echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
+			}
 			echo "<td><a href='main_op.php?delete=".$value['id']."' class='delete'>❌</a></td>";
 			echo "<td><a href='update_product.php?id=".$value['id']."' class='modify'>📝</a></td>";
 			$foo = true;
