@@ -62,7 +62,6 @@ include("configCSS.html");
 		<th>Description</th>
 		<th>Prix TTC</th>
 		<th>Notation</th>
-		<th>Un avis ? 🤔</th>
 	</tr>
 
 	<?php

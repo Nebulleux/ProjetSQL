@@ -48,6 +48,22 @@ while ($row = $connectaumax->fetch_assoc()) {
 	echo "<br>";
 	echo "<br><br><h2>Avis</h2><br>";
 ?>
-
+<table>
+	<tr>
+		<th>Date</th>
+		<th>Utilisateur</th>
+		<th>Note</th>
+		<th>Commentaire</th>
+	</tr>
+<?php
+	$connect2 = $conn->query('SELECT DISTINCT rating.dateOfPub as "date",utilisateur.username as "user",rating.rate as "rate",rating.comm as "comm" FROM utilisateur,rating,product WHERE utilisateur.id = rating.idUser AND rating.idProduct ='.$idget);
+	while ($row2 = $connect2->fetch_assoc()) {
+		echo (empty($row2['date'])) ? "<td> NA </td>" : "<td>".$row2['date']."</td>";
+		echo (empty($row2['user'])) ? "<td> NA </td>" : "<td>".$row2['user']."</td>";
+		echo (empty($row2['rate'])) ? "<td> NA </td>" : "<td>".$row2['rate']."/5 </td>";
+		echo (empty($row2['comm'])) ? "<td> NA </td>" : "<td>".$row2['comm']."</td>";
+		echo "<tr>";
+	}
+?>
 </body>
 </html>
