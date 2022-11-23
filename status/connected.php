@@ -1,3 +1,3 @@
 <?php
-    $connected = true;
+$connected = true;
 ?>

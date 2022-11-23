@@ -1,6 +1,6 @@
-<?php 
+<?php
 include("../status/connected.php");
-include("header_op.php"); 
+include("header_op.php");
 include("configCSS_adm.html");
 ?>
 
