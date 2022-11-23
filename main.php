@@ -60,11 +60,11 @@ include("configCSS.html");
 <th>Libellé</th>
 <th>Description</th>
 <th>Prix TTC</th>
-<th>Note</th>
 </tr>
 
 <?php
 function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
+
 	if (!empty($prixminentre) && !empty($prixmaxentre)) {
 	
 			if ((($value['price']*1.2) > $prixminentre) && (($value['price']*1.2) < $prixmaxentre) && ($foo == false)) {
@@ -72,7 +72,6 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
-				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				$foo = true;
 			}
 	}
@@ -83,7 +82,6 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
-				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				$foo = true;
 			}
 	}
@@ -95,7 +93,6 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 				echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 				echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 				echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
-				echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 				$foo = true;
 			}
 	}
@@ -105,7 +102,6 @@ function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 		echo (empty($value['name'])) ? "<td>".'NA'."</td>" : "<td>".($value['name'])."</td>";
 		echo (empty($value['description'])) ? "<td>".'NA'."</td>" : "<td>".($value['description'])."</td>";
 		echo (empty($value['price'])) ? "<td>".'NA'."</td>" : "<td>".($value['price']*1.2)."</td>";
-		echo (empty($value['rating'])) ? "<td>".'NA'."</td>" : "<td>".($value['rating'])."</td>";
 		$foo = true;
 	}
 }

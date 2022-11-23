@@ -12,7 +12,7 @@
 }
 
 .gif {
-  position: absolute;
+  position: abso;
   margin-left: 45%;
   max-width: 1200px;
   border-radius: 25px ;
@@ -342,3 +342,7 @@ table, td, th{
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+.star { display: inline-block; background: url("design/star.png") no-repeat; width: 44px; height: 44px }
+
+.star_hover { display: inline-block; background: url("design/star.png") no-repeat; background-position: 0 -44px; width: 44px; height: 44px }
