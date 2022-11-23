@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `1two_star_rating` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`media` int(11) NOT NULL,
+`rate` int(11) NOT NULL,
+`nbrrate` int(11) NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
