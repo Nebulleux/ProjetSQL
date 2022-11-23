@@ -269,11 +269,12 @@ table, td, th{
   color: black;
 }
 
-
-
-
-
-
+/* The second alert message box */
+.alert2 {
+  padding: 20px;
+  background-color: #30b32b;
+  color: white;
+}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {

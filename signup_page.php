@@ -3,8 +3,8 @@ include("status/idle.php");
 include("header.php"); 
 include("config.php");
 include("configCSS.html");
+$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 ?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,6 +13,21 @@ include("configCSS.html");
   </head>
   
   <body>
+
+<?php
+if (strpos($url,'?image=assets/pp/') !== false) { 
+  $actual_image = substr($url, strpos($url, "assets/pp/"));   
+  $image_uploaded = true;
+  ?>
+  <div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>L'image a été uploadée avec succès !</div>
+<?php 
+  echo '<img class="fit-picture"'."src=".$actual_image.">";
+  } else {
+  echo(null);
+}
+?>
+
+
 	<h2>📥 Inscription 📥</h2>
     <form action="upload.php" class="form-container" enctype="multipart/form-data" method="POST">
       Photo de profil (formats acceptés: png,gif,jpeg): <br>
@@ -53,7 +68,7 @@ include("configCSS.html");
 	  <?php }
 
 
-if (!empty($_POST['login']) && (!empty($_POST['password']))) {
+if (!empty($_POST['login']) && (!empty($_POST['password'])) && (!$image_uploaded)) {
 $signup_submit = ($_POST['signup_submit']);
 if ($signup_submit){
   $sql = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
@@ -71,6 +86,25 @@ if ($signup_submit){
   }
 }
 }
+
+if (!empty($_POST['login']) && (!empty($_POST['password'])) && ($image_uploaded)) {
+  $signup_submit = ($_POST['signup_submit']);
+  if ($signup_submit){
+    $sql = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
+  
+    $sql2 = "INSERT INTO utilisateur (username, password, email, image) VALUES ( '".$_POST['login']."',  '".$_POST['password']."', '".$_POST['email']."', $actual_image)";
+  
+    $signup_query = mysqli_query ($conn,$sql);
+    $check_user = mysqli_num_rows ($signup_query);
+    if ($check_user == 0) {
+  
+      $login_query = mysqli_query ($conn,$sql2);
+        $_SESSION["user_login"]=$signup_submit;
+        header("Location: _usr/main_usr.php");
+        echo "logged in";
+    }
+  }
+  }
 ?>
 
   </body>
