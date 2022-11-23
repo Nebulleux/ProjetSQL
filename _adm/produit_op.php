@@ -40,46 +40,6 @@ while ($row = $connectaumax->fetch_assoc()) {
 	echo "Note: ";
 	echo $row['rating'];
 	echo "<br>";
-	/*
-    echo (empty($row['image'])) ? 'NA' : '<img class="fit-picture"'."src=".$row['image'].">";
-	echo "<br>";
-	echo "catégorie: ";
-	echo $row['catégorie'];
-	echo "<br>";
-	echo "libellé: ";
-	echo $row['libellé'];
-	echo "<br>";
-	echo "description: ";
-	echo $row['description'];
-	echo "<br>";
-	echo "poids: ";
-	echo (empty($row['poids'])) ? 'NA' : $row['poids'];
-	echo "<br>";
-	echo "couleur: ";
-	echo (empty($row['couleur'])) ? 'NA' : $row['couleur'];
-	echo "<br>";
-	echo "dimensions(cm): ";
-	echo (empty($row['dimensions'])) ? 'NA' : $row['dimensions'];
-	echo "<br>";
-	echo "diamètre du filament: ";
-	echo (empty($row['diamètre_filament'])) ? 'NA' : $row['diamètre_filament'];
-	echo "<br>";
-	echo "prix TTC: ";
-	echo (empty($row['prix'])) ? 'NA' : $row['prix'];
-	echo "<br>";
-	echo "prix HT: ";
-	echo (empty($row['prix_HT'])) ? 'NA' : $row['prix_HT'];
-	echo "<br>";
-	echo "précision(+-): ";
-	echo (empty($row['précision'])) ? 'NA' : $row['précision'];
-	echo "<br>";
-	echo "temperature transi vitreuse: ";
-	echo (empty($row['temperature_transi_vitreuse'])) ? 'NA' : $row['temperature_transi_vitreuse'];
-	echo "<br>";
-	echo "temperature point de fusion: ";
-	echo (empty($row['temperature_point_de_fusion'])) ? 'NA' : $row['temperature_point_de_fusion'];
-	echo "<br>";
-	*/
 
 }
 ?>
