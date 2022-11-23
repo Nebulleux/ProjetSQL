@@ -4,6 +4,7 @@ include("header.php");
 include("config.php");
 include("configCSS.html");
 ?>
+
 <html>
 
 <head>
@@ -17,7 +18,6 @@ include("configCSS.html");
 
 <br>
 
-<div class="first">
 	<h2 id=filtre>🔎 Filtrer les produits 🔍</h2>
 
 	<div class="box">
@@ -51,7 +51,6 @@ include("configCSS.html");
 			<img class="gif" src="assets/bg.gif">
 		</div>
 	</div>
-</div>
 
 
 <h2>🛒 Articles Disponibles 🛒</h2>
@@ -66,115 +65,115 @@ include("configCSS.html");
 
 	<?php
 
-function grande_fonction($value, $prixminentre, $prixmaxentre, $foo)
-{
-	include("config.php");
-	$sql2 = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 1)) as MOY FROM rating,product WHERE rating.idProduct =' . $value['id'];
-	$resultat = $conn->query($sql2);
+    function grande_fonction($value, $prixminentre, $prixmaxentre, $foo)
+    {
+	    include("config.php");
+	    $sql2 = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 1)) as MOY FROM rating,product WHERE rating.idProduct =' . $value['id'];
+	    $resultat = $conn->query($sql2);
 
-	if (!empty($prixminentre) && !empty($prixmaxentre)) {
+	    if (!empty($prixminentre) && !empty($prixmaxentre)) {
 
-		if ((($value['price'] * 1.2) > $prixminentre) && (($value['price'] * 1.2) < $prixmaxentre) && ($foo == false)) {
-			echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
-			echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
-			echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
-			echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
-			while ($ligne = mysqli_fetch_array($resultat)) {
-				echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
-			}
-			$foo = true;
-		}
-	}
-	if (!empty($prixminentre) && empty($prixmaxentre)) {
+		    if ((($value['price'] * 1.2) > $prixminentre) && (($value['price'] * 1.2) < $prixmaxentre) && ($foo == false)) {
+			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
+			    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
+			    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
+			    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
+			    while ($ligne = mysqli_fetch_array($resultat)) {
+				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
+			    }
+			    $foo = true;
+		    }
+	    }
+	    if (!empty($prixminentre) && empty($prixmaxentre)) {
 
-		if ((($value['price'] * 1.2) > $prixminentre) && ($foo == false)) {
-			echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
-			echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
-			echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
-			echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
-			while ($ligne = mysqli_fetch_array($resultat)) {
-				echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
-			}
-			$foo = true;
-		}
-	}
+		    if ((($value['price'] * 1.2) > $prixminentre) && ($foo == false)) {
+			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
+			    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
+			    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
+			    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
+			    while ($ligne = mysqli_fetch_array($resultat)) {
+				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
+			    }
+			    $foo = true;
+		    }
+	    }
 
-	if (empty($prixminentre) && !empty($prixmaxentre)) {
+	    if (empty($prixminentre) && !empty($prixmaxentre)) {
 
-		if ((($value['price'] * 1.2) < $prixmaxentre) && ($foo == false)) {
-			echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
-			echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
-			echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
-			echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
-			while ($ligne = mysqli_fetch_array($resultat)) {
-				echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
-			}
-			$foo = true;
-		}
-	}
+		    if ((($value['price'] * 1.2) < $prixmaxentre) && ($foo == false)) {
+			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
+			    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
+			    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
+			    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
+			    while ($ligne = mysqli_fetch_array($resultat)) {
+				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
+			    }
+			    $foo = true;
+		    }
+	    }
 
-	if (empty($prixminentre) && empty($prixmaxentre)) {
-		echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
-		echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
-		echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
-		echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
-		while ($ligne = mysqli_fetch_array($resultat)) {
-			echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>".$ligne['MOY']."/5 </td>";
-		}
-		$foo = true;
-	}
-}
-$foo = false;
-$connectaumax = $conn->query("SELECT * FROM product");
-foreach ($connectaumax as $value) {
-	$foo = false;
-?>
+	    if (empty($prixminentre) && empty($prixmaxentre)) {
+		    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
+		    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
+		    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
+		    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
+		    while ($ligne = mysqli_fetch_array($resultat)) {
+			    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
+		    }
+		    $foo = true;
+	    }
+    }
+    $foo = false;
+    $connectaumax = $conn->query("SELECT * FROM product");
+    foreach ($connectaumax as $value) {
+	    $foo = false;
+    ?>
 
 	<tr id=line onclick="document.location = 'produit.php?id=<?= $value['id'] ?>'">
 
 		<?php
-	if (!empty($_POST) && isset($_POST['price_min']) && isset($_POST['price_max'])) {
-		$prixminentre = $_POST['price_min'];
-		$prixmaxentre = $_POST['price_max'];
-	} else {
-		$prixminentre = 0;
-		$prixmaxentre = PHP_INT_MAX;
-	}
-?>
+	    if (!empty($_POST) && isset($_POST['price_min']) && isset($_POST['price_max'])) {
+		    $prixminentre = $_POST['price_min'];
+		    $prixmaxentre = $_POST['price_max'];
+	    } else {
+		    $prixminentre = 0;
+		    $prixmaxentre = PHP_INT_MAX;
+	    }
+        ?>
 
 		<?php
-	//==============================================================================
-	if (!empty($_POST['bobine'])) {
-		if ($value['catégorie'] == "bobine") {
-			grande_fonction($value, $prixminentre, $prixmaxentre, $foo);
-		}
-	}
-?>
-
-
-		<?php
-	if (!empty($_POST['machine'])) {
-		if ($value['catégorie'] == "machine") {
-			grande_fonction($value, $prixminentre, $prixmaxentre, $foo);
-		}
-	}
-?>
+	    //==============================================================================
+    	if (!empty($_POST['bobine'])) {
+		    if ($value['catégorie'] == "bobine") {
+			    grande_fonction($value, $prixminentre, $prixmaxentre, $foo);
+		    }
+	    }
+        ?>
 
 
 		<?php
-	if (empty($_POST['bobine']) && empty($_POST['machine'])) {
-		grande_fonction($value, $prixminentre, $prixmaxentre, $foo);
-	}
-	echo "</tr>";
-}
+	    if (!empty($_POST['machine'])) {
+		    if ($value['catégorie'] == "machine") {
+			    grande_fonction($value, $prixminentre, $prixmaxentre, $foo);
+		    }
+	    }
+        ?>
 
 
-if (isset($_GET['delete'])) {
-	$del = "DELETE FROM product WHERE id=" . $_GET['delete'];
-	$conn->query($del);
-	header('Location: main.php');
-}
-?>
+		<?php
+	    if (empty($_POST['bobine']) && empty($_POST['machine'])) {
+		    grande_fonction($value, $prixminentre, $prixmaxentre, $foo);
+	    }
+	    echo "</tr>";
+    }
+
+
+    if (isset($_GET['delete'])) {
+	    $del = "DELETE FROM product WHERE id=" . $_GET['delete'];
+	    $conn->query($del);
+	    header('Location: main.php');
+    }
+        ?>
 
 </table>
 </body>

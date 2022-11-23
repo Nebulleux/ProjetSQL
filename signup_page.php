@@ -15,16 +15,14 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
   <body>
 
 <?php
+global $actual_image;
 if (strpos($url,'?image=assets/pp/') !== false) { 
   $actual_image = substr($url, strpos($url, "assets/pp/"));   
-  $image_uploaded = true;
   ?>
   <div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>L'image a été uploadée avec succès !</div>
 <?php 
   echo '<img class="fit-picture"'."src=".$actual_image.">";
-  } else {
-  echo(null);
-}
+  } 
 ?>
 
 
@@ -68,12 +66,20 @@ if (strpos($url,'?image=assets/pp/') !== false) {
 	  <?php }
 
 
-if (!empty($_POST['login']) && (!empty($_POST['password'])) && (!$image_uploaded)) {
+if (!empty($_POST['login']) && (!empty($_POST['password']))) {
 $signup_submit = ($_POST['signup_submit']);
 if ($signup_submit){
+
   $sql = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
 
   $sql2 = "INSERT INTO utilisateur (username, password, email) VALUES ( '".$_POST['login']."',  '".$_POST['password']."', '".$_POST['email']."')";
+  
+  $sql3 = "INSERT INTO utilisateur (image) VALUES ($actual_image)";
+
+  if (var_dump(isset($actual_image))) {
+    $image_query = mysqli_query ($conn,$sql3);
+    echo "fanta";
+  }
 
   $signup_query = mysqli_query ($conn,$sql);
   $check_user = mysqli_num_rows ($signup_query);
@@ -81,30 +87,11 @@ if ($signup_submit){
 
     $login_query = mysqli_query ($conn,$sql2);
       $_SESSION["user_login"]=$signup_submit;
-      header("Location: _usr/main_usr.php");
+      //header("Location: _usr/main_usr.php");
       echo "logged in";
   }
 }
 }
-
-if (!empty($_POST['login']) && (!empty($_POST['password'])) && ($image_uploaded)) {
-  $signup_submit = ($_POST['signup_submit']);
-  if ($signup_submit){
-    $sql = "SELECT * FROM utilisateur WHERE username = '".$_POST['login']."' AND password = '".$_POST['password']."'";
-  
-    $sql2 = "INSERT INTO utilisateur (username, password, email, image) VALUES ( '".$_POST['login']."',  '".$_POST['password']."', '".$_POST['email']."', $actual_image)";
-  
-    $signup_query = mysqli_query ($conn,$sql);
-    $check_user = mysqli_num_rows ($signup_query);
-    if ($check_user == 0) {
-  
-      $login_query = mysqli_query ($conn,$sql2);
-        $_SESSION["user_login"]=$signup_submit;
-        header("Location: _usr/main_usr.php");
-        echo "logged in";
-    }
-  }
-  }
 ?>
 
   </body>

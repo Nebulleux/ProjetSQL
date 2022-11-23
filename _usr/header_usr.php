@@ -14,7 +14,9 @@
     
     
         <div class="header-user-menu">
-            <img src="../assets/no_pp.png" alt="User Image"/>
+            <?php
+            echo (empty($value['image'])) ? '<img src="../assets/no_pp.png" alt="User Image"/>' : '<img src="../assets/no_pp.png" alt="User Image"/>';
+            ?>
     
             <ul>
                 <li><a href="#"><?php $login ?></a></li>
