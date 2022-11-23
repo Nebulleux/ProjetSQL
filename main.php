@@ -67,7 +67,7 @@ include("configCSS.html");
 
 function grande_fonction($value,$prixminentre,$prixmaxentre,$foo) {
 	include("config.php"); 
-		$sql2 = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 2)) as MOY FROM rating,product WHERE rating.idProduct ='.$value['id'];
+		$sql2 = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 1)) as MOY FROM rating,product WHERE rating.idProduct ='.$value['id'];
 		$resultat= $conn->query($sql2);
 
 
