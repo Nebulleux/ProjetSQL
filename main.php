@@ -42,9 +42,6 @@ function get_session() {
 <br>
 
 <h2 id=filtre>🔎 Filtrer les produits 🔍</h2>
-<?php
-            echo ('src="'.$_SESSION["profile_picture"].'"');
-			?>
 <div class="box">
 	<form method="post">
 		<div class="col">
