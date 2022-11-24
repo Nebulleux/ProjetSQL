@@ -1,8 +1,10 @@
 <?php
+
+include("configCSS_adm.html");
 include("../status/connected.php");
 include("header_op.php");
 include("../config.php");
-include("configCSS_adm.html");
+
 ?>
 <!DOCTYPE html>
 <html>

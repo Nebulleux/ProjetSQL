@@ -5,18 +5,26 @@ if(isset($_SESSION['userName'])) {
 	echo "Your session is running " . $_SESSION['userName'];
 	$root = $_SESSION['userName'];
 	if ($_SESSION['userName'] == 'User') {
-		include("header_op.php");
+
 		include("configCSS_adm.html");
+		include("header_op.php");
+		
 	} else if ($_SESSION['userName'] == 'Root') {
-		include("header_op.php");
+
 		include("configCSS_adm.html");
+		include("header_op.php");
+		
 	} else {
-		include("header.php");
+
 		include("configCSS.html");
+		include("header.php");
+		
 	}
   } else {
-	include("header.php");
+
 	include("configCSS.html");
+	include("header.php");
+	
   }
 include("config.php");
 function get_session() {
@@ -36,7 +44,6 @@ function get_session() {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Grossiste3D [Invite]</title>
-	<link rel="icon" type="image/x-icon" href="assets/favicon.ico"> <!-- Voir pk ca marche pas ???-->
 </head>
 
 <br>

@@ -5,18 +5,26 @@ if(isset($_SESSION['userName'])) {
 	echo "Your session is running " . $_SESSION['userName'];
 	$root = $_SESSION['userName'];
 	if ($_SESSION['userName'] == 'User') {
+
+    include("configCSS_adm.html");
 		include("header_op.php");
-		include("configCSS_adm.html");
+		
 	} else if ($_SESSION['userName'] == 'Root') {
+
+    include("configCSS_adm.html");
 		include("header_op.php");
-		include("configCSS_adm.html");
+		
 	} else {
+
+    include("configCSS.html");
 		include("header.php");
-		include("configCSS.html");
+		
 	}
   } else {
+
+  include("configCSS.html");
 	include("header.php");
-	include("configCSS.html");
+	
   }
 include("config.php");
 function get_session() {

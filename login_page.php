@@ -4,9 +4,10 @@ if(isset($_SESSION['userName'])) {
   echo "Your session is running " . $_SESSION['userName'];
 }
 
+include("configCSS.html");
 include("header.php");
 include("config.php");
-include("configCSS.html");
+
 ?>
 
 <!DOCTYPE html>

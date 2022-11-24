@@ -1,9 +1,10 @@
 <?php
 session_start();   // in top of PHP file
 $_SESSION["image"] = get_pp();
+include("configCSS.html");
 include("header.php");
 include("config.php");
-include("configCSS.html");
+
 function get_pp() {
   if(isset($_GET['image'])) {
     return $_GET['image'];

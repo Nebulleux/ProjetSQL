@@ -1,7 +1,9 @@
 <?php
+
+include("configCSS.html");
 include("header.php");
 include("config.php");
-include("configCSS.html");
+
 ?>
 <!DOCTYPE html>
 <html>
