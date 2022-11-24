@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['userName'])) {
+  echo "Your session is running " . $_SESSION['userName'];
+}
+?>
+
 <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 <body>
     <header class="header-user-dropdown">
@@ -15,7 +22,7 @@
     
         <div class="header-user-menu">
             <?php
-            echo (empty($value['image'])) ? '<img src="../assets/no_pp.png" alt="User Image"/>' : '<img src="../assets/no_pp.png" alt="User Image"/>';
+            echo (empty($_SESSION["profile_picture"])) ? '<img src="../assets/no_pp.png" alt="User Image"/>' : '<img src="../'.$_SESSION["profile_picture"].'" alt="User Image"/>';
             ?>
     
             <ul>

@@ -1,9 +1,18 @@
 <?php
+session_start();   // in top of PHP file
+$_SESSION["image"] = get_pp();
+
 include("status/idle.php");
 include("header.php");
 include("config.php");
 include("configCSS.html");
-$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+function get_pp() {
+  if(isset($_GET['image'])) {
+    return $_GET['image'];
+  } else {
+    return '';
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +25,7 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
 <body>
   <h2>📥 Inscription 📥</h2>
-  <form action="signup_page2.php" class="form-container" method="POST">
+  <form class="form-container" method="POST">
     Email* : <br>
     <input type="text" name="email" required> <br>
     Login* : <br>
@@ -32,7 +41,6 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
   <div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>L'image
   <?php echo ($_GET['image']) ?> a été uploadée avec succès ! Entrez maintenant vos nouveaux identifiants afin de poursuivre la création de compte !</div>
   <?php echo '<img class="fit-picture"' . "src=" . ($_GET['image']) . ">";
-  $image = $_GET['image'];
   }
   ?>
 
@@ -50,37 +58,34 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     manquant.</div>
   <?php }
 
-  if (!empty($_POST['login']) && (!empty($_POST['password'])) && isset($_POST['signup_submit2']) && isset($_GET['image'])) {
-      $signup_submit2 = $_POST['signup_submit2'];
-      $sql = "SELECT * FROM utilisateur WHERE username = '" . $_POST['login'] . "' AND password = '" . $_POST['password'] . "'";
-      $sql3 = "INSERT INTO utilisateur (username, password, email, image) VALUES ( '" . $_POST['login'] . "',  '" . $_POST['password'] . "', '" . $_POST['email'] . "', '" . $_GET['image'] . "')";
 
-      $signup_query = mysqli_query($conn, $sql);
-      $check_user = mysqli_num_rows($signup_query);
+
+  if (!empty($_POST['login']) && (!empty($_POST['password'])) && isset($_POST['signup_submit2'])) {
+    $signup_submit2 = $_POST['signup_submit2'];
+    $sql = "SELECT * FROM utilisateur WHERE username = '" . $_POST['login'] . "' AND password = '" . $_POST['password'] . "'";
+    $sql2 = "INSERT INTO utilisateur (username, password, email) VALUES ( '" . $_POST['login'] . "',  '" . $_POST['password'] . "', '" . $_POST['email'] . "')";
+    $sql3 = "INSERT INTO utilisateur (username, password, email, image) VALUES ( '" . $_POST['login'] . "',  '" . $_POST['password'] . "', '" . $_POST['email'] . "', '" . $_SESSION["image"] . "')";
+    $signup_query = mysqli_query($conn, $sql);
+    $check_user = mysqli_num_rows($signup_query);
 
       if ($check_user == 0) {
+
+        if (!empty($_SESSION["image"])) {
         $image_query = mysqli_query($conn, $sql3);
         $_SESSION["user_login"] = $signup_submit2;
-        //header("Location: _usr/main_usr.php");
-        echo "logged in avec image";
+        $_SESSION["profile_picture"] = $_SESSION["image"];
+        header("Location: _usr/main_usr.php");
+        }
+
+        if (empty($_SESSION["image"])) {
+          $login_query = mysqli_query($conn, $sql2);
+          $_SESSION["user_login"] = $signup_submit2;
+          $_SESSION["profile_picture"] = $_SESSION["image"];
+          header("Location: _usr/main_usr.php");
+          }
       }
 
-  } else if (!empty($_POST['login']) && (!empty($_POST['password'])) && isset($_POST['signup_submit2']) && !isset($_GET['image'])) {
-    $signup_submit2 = $_POST['signup_submit2'];
-      $sql = "SELECT * FROM utilisateur WHERE username = '" . $_POST['login'] . "' AND password = '" . $_POST['password'] . "'";
-      $sql2 = "INSERT INTO utilisateur (username, password, email) VALUES ( '" . $_POST['login'] . "',  '" . $_POST['password'] . "', '" . $_POST['email'] . "')";
-
-      $signup_query = mysqli_query($conn, $sql);
-      $check_user = mysqli_num_rows($signup_query);
-
-      if ($check_user == 0) {
-        $login_query = mysqli_query($conn, $sql2);
-        $_SESSION["user_login"] = $signup_submit2;
-        //header("Location: _usr/main_usr.php");
-        echo "logged in sans image";
-      }
-
-    } else if (!empty($_POST['login']) && (!empty($_POST['password'])) && isset($_POST['signup_submit2'])) { 
+    } else if (isset($_POST['signup_submit2'])) { 
     ?>
 <div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Ce compte existe déjà.</div>
     <?php 
