@@ -1,8 +1,16 @@
 <?php
+session_start();
+$_SESSION['userName'] = 'Root';
+
 include("status/idle.php");
 include("header.php");
 include("config.php");
 include("configCSS.html");
+//reset
+$_SESSION["user_login"] = '';
+$_SESSION["profile_picture"] = '';
+$_SESSION["image"] = '';
+
 ?>
 
 <html>

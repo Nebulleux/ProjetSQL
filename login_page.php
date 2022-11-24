@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION['userName'])) {
+  echo "Your session is running " . $_SESSION['userName'];
+}
+
 include("status/idle.php");
 include("header.php");
 include("config.php");
@@ -46,27 +51,33 @@ include("configCSS.html");
 
       $sql = "SELECT * FROM utilisateur WHERE username = '$login' AND password = '$password'";
       $sql2 = "SELECT groupe.id, utilisateur.username FROM groupe, utilisateur, groupuser WHERE groupuser.idGroup = groupe.id AND utilisateur.id = groupuser.idUser AND groupe.id=2 AND utilisateur.username = '$login'";
-
+      $sql3 = "SELECT image FROM utilisateur WHERE username = '$login' AND password = '$password'";
       // USER CHECK
       $login_query = mysqli_query($conn, $sql);
       $check_user = mysqli_num_rows($login_query);
       // ADMIN CHECK
       $login_query2 = mysqli_query($conn, $sql2);
       $check_user2 = mysqli_num_rows($login_query2);
+      //PROFILE PICTURE CHECK
+      $login_query3 = mysqli_query($conn, $sql3);
 
+      $result = mysqli_fetch_assoc($login_query3);
+      $resultstring = $result['image'];
       // if there is a valid user in the db, if the results returned are one row, then log the user in, otherwise error
       // we need to create to session variables for  user so the user can log in, save details etc.
       if ($check_user == 1 && $check_user2 == 1) { //User exists and not admin
         $_SESSION["user_login"] = $login_submit;
+        $_SESSION["profile_picture"] = $resultstring;
+        
         header("Location: _adm/main_op.php");
 
       } else if ($check_user == 1 && $check_user2 != 1) {
         $_SESSION["user_login"] = $login_submit;
+        $_SESSION["profile_picture"] = $resultstring;
         header("Location: _usr/main_usr.php");
 
       } else { ?>
-  <div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Accès
-    refusé !</div>
+  <div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Accès refusé !</div>
   <?php }
     }
   }
