@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION['userName'])) {
+  echo "Your session is running " . $_SESSION['userName'];
+}
+
 include("status/idle.php");
 include("header.php");
 include("config.php");
@@ -54,14 +59,16 @@ include("configCSS.html");
 		<tr>
 			<th>Date</th>
 			<th>Utilisateur</th>
+			<th>Image</th>
 			<th>Note</th>
 			<th>Commentaire</th>
 		</tr>
 		<?php
-        $connect2 = $conn->query('SELECT DISTINCT rating.dateOfPub as "date",utilisateur.username as "user",rating.rate as "rate",rating.comm as "comm" FROM utilisateur,rating,product WHERE utilisateur.id = rating.idUser AND rating.idProduct =' . $idget);
+        $connect2 = $conn->query('SELECT DISTINCT rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" FROM utilisateur,rating,product WHERE utilisateur.id = rating.idUser AND rating.idProduct =' . $idget);
         while ($row2 = $connect2->fetch_assoc()) {
 	        echo (empty($row2['date'])) ? "<td> NA </td>" : "<td>" . $row2['date'] . "</td>";
 	        echo (empty($row2['user'])) ? "<td> NA </td>" : "<td>" . $row2['user'] . "</td>";
+			echo (empty($row2['image'])) ? "<td> NA </td>" : '<td> <img src="'.$row2['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
 	        echo (empty($row2['rate'])) ? "<td> NA </td>" : "<td>" . $row2['rate'] . "/5 </td>";
 	        echo (empty($row2['comm'])) ? "<td> NA </td>" : "<td>" . $row2['comm'] . "</td>";
 	        echo "<tr>";
