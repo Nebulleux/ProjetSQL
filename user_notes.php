@@ -4,7 +4,6 @@ $_SESSION["group"] = get_session();
 $_SESSION["log"] = get_login();
 
 if(isset($_SESSION['userName'])) {
-	echo "Your session is running " . $_SESSION['userName'];
 	$root = $_SESSION['userName'];
 	if ($_SESSION['userName'] == 'User') {
 		include("header_op.php");
