@@ -1,7 +1,31 @@
 <?php
-include("header.php");
+session_start();
+$_SESSION["group"] = get_session();
+if(isset($_SESSION['userName'])) {
+	echo "Your session is running " . $_SESSION['userName'];
+	$root = $_SESSION['userName'];
+	if ($_SESSION['userName'] == 'User') {
+		include("header_op.php");
+		include("configCSS_adm.html");
+	} else if ($_SESSION['userName'] == 'Root') {
+		include("header_op.php");
+		include("configCSS_adm.html");
+	} else {
+		include("header.php");
+		include("configCSS.html");
+	}
+  } else {
+	include("header.php");
+	include("configCSS.html");
+  }
 include("config.php");
-include("configCSS.html");
+function get_session() {
+	if(isset($_SESSION['userName'])) {
+	  return $_SESSION['userName'];
+	} else {
+	  return '';
+	}
+  }
 $target_dir = "assets/pp/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;

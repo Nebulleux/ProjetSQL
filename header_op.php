@@ -18,8 +18,7 @@
 
         <div class="header-user-menu">
             <?php
-            echo (empty($value['image'])) ? '<img src="assets/no_pp.png" alt="User Image"/>' : '<img src="assets/no_pp.png" alt="User Image"/>';
-
+            echo (empty($_SESSION["profile_picture"])) ? '<img src="assets/no_pp.png" alt="User Image"/>' : '<img src="'.$_SESSION["profile_picture"].'" alt="User Image"/>';
             ?>
             <ul>
                 <li><a href="#"><?php $login ?></a></li>

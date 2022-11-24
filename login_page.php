@@ -4,7 +4,6 @@ if(isset($_SESSION['userName'])) {
   echo "Your session is running " . $_SESSION['userName'];
 }
 
-include("status/idle.php");
 include("header.php");
 include("config.php");
 include("configCSS.html");

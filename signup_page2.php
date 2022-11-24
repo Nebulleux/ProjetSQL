@@ -72,14 +72,16 @@ function get_pp() {
         $image_query = mysqli_query($conn, $sql3);
         $_SESSION["user_login"] = $signup_submit2;
         $_SESSION["profile_picture"] = $_SESSION["image"];
-        header("Location: _usr/main_usr.php");
+        $_SESSION['userName'] = 'User';
+        header("Location: main.php");
         }
 
         if (empty($_SESSION["image"])) {
           $login_query = mysqli_query($conn, $sql2);
           $_SESSION["user_login"] = $signup_submit2;
           $_SESSION["profile_picture"] = $_SESSION["image"];
-          header("Location: _usr/main_usr.php");
+          $_SESSION['userName'] = 'User';
+          header("Location: main.php");
           }
       }
 
