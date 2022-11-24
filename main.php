@@ -104,7 +104,7 @@ function get_session() {
 				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 			    }
 				if ($_SESSION["group"] == 'Root') {
-					echo "<td><a href='main_op.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
+					echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 			    	echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 				}
 			    $foo = true;
@@ -121,7 +121,7 @@ function get_session() {
 				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 			    }
 				if ($_SESSION["group"] == 'Root') {
-					echo "<td><a href='main_op.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
+					echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 			    	echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 				}
 			    $foo = true;
@@ -139,7 +139,7 @@ function get_session() {
 				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 			    }
 				if ($_SESSION["group"] == 'Root') {
-					echo "<td><a href='main_op.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
+					echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 			    	echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 				}
 			    $foo = true;
@@ -155,7 +155,7 @@ function get_session() {
 			    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 		    }
 			if ($_SESSION["group"] == 'Root') {
-				echo "<td><a href='main_op.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
+				echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 			}
 		    $foo = true;
