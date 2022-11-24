@@ -1,5 +1,7 @@
 <?php
-session_start();
+sess
+include("configCSS_adm.html");
+ion_start();
 $_SESSION["group"] = get_session();
 if(isset($_SESSION['userName'])) {
 	echo "Your session is running " . $_SESSION['userName'];
@@ -9,7 +11,7 @@ if(isset($_SESSION['userName'])) {
 		include("configCSS_adm.html");
 	} else if ($_SESSION['userName'] == 'Root') {
 		include("header_op.php");
-		include("configCSS_adm.html");
+		
 	} else {
 		include("header.php");
 		include("configCSS.html");
