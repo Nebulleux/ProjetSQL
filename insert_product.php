@@ -1,7 +1,5 @@
 <?php
-sess
-include("configCSS_adm.html");
-ion_start();
+session_start();
 $_SESSION["group"] = get_session();
 if(isset($_SESSION['userName'])) {
 	echo "Your session is running " . $_SESSION['userName'];
