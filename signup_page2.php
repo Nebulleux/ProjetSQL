@@ -73,6 +73,7 @@ function get_pp() {
         $_SESSION["user_login"] = $signup_submit2;
         $_SESSION["profile_picture"] = $_SESSION["image"];
         $_SESSION['userName'] = 'User';
+        $_SESSION['login'] = $_POST['login'];
         header("Location: main.php");
         }
 
@@ -81,6 +82,7 @@ function get_pp() {
           $_SESSION["user_login"] = $signup_submit2;
           $_SESSION["profile_picture"] = $_SESSION["image"];
           $_SESSION['userName'] = 'User';
+          $_SESSION['login'] = $_POST['login'];
           header("Location: main.php");
           }
       }

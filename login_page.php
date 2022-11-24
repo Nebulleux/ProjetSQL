@@ -51,6 +51,7 @@ include("configCSS.html");
       $sql = "SELECT * FROM utilisateur WHERE username = '$login' AND password = '$password'";
       $sql2 = "SELECT groupe.id, utilisateur.username FROM groupe, utilisateur, groupuser WHERE groupuser.idGroup = groupe.id AND utilisateur.id = groupuser.idUser AND groupe.id=2 AND utilisateur.username = '$login'";
       $sql3 = "SELECT image FROM utilisateur WHERE username = '$login' AND password = '$password'";
+
       // USER CHECK
       $login_query = mysqli_query($conn, $sql);
       $check_user = mysqli_num_rows($login_query);
@@ -59,21 +60,23 @@ include("configCSS.html");
       $check_user2 = mysqli_num_rows($login_query2);
       //PROFILE PICTURE CHECK
       $login_query3 = mysqli_query($conn, $sql3);
-
       $result = mysqli_fetch_assoc($login_query3);
       $resultstring = $result['image'];
+      
       // if there is a valid user in the db, if the results returned are one row, then log the user in, otherwise error
       // we need to create to session variables for  user so the user can log in, save details etc.
       if ($check_user == 1 && $check_user2 == 1) { //User exists and not admin
         $_SESSION["user_login"] = $login_submit;
         $_SESSION["profile_picture"] = $resultstring;
         $_SESSION['userName'] = 'Root';
+        $_SESSION['login'] = $_POST['login'];
         header("Location: main.php");
 
       } else if ($check_user == 1 && $check_user2 != 1) {
         $_SESSION["user_login"] = $login_submit;
         $_SESSION["profile_picture"] = $resultstring;
         $_SESSION['userName'] = 'User';
+        $_SESSION['login'] = $_POST['login'];
         header("Location: main.php");
 
       } else { ?>

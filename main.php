@@ -107,6 +107,9 @@ function get_session() {
 					echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 			    	echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 				}
+				if ($_SESSION["group"] == 'User') {
+					echo "<td><a href='review.php?produit=" . $value['id'] . "' class='review'>🤔</a></td>";
+				}
 			    $foo = true;
 		    }
 	    }
@@ -123,6 +126,9 @@ function get_session() {
 				if ($_SESSION["group"] == 'Root') {
 					echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 			    	echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
+				}
+				if ($_SESSION["group"] == 'User') {
+					echo "<td><a href='review.php?produit=" . $value['id'] . "' class='review'>🤔</a></td>";
 				}
 			    $foo = true;
 		    }
@@ -142,6 +148,9 @@ function get_session() {
 					echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 			    	echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 				}
+				if ($_SESSION["group"] == 'User') {
+					echo "<td><a href='review.php?produit=" . $value['id'] . "' class='review'>🤔</a></td>";
+				}
 			    $foo = true;
 		    }
 	    }
@@ -157,6 +166,9 @@ function get_session() {
 			if ($_SESSION["group"] == 'Root') {
 				echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 				echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
+			}
+			if ($_SESSION["group"] == 'User') {
+				echo "<td><a href='review.php?produit=" . $value['id'] . "' class='review'>🤔</a></td>";
 			}
 		    $foo = true;
 	    }

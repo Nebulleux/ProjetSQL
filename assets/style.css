@@ -229,6 +229,15 @@ table, td, th{
     transform: scale(1.5);
   }
   
+  .review {
+    font-size: 75px;
+  }
+
+  .review:hover {
+    text-decoration: none;
+    transform: scale(1.5);
+  }
+
   a:link {
     text-decoration: none;
   }

@@ -22,7 +22,7 @@
             ?>
             <ul>
                 <li><a href="#"><?php $login ?></a></li>
-                <li><a href="#">Notations</a></li>
+                <li><a href="user_notes.php">Notations</a></li>
                 <li><a href="reset.php" class="highlight">Déconnexion</a></li>
 
             </ul>
