@@ -49,6 +49,7 @@ function get_session() {
 <body>
 <table>
 		<tr>
+            <th>Référence produit</th>
 			<th>Image</th>
 			<th>Date</th>
 			<th>Utilisateur</th>
@@ -58,10 +59,11 @@ function get_session() {
 		<?php
 
         $test = $_SESSION["log"];
-        $sql4 = 'SELECT DISTINCT rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" FROM utilisateur,rating,product WHERE utilisateur.id = rating.idUser AND utilisateur.username ="'.$test.'"';
+        $sql4 = 'SELECT DISTINCT product.name as "nom", rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" FROM utilisateur,rating,product WHERE product.id = rating.idProduct AND utilisateur.id = rating.idUser AND utilisateur.username ="'.$test.'"';
         $connect2 = $conn->query($sql4);
         
         while ($row2 = $connect2->fetch_assoc()) {
+            echo (empty($row2['nom'])) ? "<td> NA </td>" : "<td>" . $row2['nom'] . "</td>";
             echo (empty($row2['image'])) ? '<td> <img src="assets/no_pp.png" width="100" height="100" alt="User Image"/> </td>' : '<td> <img src="'.$row2['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
 	        echo (empty($row2['date'])) ? "<td> NA </td>" : "<td>" . $row2['date'] . "</td>";
 	        echo (empty($row2['user'])) ? "<td> NA </td>" : "<td>" . $row2['user'] . "</td>";
