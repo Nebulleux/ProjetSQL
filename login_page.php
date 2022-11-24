@@ -68,13 +68,14 @@ include("configCSS.html");
       if ($check_user == 1 && $check_user2 == 1) { //User exists and not admin
         $_SESSION["user_login"] = $login_submit;
         $_SESSION["profile_picture"] = $resultstring;
-        
-        header("Location: _adm/main_op.php");
+        $_SESSION['userName'] = 'Root';
+        header("Location: main.php");
 
       } else if ($check_user == 1 && $check_user2 != 1) {
         $_SESSION["user_login"] = $login_submit;
         $_SESSION["profile_picture"] = $resultstring;
-        header("Location: _usr/main_usr.php");
+        $_SESSION['userName'] = 'User';
+        header("Location: main.php");
 
       } else { ?>
   <div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Accès refusé !</div>

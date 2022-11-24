@@ -1,5 +1,4 @@
 <?php 
-include("status/idle.php");
 include("header.php"); 
 include("configCSS.html");
 ?>

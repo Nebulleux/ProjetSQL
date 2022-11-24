@@ -4,11 +4,7 @@
     <header class="header-login-signup">
 
         <div class="header-limiter">
-            <h1><a <?php if ($connected) {
-                echo 'href="_adm/main_op.php"';
-            } else {
-                echo 'href="main.php"';
-            } ?>>🌌Grossiste<span>3D🌌</span></a>
+            <h1><a href="reset.php">🌌Grossiste<span>3D🌌</span></a>
             </h1>
 
             <nav>

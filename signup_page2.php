@@ -1,8 +1,6 @@
 <?php
 session_start();   // in top of PHP file
 $_SESSION["image"] = get_pp();
-
-include("status/idle.php");
 include("header.php");
 include("config.php");
 include("configCSS.html");
