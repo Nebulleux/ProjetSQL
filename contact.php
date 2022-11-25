@@ -47,15 +47,9 @@ function get_session() {
 <body>
     <div>
         <br>
-        <h1>Qui sommes-nous ?</h1>
+        <h1 style="text-align:center">Qui sommes-nous ?</h1>
 
-        <p> ROPP Jean-Baptiste</p>
-        <br>
-        <p> MICHEL Loïc</p>
-        <br>
-        <p> BENNOUR Yanis</p>
-        <br><br><br>
-
+        <p style="text-align:center"> ROPP Jean-Baptiste <br> MICHEL Loïc <br> BENNOUR Yanis</p>
     </div>
 
 
