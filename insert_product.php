@@ -121,7 +121,7 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
         <input type="text" name="description" required> <br>
 
         Price : <br>
-        <input type="text" name="price" required> <br>
+        <input type="number" step="0.01" name="price" required> <br>
 
         Brand : <br>
         <input type="text" name="brand" required> <br>
@@ -133,11 +133,11 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
         <input type="text" name="heatingPlate" required> <br>
 
         Product type : <br>
-        <SELECT name="productType" id="productType" required>
+        <SELECT name="productType" id="productType">
             <?php
             $afficheMachineType = $conn->query("SELECT id,name FROM machinetype");
             while ($row = $afficheMachineType->fetch_assoc()) {
-                echo '<option value="' . $row['id'] . '" required>' . $row['name'] . '</option>';
+                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
             }
             ?>
 
@@ -162,29 +162,29 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
         <input type="text" name="description" required> <br>
 
         Price : <br>
-        <input type="text" name="price" required> <br>
+        <input type="number" step="0.01" name="price" required> <br>
 
         Color : <br>
         <input type="text" name="color" required> <br>
 
         Diameter : <br>
-        <input type="text" name="diameter" required> <br>
+        <input type="number" step="0.01" name="diameter" required> <br>
 
         Temp fusion : <br>
-        <input type="text" name="tempFusion" required> <br>
+        <input type="number" step="0.01" name="tempFusion" required> <br>
 
         Weight : <br>
-        <input type="text" name="weight" required> <br>
+        <input type="number" step="0.01" name="weight" required> <br>
 
         Dimension : <br>
-        <input type="text" name="dimension" required> <br>
+        <input type="number" step="0.01" name="dimension" required> <br>
 
         Product type : <br>
         <SELECT name="productType" id="productType">
             <?php
             $afficheFilamentType = $conn->query("SELECT id,name FROM filamenttype");
             while ($row = $afficheFilamentType->fetch_assoc()) {
-                echo '<option value="' . $row['id'] . '" required>' . $row['name'] . '</option>';
+                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
             }
             ?>
 
@@ -210,7 +210,7 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
         <input type="text" name="description" required> <br>
 
         Price : <br>
-        <input type="text" name="price" required> <br>
+        <input type="number" step="0.01" name="price" required> <br>
 
         Material : <br>
         <input type="text" name="material" required> <br>
@@ -220,7 +220,7 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
             <?php
             $afficheAccessoryType = $conn->query("SELECT id,name FROM accessorytype");
             while ($row = $afficheAccessoryType->fetch_assoc()) {
-                echo '<option value="' . $row['id'] . '" required>' . $row['name'] . '</option>';
+                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
             }
             ?>
 
