@@ -137,11 +137,6 @@ function get_session() {
 			$follow_query = mysqli_query($conn, $sql5);
             $check_user = mysqli_num_rows($follow_query);
 			
-			//check for auto sub
-			$sql5 = "SELECT DISTINCT follow.idFollower,follow.idFollowed FROM follow,utilisateur WHERE follow.idFollower = $actualuserid = follow.idFollowed = ".$_SESSION["followed"] ;
-			$follow_query = mysqli_query($conn, $sql5);
-            $check_user = mysqli_num_rows($follow_query);
-
 			if ($check_user == 0) {
 				//insert values
 				$sql6 = 'INSERT INTO follow (idFollower, idFollowed) VALUES ('.$actualuserid.','.$_SESSION["followed"].')'; 
