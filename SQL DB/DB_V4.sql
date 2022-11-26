@@ -90,7 +90,7 @@ CREATE TABLE Rating (
  
  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
  comm varchar(300) NOT NULL,
- rate double(5),
+ rate double,
  dateOfPub datetime NOT NULL DEFAULT current_timestamp(),
  idUser INT NOT NULL,
  idProduct INT NOT NULL,
