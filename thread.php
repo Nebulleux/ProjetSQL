@@ -65,7 +65,11 @@ function get_session() {
         $sql4 = 'SELECT DISTINCT utilisateur.id as "userid",product.image as "refimage", product.name as "nom", rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" FROM utilisateur,rating,product WHERE product.id = rating.idProduct AND utilisateur.id = rating.idUser ORDER BY date DESC';
         $connect2 = $conn->query($sql4);
         
-        while ($row2 = $connect2->fetch_assoc()) {
+		$init = 0;
+
+		echo '<form id="checkfollow" action="thread.php?iduser="'.$init.' method="post">';
+
+		while ($row2 = $connect2->fetch_assoc()) {
             echo (empty($row2['nom'])) ? "<td> NA </td>" : "<td>" . $row2['nom'] . "</td>";
             echo (empty($row2['refimage'])) ? '<td> <img src="assets/no_image.png" class="fit-picture" alt="User Image"/> </td>' : '<td> <img src="'.$row2['refimage'].'" class="fit-picture" alt="User Image"/> </td>' ;
             echo (empty($row2['image'])) ? '<td> <img src="assets/no_pp.png" width="100" height="100" alt="User Image"/> </td>' : '<td> <img src="'.$row2['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
@@ -74,12 +78,16 @@ function get_session() {
 	        echo (empty($row2['user'])) ? "<td> NA </td>" : "<td>" . $row2['user'] . "</td>";
 	        echo (empty($row2['rate'])) ? "<td> NA </td>" : "<td>" . $row2['rate'] . "/5 </td>";
 	        echo (empty($row2['comm'])) ? "<td> NA </td>" : "<td>" . $row2['comm'] . "</td>";
-            echo '<td><input type="checkbox" value="✅" id="checkboxOneInput"/></td>';
-            echo "<td><a href='follow.php?id=" . $row2['userid'] . "' class='follow'>✅</a></td>";
-            
-	        echo "<tr>";
-        }
-        ?>
-</body>
+            echo '<td>';
+			echo '<input type="checkbox" name='.$init.' id = "'.$init.'" onChange="this.form.submit()"></input>';
+			echo '<label for="'.$init.'" aria-describedby="label"><span class="ui"></span></label>';
+			echo '</td>';
 
+	        echo "<tr>";
+			$init++;
+        }
+		echo '</form>';
+        ?>
+
+</body>
 </html>
