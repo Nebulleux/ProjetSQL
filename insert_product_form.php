@@ -28,6 +28,23 @@ if (isset($_SESSION['userName'])) {
 	include("header.php");
 
 }
+
+function get_session() {
+    if(isset($_SESSION['userName'])) {
+        return $_SESSION['userName'];
+    } else {
+        return '';
+    }
+}
+
+function get_login() {
+    if(isset($_SESSION['login'])) {
+        return $_SESSION['login'];
+    } else {
+        return '';
+    }
+}
+
 include("config.php");
 ?>
 
@@ -40,10 +57,10 @@ include("config.php");
   <body>
 
 
-    <form method="post" class="centre" action="insert_product.php">
-        <input type="radio" name="machine" class="checkoption" value="1" onclick="checkedOnClick(this);"> Machine <br>
-        <input type="radio" name="filament" class="checkoption" value="2" onclick="checkedOnClick(this);"> Filament <br>
-        <input type="radio" name="accessoire" class="checkoption" value="3" onclick="checkedOnClick(this);"> Accessoire <br>
+    <form method="post" class="formulaire2" action="insert_product.php">
+        <input type="radio" name="produit" class="checkoption" value="1"> Machine <br> <!-- Machine -->
+        <input type="radio" name="produit" class="checkoption" value="2"> Filament <br> <!-- Filament -->
+        <input type="radio" name="produit" class="checkoption" value="3"> Accessoire <br> <!-- Accessoire -->
         <p><input type="submit" value="OK"></p>
     </form>
 
