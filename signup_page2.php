@@ -31,7 +31,7 @@ function get_pp() {
     Login* : <br>
     <input type="text" name="login" required> <br>
     Mot de passe* : <br>
-    <input type="text" name="password" required> <br>
+    <input type="password" name="password" required> <br>
     <input type="submit" name="signup_submit2" value="Upload">
 
     <p style="color:#FF0000 ; font-weight: bold; ">*Champs obligatoires !!</p>

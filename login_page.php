@@ -50,7 +50,7 @@ include("config.php");
     if ($login_submit) {
 
       $sql = "SELECT * FROM utilisateur WHERE username = '$login' AND password = '$password'";
-      $sql2 = "SELECT groupe.id, utilisateur.username FROM groupe, utilisateur, groupuser WHERE groupuser.idGroup = groupe.id AND utilisateur.id = groupuser.idUser AND groupe.id=2 AND utilisateur.username = '$login'";
+      $sql2 = "SELECT groupe.id, utilisateur.username FROM groupe, utilisateur, groupuser WHERE groupuser.idGroup = groupe.id AND utilisateur.id = groupuser.idUser AND groupe.id=1 AND utilisateur.username = '$login'";
       $sql3 = "SELECT image FROM utilisateur WHERE username = '$login' AND password = '$password'";
       
             // USER CHECK
@@ -62,6 +62,7 @@ include("config.php");
             
       // if there is a valid user in the db, if the results returned are one row, then log the user in, otherwise error
       // we need to create to session variables for  user so the user can log in, save details etc.
+
       if ($check_user == 1 && $check_user2 == 1) { //User exists and admin
       //PROFILE PICTURE CHECK
       $login_query3 = mysqli_query($conn, $sql3);
