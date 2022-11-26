@@ -17,9 +17,10 @@ include("config.php");
         <nav>
             <?php
             if ($_SESSION["group"] == 'Root') {
-				    echo '<a href="insert_product.php"> Ajouter un produit (admin) </a>';
+                    echo '<a href="statistic.php"> Statistiques (admin) </a>';
 			    }
             ?>
+            <a href="insert_product.php"> Ajouter un produit</a>
             <a href="thread.php"> Fil d'actualité </a>
             <a href="#"> Utilisateurs suivis </a>
             <a href="contact.php">Nous contacter</a>

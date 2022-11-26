@@ -46,7 +46,7 @@ function get_login() {
 
 	<?php
     $idget = ($_GET["id"]);
-    echo "<br><br><h2>Mettre un commentaire</h2><br>";
+    echo "<h2>Mettre un commentaire</h2><br>";
 	echo "<div class=formulaire2>";
     echo "Vous êtes actuellement sur le produit n°" . $idget;
     echo "<br><br>";
@@ -74,7 +74,6 @@ function get_login() {
 	    echo "<br>";
     }
     echo "Moyenne des notes: ";
-	echo $_SESSION["log"];
     $sql2 = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 2)) as MOY FROM rating,product WHERE rating.idProduct =' . $idget;
     $resultat = $conn->query($sql2);
     while ($ligne = mysqli_fetch_array($resultat)) {
@@ -83,7 +82,7 @@ function get_login() {
     echo "<br><br>";
     ?>
 
-		<form action="#" class="form-container" method="POST">
+		<form action="main.php" class="form-container" method="POST">
 			Note : <br>
 			<input type="text" name="note" placeholder="Veuillez entrez une note de 0 à 5"> <br>
 
@@ -95,10 +94,10 @@ function get_login() {
 
 		<?php 
 		  if (empty($_POST['note']) && isset($_POST['comment'])) { ?>
-			<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Commentaire</div>
+			<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Commentaire manquant !</div>
 			<?php }
 			if (empty($_POST['note']) && isset($_POST['comment'])) { ?>
-			<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Note manquante.</div>
+			<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Note manquante !</div>
 			<?php }
 
 if (!empty($_POST['note']) && (!empty($_POST['comment']))) {

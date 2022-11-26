@@ -2,6 +2,7 @@
 session_start();
 $_SESSION["group"] = get_session();
 $_SESSION["log"] = get_login();
+$_SESSION["followed"] = get_followed();
 
 if(isset($_SESSION['userName'])) {
 	$root = $_SESSION['userName'];
@@ -35,10 +36,20 @@ function get_session() {
 	  return '';
 	}
   }
+
+  function get_followed() {
+	if(isset($_GET["idfollowed"])) {
+	  return $_GET["idfollowed"];
+	} else {
+	  return '';
+	}
+  }
+  
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
+<link rel="stylesheet" href="assets/checkbox.css">
 
 <head>
     <meta charset="UTF-8">
@@ -49,6 +60,7 @@ function get_session() {
 <body>
 <table>
 		<tr>
+			<th>Id commentaire</th>
             <th>Référence produit</th>
             <th>Image produit</th>
 			<th>Image</th>
@@ -62,14 +74,16 @@ function get_session() {
 		<?php
 
         $test = $_SESSION["log"];
-        $sql4 = 'SELECT DISTINCT utilisateur.id as "userid",product.image as "refimage", product.name as "nom", rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" FROM utilisateur,rating,product WHERE product.id = rating.idProduct AND utilisateur.id = rating.idUser ORDER BY date DESC';
+        $sql4 = 'SELECT DISTINCT rating.id as "ratingid", utilisateur.id as "userid",product.image as "refimage", product.name as "nom", rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" FROM utilisateur,rating,product WHERE product.id = rating.idProduct AND utilisateur.id = rating.idUser ORDER BY date DESC';
         $connect2 = $conn->query($sql4);
         
-		$init = 0;
 
-		echo '<form id="checkfollow" action="thread.php?iduser="'.$init.' method="post">';
 
 		while ($row2 = $connect2->fetch_assoc()) {
+			$b = $row2['userid'];
+			$c = $row2['ratingid'];
+			echo '<form id="checkfollow" action="thread.php?idfollowed='.$b.'" method="post" name=thisform'.$c.'>';
+			echo (empty($row2['ratingid'])) ? "<td> NA </td>" : "<td>" . $row2['ratingid'] . "</td>";
             echo (empty($row2['nom'])) ? "<td> NA </td>" : "<td>" . $row2['nom'] . "</td>";
             echo (empty($row2['refimage'])) ? '<td> <img src="assets/no_image.png" class="fit-picture" alt="User Image"/> </td>' : '<td> <img src="'.$row2['refimage'].'" class="fit-picture" alt="User Image"/> </td>' ;
             echo (empty($row2['image'])) ? '<td> <img src="assets/no_pp.png" width="100" height="100" alt="User Image"/> </td>' : '<td> <img src="'.$row2['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
@@ -79,15 +93,73 @@ function get_session() {
 	        echo (empty($row2['rate'])) ? "<td> NA </td>" : "<td>" . $row2['rate'] . "/5 </td>";
 	        echo (empty($row2['comm'])) ? "<td> NA </td>" : "<td>" . $row2['comm'] . "</td>";
             echo '<td>';
-			echo '<input type="checkbox" name='.$init.' id = "'.$init.'" onChange="this.form.submit()"></input>';
-			echo '<label for="'.$init.'" aria-describedby="label"><span class="ui"></span></label>';
+			echo '<input type="submit" name="✅" id = "✅" value="✅">';
+			echo '<input type="submit" name="❌" id = "❌" value="❌">';
+
 			echo '</td>';
 
 	        echo "<tr>";
-			$init++;
+			echo '</form>';
+
         }
-		echo '</form>';
         ?>
+
+		<?php
+	//get id of connected user
+	$sql7 = 'SELECT DISTINCT utilisateur.id as idUser FROM utilisateur,product,rating WHERE utilisateur.username ="'.$_SESSION["log"].'"';
+	$review_query7 = mysqli_query($conn, $sql7);
+	$result = mysqli_fetch_assoc($review_query7);
+	$actualuserid = $result['idUser'];
+		if (isset($_POST['❌'])) {
+			//check for existing followed follower association
+			$sql8 = "SELECT DISTINCT follow.idFollower,follow.idFollowed FROM follow,utilisateur WHERE follow.idFollower = $actualuserid AND follow.idFollowed = ".$_SESSION["followed"] ;
+			$follow_query = mysqli_query($conn, $sql8);
+			$check_user = mysqli_num_rows($follow_query);
+
+			if ($check_user == 1) {
+				//delete values
+				$sql9 = 'DELETE FROM follow WHERE idFollower='.$actualuserid.' AND idFollowed='.$_SESSION["followed"]; 
+				$insertquery = mysqli_query($conn, $sql9);
+				?>
+				<div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous ne suivez plus l'utilisateur n°<?php echo $_SESSION["followed"] ?></div>
+				<?php
+			} else {
+				?>
+  					<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous ne suivez pas cet utilisateur</div>
+  				<?php
+			}
+		}
+
+		if (isset($_POST['✅'])) {
+
+			//check for duplicate followed follower association
+			$sql5 = "SELECT DISTINCT follow.idFollower,follow.idFollowed FROM follow,utilisateur WHERE follow.idFollower = $actualuserid AND follow.idFollowed = ".$_SESSION["followed"] ;
+			$follow_query = mysqli_query($conn, $sql5);
+            $check_user = mysqli_num_rows($follow_query);
+			
+			//check for auto sub
+			$sql5 = "SELECT DISTINCT follow.idFollower,follow.idFollowed FROM follow,utilisateur WHERE follow.idFollower = $actualuserid = follow.idFollowed = ".$_SESSION["followed"] ;
+			$follow_query = mysqli_query($conn, $sql5);
+            $check_user = mysqli_num_rows($follow_query);
+
+			if ($check_user == 0) {
+				//insert values
+				$sql6 = 'INSERT INTO follow (idFollower, idFollowed) VALUES ('.$actualuserid.','.$_SESSION["followed"].')'; 
+				$insertquery = mysqli_query($conn, $sql6);
+				?>
+				<div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous suivez maintenant l'utilisateur n°<?php echo $_SESSION["followed"] ?></div>
+				<?php
+			} else {
+				?>
+  					<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous suivez déjà cet utilisateur</div>
+  				<?php
+			}
+		}
+
+
+
+		//}
+		?>
 
 </body>
 </html>

@@ -124,6 +124,7 @@ function get_login() {
 				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 			    }
 			    if ($_SESSION["group"] == 'Root') {
+					echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
 				    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 				    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 			    }
@@ -144,6 +145,7 @@ function get_login() {
 				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 			    }
 			    if ($_SESSION["group"] == 'Root') {
+					echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
 				    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 				    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 			    }
@@ -165,6 +167,7 @@ function get_login() {
 				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 			    }
 			    if ($_SESSION["group"] == 'Root') {
+					echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
 				    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 				    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 			    }
@@ -184,6 +187,7 @@ function get_login() {
 			    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 		    }
 		    if ($_SESSION["group"] == 'Root') {
+				echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
 			    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
 			    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
 		    }
