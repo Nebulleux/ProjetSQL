@@ -45,11 +45,12 @@ function get_session() {
 </head>
 
 <body>
-    <div>
-        <br>
-        <h1 style="text-align:center">Qui sommes-nous ?</h1>
+<br><br>
+    <div class="formulaire2" style="font-size:26px">
+        
+        <h1 style="text-align:center ; color:white">Qui sommes-nous ?</h1>
 
-        <p style="text-align:center"> ROPP Jean-Baptiste <br> MICHEL Loïc <br> BENNOUR Yanis</p>
+        <p style="text-align:center ; color:white"> ROPP Jean-Baptiste <br> MICHEL Loïc <br> BENNOUR Yanis</p>
     </div>
 
 

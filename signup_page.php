@@ -15,6 +15,7 @@ include("config.php");
 
 <body>
   <h2>📥 Inscription 📥</h2>
+  <div class=formulaire2>
   <form action="upload.php" class="form-container" enctype="multipart/form-data" method="POST">
     Photo de profil : <br>
     <input type="file" name="fileToUpload" id="fileToUpload" accept="image/x-png,image/gif,image/jpeg" required/>
@@ -24,6 +25,7 @@ include("config.php");
   <form action="signup_page2.php" class="form-container" enctype="multipart/form-data" method="POST">
   <input type="submit" name="no_pp" value="Pas de photo">
   </form>
+  </div>
 </body>
 
 </html>

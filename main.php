@@ -1,34 +1,43 @@
 <?php
 session_start();
 $_SESSION["group"] = get_session();
-if(isset($_SESSION['userName'])) {
+$_SESSION["log"] = get_login();
+if (isset($_SESSION['userName'])) {
 	$root = $_SESSION['userName'];
 	if ($_SESSION['userName'] == 'User') {
 
 		include("configCSS_adm.html");
 		include("header_op.php");
-		
+
 	} else if ($_SESSION['userName'] == 'Root') {
 
 		include("configCSS_adm.html");
 		include("header_op.php");
-		
+
 	} else {
 
 		include("configCSS.html");
 		include("header.php");
-		
+
 	}
-  } else {
+} else {
 
 	include("configCSS.html");
 	include("header.php");
-	
-  }
+
+}
 include("config.php");
-function get_session() {
-	if(isset($_SESSION['userName'])) {
-	  return $_SESSION['userName'];
+function get_session()
+{
+	if (isset($_SESSION['userName'])) {
+		return $_SESSION['userName'];
+	} else {
+		return '';
+	}
+}
+function get_login() {
+	if(isset($_SESSION['login'])) {
+	  return $_SESSION['login'];
 	} else {
 	  return '';
 	}
@@ -51,7 +60,7 @@ function get_session() {
 <div class="box">
 	<form method="post">
 		<div class="col">
-			<div id=formulaire>
+			<div class=formulaire>
 				<div>
 					<label for="price">💸 Prix minimum : </label>
 					<input type="price" id="min" name="price_min"> €
@@ -89,6 +98,11 @@ function get_session() {
 		<th>Description</th>
 		<th>Prix TTC</th>
 		<th>Notation</th>
+		<?php
+        if ($_SESSION["group"] == 'User') {
+	        echo '<th>Avis ?</th>';
+        }
+        ?>
 	</tr>
 
 	<?php
@@ -102,40 +116,40 @@ function get_session() {
 	    if (!empty($prixminentre) && !empty($prixmaxentre)) {
 
 		    if ((($value['price'] * 1.2) > $prixminentre) && (($value['price'] * 1.2) < $prixmaxentre) && ($foo == false)) {
-			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
+			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
 			    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
 			    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
 			    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
 			    while ($ligne = mysqli_fetch_array($resultat)) {
 				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 			    }
-				if ($_SESSION["group"] == 'Root') {
-					echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
-			    	echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
-				}
-				if ($_SESSION["group"] == 'User') {
-					echo "<td><a href='review.php?id=" . $value['id'] . "' class='review'>🤔</a></td>";
-				}
+			    if ($_SESSION["group"] == 'Root') {
+				    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
+				    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
+			    }
+			    if ($_SESSION["group"] == 'User') {
+				    echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
+			    }
 			    $foo = true;
 		    }
 	    }
 	    if (!empty($prixminentre) && empty($prixmaxentre)) {
 
 		    if ((($value['price'] * 1.2) > $prixminentre) && ($foo == false)) {
-			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
+			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
 			    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
 			    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
 			    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
 			    while ($ligne = mysqli_fetch_array($resultat)) {
 				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 			    }
-				if ($_SESSION["group"] == 'Root') {
-					echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
-			    	echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
-				}
-				if ($_SESSION["group"] == 'User') {
-					echo "<td><a href='review.php?id=" . $value['id'] . "' class='review'>🤔</a></td>";
-				}
+			    if ($_SESSION["group"] == 'Root') {
+				    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
+				    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
+			    }
+			    if ($_SESSION["group"] == 'User') {
+				    echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
+			    }
 			    $foo = true;
 		    }
 	    }
@@ -143,39 +157,39 @@ function get_session() {
 	    if (empty($prixminentre) && !empty($prixmaxentre)) {
 
 		    if ((($value['price'] * 1.2) < $prixmaxentre) && ($foo == false)) {
-			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
+			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
 			    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
 			    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
 			    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
 			    while ($ligne = mysqli_fetch_array($resultat)) {
 				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 			    }
-				if ($_SESSION["group"] == 'Root') {
-					echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
-			    	echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
-				}
-				if ($_SESSION["group"] == 'User') {
-					echo "<td><a href='review.php?id=" . $value['id'] . "' class='review'>🤔</a></td>";
-				}
+			    if ($_SESSION["group"] == 'Root') {
+				    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
+				    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
+			    }
+			    if ($_SESSION["group"] == 'User') {
+				    echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
+			    }
 			    $foo = true;
 		    }
 	    }
 
 	    if (empty($prixminentre) && empty($prixmaxentre)) {
-		    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.jpg" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
+		    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
 		    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
 		    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
 		    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
 		    while ($ligne = mysqli_fetch_array($resultat)) {
 			    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
 		    }
-			if ($_SESSION["group"] == 'Root') {
-				echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
-				echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
-			}
-			if ($_SESSION["group"] == 'User') {
-				echo "<td><a href='review.php?id=" . $value['id'] . "' class='review'>🤔</a></td>";
-			}
+		    if ($_SESSION["group"] == 'Root') {
+			    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
+			    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
+		    }
+		    if ($_SESSION["group"] == 'User') {
+			    echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
+		    }
 		    $foo = true;
 	    }
     }

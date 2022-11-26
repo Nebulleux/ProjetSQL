@@ -4,7 +4,7 @@
     <header class="header-login-signup">
 
         <div class="header-limiter">
-            <h1><a href="reset.php">🌌Grossiste<span>3D🌌</span></a>
+            <h1><a href="reset.php">🌌Gros<span>3D🌌</span></a>
             </h1>
 
             <nav>

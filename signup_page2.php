@@ -24,6 +24,7 @@ function get_pp() {
 
 <body>
   <h2>📥 Inscription 📥</h2>
+  <div class=formulaire2>
   <form class="form-container" method="POST">
     Email* : <br>
     <input type="text" name="email" required> <br>
@@ -32,8 +33,11 @@ function get_pp() {
     Mot de passe* : <br>
     <input type="text" name="password" required> <br>
     <input type="submit" name="signup_submit2" value="Upload">
+
+    <p style="color:#FF0000 ; font-weight: bold; ">*Champs obligatoires !!</p>
+
   </form>
-  <p style="color:#FF0000">*Champs obligatoires !!</p>
+</div>
 
   <?php
   if (isset($_GET['image'])) { //si la photo a été envoyée ?> 
