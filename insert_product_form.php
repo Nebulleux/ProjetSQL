@@ -8,13 +8,11 @@ if (isset($_SESSION['userName'])) {
 
 		include("configCSS_adm.html");
 		include("header_op.php");
-		echo '<h1 style="color:white;text-align:center;">Bienvenu(e) utilisateur.rice '.$_SESSION['login'].'</h1>';
 
 	} else if ($_SESSION['userName'] == 'Root') {
 
 		include("configCSS_adm.html");
 		include("header_op.php");
-		echo '<h1 style="color:white;text-align:center;">Bienvenu(e) administrateur.rice '.$_SESSION['login'].'</h1>';
 
 	} else {
 
@@ -58,9 +56,9 @@ include("config.php");
 
 
     <form method="post" class="formulaire2" action="insert_product.php">
-        <input type="radio" name="produit" class="checkoption" value="1"> Machine <br> <!-- Machine -->
-        <input type="radio" name="produit" class="checkoption" value="2"> Filament <br> <!-- Filament -->
-        <input type="radio" name="produit" class="checkoption" value="3"> Accessoire <br> <!-- Accessoire -->
+        <input type="radio" name="produit" class="checkoption" value="1" required> Machine <br> <!-- Machine -->
+        <input type="radio" name="produit" class="checkoption" value="2" required> Filament <br> <!-- Filament -->
+        <input type="radio" name="produit" class="checkoption" value="3" required> Accessoire <br> <!-- Accessoire -->
         <p><input type="submit" value="OK"></p>
     </form>
 

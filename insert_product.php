@@ -8,13 +8,11 @@ if (isset($_SESSION['userName'])) {
 
         include("configCSS_adm.html");
         include("header_op.php");
-        echo '<h1 style="color:white;text-align:center;">Bienvenu(e) utilisateur.rice '.$_SESSION['login'].'</h1>';
 
     } else if ($_SESSION['userName'] == 'Root') {
 
         include("configCSS_adm.html");
         include("header_op.php");
-        echo '<h1 style="color:white;text-align:center;">Bienvenu(e) administrateur.rice '.$_SESSION['login'].'</h1>';
 
     } else {
 
@@ -48,7 +46,7 @@ function get_login() {
 include("config.php");
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -117,22 +115,22 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
     <form action="insert_product.php" class="formulaire2" method="POST">
 
         Name : <br>
-        <input type="text" name="name"> <br>
+        <input type="text" name="name" required> <br>
 
         Description : <br>
-        <input type="text" name="description"> <br>
+        <input type="text" name="description" required> <br>
 
         Price : <br>
-        <input type="text" name="price"> <br>
+        <input type="number" step="0.01" name="price" required> <br>
 
         Brand : <br>
-        <input type="text" name="brand"> <br>
+        <input type="text" name="brand" required> <br>
 
         Model : <br>
-        <input type="text" name="model"> <br>
+        <input type="text" name="model" required> <br>
 
         Heating Plate : <br>
-        <input type="text" name="heatingPlate"> <br>
+        <input type="text" name="heatingPlate" required> <br>
 
         Product type : <br>
         <SELECT name="productType" id="productType">
@@ -158,28 +156,28 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
     <form action="insert_product.php" class="formulaire2" method="POST">
 
         Name : <br>
-        <input type="text" name="name"> <br>
+        <input type="text" name="name" required> <br>
 
         Description : <br>
-        <input type="text" name="description"> <br>
+        <input type="text" name="description" required> <br>
 
         Price : <br>
-        <input type="text" name="price"> <br>
+        <input type="number" step="0.01" name="price" required> <br>
 
         Color : <br>
-        <input type="text" name="color"> <br>
+        <input type="text" name="color" required> <br>
 
         Diameter : <br>
-        <input type="text" name="diameter"> <br>
+        <input type="number" step="0.01" name="diameter" required> <br>
 
         Temp fusion : <br>
-        <input type="text" name="tempFusion"> <br>
+        <input type="number" step="0.01" name="tempFusion" required> <br>
 
         Weight : <br>
-        <input type="text" name="weight"> <br>
+        <input type="number" step="0.01" name="weight" required> <br>
 
         Dimension : <br>
-        <input type="text" name="dimension"> <br>
+        <input type="number" step="0.01" name="dimension" required> <br>
 
         Product type : <br>
         <SELECT name="productType" id="productType">
@@ -206,16 +204,16 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
     <form action="insert_product.php" class="formulaire2" method="POST">
 
         Name : <br>
-        <input type="text" name="name"> <br>
+        <input type="text" name="name" required> <br>
 
         Description : <br>
-        <input type="text" name="description"> <br>
+        <input type="text" name="description" required> <br>
 
         Price : <br>
-        <input type="text" name="price"> <br>
+        <input type="number" step="0.01" name="price" required> <br>
 
         Material : <br>
-        <input type="text" name="material"> <br>
+        <input type="text" name="material" required> <br>
 
         Product type : <br>
         <SELECT name="productType" id="productType">
