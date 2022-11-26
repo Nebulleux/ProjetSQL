@@ -8,11 +8,13 @@ if (isset($_SESSION['userName'])) {
 
 		include("configCSS_adm.html");
 		include("header_op.php");
+		echo '<h1 style="color:white;text-align:center;">Bienvenu(e) utilisateur.rice '.$_SESSION['login'].'</h1>';
 
 	} else if ($_SESSION['userName'] == 'Root') {
 
 		include("configCSS_adm.html");
 		include("header_op.php");
+		echo '<h1 style="color:white;text-align:center;">Bienvenu(e) administrateur.rice '.$_SESSION['login'].'</h1>';
 
 	} else {
 
@@ -53,8 +55,6 @@ function get_login() {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Grossiste3D [Invite]</title>
 </head>
-
-<br>
 
 <h2 id=filtre>🔎 Filtrer les produits 🔍</h2>
 <div class="box">

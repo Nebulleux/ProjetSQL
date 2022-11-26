@@ -49,7 +49,6 @@ function get_session() {
 
 <!DOCTYPE html>
 <html lang="fr">
-<link rel="stylesheet" href="assets/checkbox.css">
 
 <head>
     <meta charset="UTF-8">
@@ -110,7 +109,15 @@ function get_session() {
 	$review_query7 = mysqli_query($conn, $sql7);
 	$result = mysqli_fetch_assoc($review_query7);
 	$actualuserid = $result['idUser'];
+
 		if (isset($_POST['❌'])) {
+			//get name of user from id
+			$sql10 = 'SELECT DISTINCT utilisateur.username as usrname FROM utilisateur WHERE utilisateur.id='.$_SESSION["followed"];
+			$review_query10 = mysqli_query($conn, $sql10);
+			$result = mysqli_fetch_assoc($review_query10);
+			$followeduserid = $result['usrname'];
+			$_SESSION['followeduserid'] = $followeduserid;
+
 			//check for existing followed follower association
 			$sql8 = "SELECT DISTINCT follow.idFollower,follow.idFollowed FROM follow,utilisateur WHERE follow.idFollower = $actualuserid AND follow.idFollowed = ".$_SESSION["followed"] ;
 			$follow_query = mysqli_query($conn, $sql8);
@@ -121,16 +128,22 @@ function get_session() {
 				$sql9 = 'DELETE FROM follow WHERE idFollower='.$actualuserid.' AND idFollowed='.$_SESSION["followed"]; 
 				$insertquery = mysqli_query($conn, $sql9);
 				?>
-				<div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous ne suivez plus l'utilisateur n°<?php echo $_SESSION["followed"] ?></div>
+				<div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous ne suivez plus l'utilisateur n°<?php echo $_SESSION["followed"].' : '.$_SESSION['followeduserid'] ?> </div>
 				<?php
 			} else {
 				?>
-  					<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous ne suivez pas cet utilisateur</div>
+  					<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous ne suivez pas l'utilisateur n°<?php echo $_SESSION["followed"].' : '.$_SESSION['followeduserid'] ?></div>
   				<?php
 			}
 		}
 
 		if (isset($_POST['✅'])) {
+			//get name of user from id
+			$sql10 = 'SELECT DISTINCT utilisateur.username as usrname FROM utilisateur WHERE utilisateur.id='.$_SESSION["followed"];
+			$review_query10 = mysqli_query($conn, $sql10);
+			$result = mysqli_fetch_assoc($review_query10);
+			$followeduserid = $result['usrname'];
+			$_SESSION['followeduserid'] = $followeduserid;
 
 			//check for duplicate followed follower association
 			$sql5 = "SELECT DISTINCT follow.idFollower,follow.idFollowed FROM follow,utilisateur WHERE follow.idFollower = $actualuserid AND follow.idFollowed = ".$_SESSION["followed"] ;
@@ -142,11 +155,11 @@ function get_session() {
 				$sql6 = 'INSERT INTO follow (idFollower, idFollowed) VALUES ('.$actualuserid.','.$_SESSION["followed"].')'; 
 				$insertquery = mysqli_query($conn, $sql6);
 				?>
-				<div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous suivez maintenant l'utilisateur n°<?php echo $_SESSION["followed"] ?></div>
+				<div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous suivez maintenant l'utilisateur n°<?php echo $_SESSION["followed"].' : '.$_SESSION['followeduserid'] ?></div>
 				<?php
 			} else {
 				?>
-  					<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous suivez déjà cet utilisateur</div>
+  					<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous suivez déjà l'utilisateur n°<?php echo $_SESSION["followed"].' : '.$_SESSION['followeduserid'] ?></div>
   				<?php
 			}
 		}
