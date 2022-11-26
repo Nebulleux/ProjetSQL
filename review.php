@@ -39,7 +39,7 @@ function get_login() {
 <html>
 
 <head>
-	<title>Page produit</title>
+	<title>Noter</title>
 </head>
 
 <body>
