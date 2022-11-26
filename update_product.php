@@ -65,7 +65,7 @@ function get_session() {
 
 
 
-	    echo '<form action="update_product.php?id="' . $idget . '" class="centre" method="POST">"';
+	    echo '<form action="update_product.php?id="' . $idget . '" class="formulaire2" method="POST">"';
 	    echo 'Catégorie : <br>';
 	    echo '<input type="text" name="category" value="' . $cat . '"> <br>"';
 

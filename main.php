@@ -8,13 +8,13 @@ if (isset($_SESSION['userName'])) {
 
 		include("configCSS_adm.html");
 		include("header_op.php");
-		echo '<h1 style="color:white;text-align:center;">Bienvenu(e) utilisateur.rice '.$_SESSION['login'].'</h1>';
+		echo '<h1 style="color:white;text-align:center;">Bienvenu utilisateur '.$_SESSION['login'].'</h1>';
 
 	} else if ($_SESSION['userName'] == 'Root') {
 
 		include("configCSS_adm.html");
 		include("header_op.php");
-		echo '<h1 style="color:white;text-align:center;">Bienvenu(e) administrateur.rice '.$_SESSION['login'].'</h1>';
+		echo '<h1 style="color:white;text-align:center;">Bienvenu administrateur '.$_SESSION['login'].'</h1>';
 
 	} else {
 

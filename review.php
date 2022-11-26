@@ -82,7 +82,7 @@ function get_login() {
     echo "<br><br>";
     ?>
 
-		<form action="main.php" class="form-container" method="POST">
+		<form action="" class="form-container" method="POST">
 			Note : <br>
 			<input type="text" name="note" placeholder="Veuillez entrez une note de 0 à 5"> <br>
 
@@ -116,6 +116,8 @@ if (!empty($_POST['note']) && (!empty($_POST['comment']))) {
 		$p = $idget;
 		$sql4 = 'INSERT INTO rating (rate, comm, idUser, idProduct) VALUES ('.$n.',"'.$c.'",'.$i.",".$p.')';
 		mysqli_query($conn, $sql4);
+
+		echo $sql4;
 	}
 }
 		?>
