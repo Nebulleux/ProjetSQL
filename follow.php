@@ -71,7 +71,7 @@ function get_session() {
         $actualuserid = $result['idUser'];
 
         //show only followed users
-        $sql = 'SELECT DISTINCT utilisateur.id as "userid", utilisateur.username as "user", utilisateur.image as "image" FROM utilisateur,follow WHERE utilisateur.id = follow.idFollower = '.$actualuserid;
+        $sql = 'SELECT DISTINCT utilisateur.id as "userid", utilisateur.username as "user", utilisateur.image as "image" FROM utilisateur,follow WHERE utilisateur.id = follow.idFollowed AND follow.idFollower ='.$actualuserid;
         $connect3 = $conn->query($sql);
 
 		while ($row3 = $connect3->fetch_assoc()) {
@@ -106,6 +106,7 @@ function get_session() {
 				//delete values
 				$sql9 = 'DELETE FROM follow WHERE idFollower='.$actualuserid.' AND idFollowed='.$_SESSION["followed"]; 
 				$insertquery = mysqli_query($conn, $sql9);
+                header("Location: follow.php");
 				?>
 				<div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Vous ne suivez plus l'utilisateur n°<?php echo $_SESSION["followed"].' : '.$_SESSION['followeduserid'] ?> </div>
 				<?php
