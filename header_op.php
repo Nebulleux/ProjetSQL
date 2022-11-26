@@ -17,14 +17,14 @@ include("config.php");
         <nav>
             <?php
             if ($_SESSION['group'] == 'Root' || $_SESSION['group'] == 'User') {
-                echo '| '.$_SESSION['login'].' |';
+                
             }
             
             if ($_SESSION["group"] == 'Root') {
                     echo '<a href="statistic.php"> Statistiques (admin) </a>';
 			    }
             ?>
-            <a href="insert_product.php"> Ajouter un produit</a>
+            <a href="insert_product_form.php"> Ajouter un produit</a>
             <a href="thread.php"> Fil d'actualité </a>
             <a href="follow.php"> Utilisateurs suivis </a>
             <a href="contact.php">Nous contacter</a>
@@ -37,6 +37,7 @@ include("config.php");
             ?>
             <ul>
                 <li><a href="#"><?php $login ?></a></li>
+                <?php echo '<li><a> '.$_SESSION['login'].' </a></li>' ?>
                 <li><a href="user_notes.php">Notations</a></li>
                 <li><a href="reset.php" class="highlight">Déconnexion</a></li>
 
