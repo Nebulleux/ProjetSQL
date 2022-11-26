@@ -1,8 +1,34 @@
 <?php
-include("../status/connected.php");
-include("header_op.php"); 
-include("../config.php");
-include("configCSS_adm.html");
+session_start();
+$_SESSION["group"] = get_session();
+$_SESSION["log"] = get_login();
+if (isset($_SESSION['userName'])) {
+	$root = $_SESSION['userName'];
+	if ($_SESSION['userName'] == 'User') {
+
+		include("configCSS_adm.html");
+		include("header_op.php");
+		echo '<h1 style="color:white;text-align:center;">Bienvenu(e) utilisateur.rice '.$_SESSION['login'].'</h1>';
+
+	} else if ($_SESSION['userName'] == 'Root') {
+
+		include("configCSS_adm.html");
+		include("header_op.php");
+		echo '<h1 style="color:white;text-align:center;">Bienvenu(e) administrateur.rice '.$_SESSION['login'].'</h1>';
+
+	} else {
+
+		include("configCSS.html");
+		include("header.php");
+
+	}
+} else {
+
+	include("configCSS.html");
+	include("header.php");
+
+}
+include("config.php");
 ?>
 
 <!DOCTYPE html>
@@ -15,26 +41,11 @@ include("configCSS_adm.html");
 
 
     <form method="post" class="centre" action="insert_product.php">
-        <input type="checkbox" name="machine" class="checkoption" value="1" onclick="checkedOnClick(this);"> Machine <br>
-        <input type="checkbox" name="filament" class="checkoption" value="2" onclick="checkedOnClick(this);"> Filament <br>
-        <input type="checkbox" name="accessoire" class="checkoption" value="3" onclick="checkedOnClick(this);"> Accessoire <br>
+        <input type="radio" name="machine" class="checkoption" value="1" onclick="checkedOnClick(this);"> Machine <br>
+        <input type="radio" name="filament" class="checkoption" value="2" onclick="checkedOnClick(this);"> Filament <br>
+        <input type="radio" name="accessoire" class="checkoption" value="3" onclick="checkedOnClick(this);"> Accessoire <br>
         <p><input type="submit" value="OK"></p>
     </form>
-
-   <!-- Script -->
-   <script type="text/javascript">
-   function checkedOnClick(el){
-
-      // Select all checkboxes by class
-      var checkboxesList = document.getElementsByClassName("checkoption");
-      for (var i = 0; i < checkboxesList.length; i++) {
-         checkboxesList.item(i).checked = false; // Uncheck all checkboxes
-      }
-
-      el.checked = true; // Checked clicked checkbox
-   }
-   </script>
-
 
 
 
