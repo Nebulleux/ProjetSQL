@@ -6,6 +6,7 @@ USE DB_3D;
 CREATE TABLE Product (
 
  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+ photo text NOT NULL,
  name varchar(255) NOT NULL,
  description text NOT NULL,
  price double NOT NULL,

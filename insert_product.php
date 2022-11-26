@@ -71,6 +71,7 @@ if (!empty($_POST['machine']) && $_POST['machine'] == "valid") {
             echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
         }
     }
+    header("Location: main.php");
 }
 
 if (!empty($_POST['filament']) && $_POST['filament'] == "valid") {
@@ -87,6 +88,7 @@ if (!empty($_POST['filament']) && $_POST['filament'] == "valid") {
             echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
         }
     }
+    header("Location: main.php");
 }
 
 if (!empty($_POST['accessoire']) && $_POST['accessoire'] == "valid") {
@@ -103,6 +105,7 @@ if (!empty($_POST['accessoire']) && $_POST['accessoire'] == "valid") {
             echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
         }
     }
+    header("Location: main.php");
 }
 
 
