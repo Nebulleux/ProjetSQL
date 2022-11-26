@@ -6,6 +6,6 @@ COMMIT;
 
 --changements a faire
 dans rating mettre date à datetime
-enlever rating de la table User
-ajouter une colonne image pour product
-limiter note a un int(5)
+enlever rating de la table User OK
+ajouter une colonne image pour product OK
+limiter note a un int(5) OK

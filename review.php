@@ -82,12 +82,12 @@ function get_login() {
     echo "<br><br>";
     ?>
 
-		<form action="main.php" class="form-container" method="POST">
+		<form action="" class="form-container" method="POST">
 			Note : <br>
-			<input type="text" name="note" placeholder="Veuillez entrez une note de 0 à 5"> <br>
+			<input type="number" step="0.1" min="0" max="5" name="note" placeholder="Veuillez entrez une note de 0 à 5" required> <br>
 
 			Commentaire : <br>
-			<textarea type="text" name="comment" placeholder="Veuillez entrez votre commentaire sur ce produit"> </textarea> <br>
+			<textarea type="text" name="comment" placeholder="Veuillez entrez votre commentaire sur ce produit" required> </textarea> <br>
 
 			<input type="submit" name="review_submit" value="Envoyer">
 		</form>
@@ -103,19 +103,21 @@ function get_login() {
 if (!empty($_POST['note']) && (!empty($_POST['comment']))) {
 
     $review_submit = ($_POST['review_submit']);
-
+	
     if ($review_submit) {
-		$sql3 = 'SELECT DISTINCT utilisateur.id as idUser FROM utilisateur,product,rating WHERE product.id = rating.idProduct AND utilisateur.id = rating.idUser AND utilisateur.username ="'.$_SESSION["log"].'"';
-
-		$review_query3 = mysqli_query($conn, $sql3);
-		$result = mysqli_fetch_assoc($review_query3);
+		//get id of connected user
+		$sql7 = 'SELECT DISTINCT utilisateur.id as idUser FROM utilisateur WHERE utilisateur.username ="'.$_SESSION["log"].'"';
+		$review_query7 = mysqli_query($conn, $sql7);
+		$result = mysqli_fetch_assoc($review_query7);
+		$actualuserid = $result['idUser'];
 
 		$n = $_POST['note'];
 		$c = $_POST['comment'];
-		$i = $result['idUser'];
+		$i = $actualuserid;
 		$p = $idget;
 		$sql4 = 'INSERT INTO rating (rate, comm, idUser, idProduct) VALUES ('.$n.',"'.$c.'",'.$i.",".$p.')';
 		mysqli_query($conn, $sql4);
+		echo $sql4;
 	}
 }
 		?>
