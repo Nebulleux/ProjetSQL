@@ -6,9 +6,9 @@ USE DB_3D;
 CREATE TABLE Product (
 
  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
- photo text NOT NULL,
+ image varchar(255) NOT NULL,
  name varchar(255) NOT NULL,
- description text NOT NULL,
+ description varchar(1000) NOT NULL,
  price double NOT NULL,
  rating double
 
@@ -90,8 +90,8 @@ CREATE TABLE Rating (
  
  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
  comm varchar(300) NOT NULL,
- rate double,
- dateOfPub date NOT NULL,
+ rate double(5),
+ dateOfPub datetime NOT NULL,
  idUser INT NOT NULL,
  idProduct INT NOT NULL,
  FOREIGN KEY (idProduct) REFERENCES Product(id) ON UPDATE CASCADE,
