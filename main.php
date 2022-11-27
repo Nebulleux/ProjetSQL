@@ -49,7 +49,7 @@ function get_login() {
 <html>
 
 <head>
-	<title>Catalogue [Invite]</title>
+	<title>Gros3D</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,8 +70,8 @@ function get_login() {
 				</SELECT>
 
 				<SELECT name="orderType" id="orderType">
-				<option value="5">ASC ⬇</option>
-				<option value="6">DESC ⬆</option>
+				<option value="5">ASC ⬆</option>
+				<option value="6">DESC ⬇</option>
 				</SELECT>
 
 				<SELECT name="basicType" id="basicType">
