@@ -55,6 +55,11 @@ include("config.php");
   <body>
 
     <br><br>
+    <?php
+    if ($_SESSION['userName'] == 'User' || $_SESSION['userName'] == 'Root' ) {
+
+    ?>
+
     <form method="post" class="formulaire2" action="insert_product.php">
         <p style="text-align:center">Ajouter un produit : <br></p>
         <input type="radio" name="produit" class="checkoption" value="1" required> Machine <br> <!-- Machine -->
@@ -62,9 +67,15 @@ include("config.php");
         <input type="radio" name="produit" class="checkoption" value="3" required> Accessoire <br> <!-- Accessoire -->
         <p><input type="submit" value="OK"></p>
     </form>
-
+    <?php
+    }
+    ?>
     <br><br>
 
+    <?php
+    if ($_SESSION['userName'] == 'Root') {
+
+    ?>
     <form method="post" class="formulaire2" action="insert_product_type.php">
         <p style="text-align:center">Ajouter/Modifier/Supprimer un type de produit : <br></p>
 
@@ -90,6 +101,9 @@ include("config.php");
 
     </form>
 
+    <?php
+    }
+    ?>
 
 
 
