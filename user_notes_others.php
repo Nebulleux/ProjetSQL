@@ -55,7 +55,7 @@ function get_session() {
 </head>
 
 <body>
-<table>
+<table style="width:100%">
 		<tr>
             <th>Référence produit</th>
 			<th>Image</th>
