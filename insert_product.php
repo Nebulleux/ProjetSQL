@@ -54,7 +54,12 @@ include("config.php");
 </head>
 
 <body>
+
 <?php
+
+
+
+
 if (!empty($_POST['machine']) && $_POST['machine'] == "valid") {
     if (!empty($_POST['name']) && (!empty($_POST['description'])) && !empty($_POST['price']) && !empty($_POST['brand']) && (!empty($_POST['model'])) && !empty($_POST['heatingPlate']) && !empty($_POST['productType']) ) {
         $sql = "INSERT INTO product (name, description, price) VALUES ('" . $_POST['name'] . "', '" . $_POST['description'] . "', '" . $_POST['price'] . "')";
@@ -73,8 +78,20 @@ if (!empty($_POST['machine']) && $_POST['machine'] == "valid") {
 }
 
 if (!empty($_POST['filament']) && $_POST['filament'] == "valid") {
-    if (!empty($_POST['name']) && (!empty($_POST['description'])) && !empty($_POST['price']) && !empty($_POST['color']) && (!empty($_POST['diameter'])) && !empty($_POST['tempFusion']) && !empty($_POST['weight']) && !empty($_POST['dimension']) && !empty($_POST['productType'])  ) {
-        $sql = "INSERT INTO product (name, description, price) VALUES ('" . $_POST['name'] . "', '" . $_POST['description'] . "', '" . $_POST['price'] . "')";
+
+    if (!empty($_POST['name']) && (!empty($_POST['description'])) && !empty($_POST['price']) && !empty($_POST['color']) && (!empty($_POST['diameter'])) && !empty($_POST['tempFusion']) && !empty($_POST['weight']) && !empty($_POST['dimension']) && !empty($_POST['productType']) && !empty($_FILES['productImage']['name'])  ) {
+        $target_dir = "assets/pp/";
+        $target_file = $target_dir . basename($_FILES["productImage"]["name"]);
+
+        echo "$target_dir <br>";
+        echo "$target_file <br>";
+        echo basename($_FILES["productImage"]["name"]);
+
+        move_uploaded_file($_FILES["productImage"]["tmp_name"], $target_file);
+
+        
+        
+        $sql = "INSERT INTO product (name, description, price, image) VALUES ('" . $_POST['name'] . "', '" . $_POST['description'] . "', '" . $_POST['price'] . "', '" . $target_file . "')";
         if (mysqli_query($conn, $sql)) {
             $last_id = mysqli_insert_id($conn);
             $sql2 = "INSERT INTO filament (productType, color, diameter, tempFusion, weight, dimension, idProduct) VALUES ('" . $_POST['productType'] . "', '" . $_POST['color'] . "', '" . $_POST['diameter'] . "', '" . $_POST['tempFusion'] . "', '" . $_POST['weight'] . "', '" . $_POST['dimension'] . "','$last_id')";
@@ -86,12 +103,12 @@ if (!empty($_POST['filament']) && $_POST['filament'] == "valid") {
             echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
         }
     }
-    header("Location: main.php");
+    //header("Location: main.php");
 }
 
 if (!empty($_POST['accessoire']) && $_POST['accessoire'] == "valid") {
     if (!empty($_POST['name']) && (!empty($_POST['description'])) && !empty($_POST['price']) && !empty($_POST['material']) && !empty($_POST['productType'])) {
-        $sql = "INSERT INTO product (name, description, price) VALUES ('" . $_POST['name'] . "', '" . $_POST['description'] . "', '" . $_POST['price'] . "')";
+        $sql = "INSERT INTO product (name, description, price, image) VALUES ('" . $_POST['name'] . "', '" . $_POST['description'] . "', '" . $_POST['price'] . "', '" . $_POST['productImage'] . "')";
         if (mysqli_query($conn, $sql)) {
             $last_id = mysqli_insert_id($conn);
             $sql2 = "INSERT INTO accessory (productType, material, idProduct) VALUES ('" . $_POST['productType'] . "', '" . $_POST['material'] . "', '$last_id')";
@@ -113,6 +130,9 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
     <h2>📥 Ajouter un nouvel article 📥</h2>
 
     <form action="insert_product.php" class="formulaire2" method="POST">
+
+        Photo du produit : <br>
+        <input type="file" name="productImage" accept="image/x-png,image/gif,image/jpeg" required/> <br>
 
         Name : <br>
         <input type="text" name="name" required> <br>
@@ -153,7 +173,10 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
     ?>
     <h2>📥 Ajouter un nouvel article 📥</h2>
 
-    <form action="insert_product.php" class="formulaire2" method="POST">
+    <form action="" class="formulaire2" enctype="multipart/form-data" method="POST">
+
+        Photo du produit : <br>
+        <input type="file" name="productImage" id="productImage" accept="image/x-png,image/gif,image/jpeg" required/> <br>
 
         Name : <br>
         <input type="text" name="name" required> <br>
@@ -194,6 +217,7 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
             <input type="submit" value="Insérer">
 
     </form>
+    
 
     <?php
 
@@ -202,6 +226,9 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
     <h2>📥 Ajouter un nouvel article 📥</h2>
 
     <form action="insert_product.php" class="formulaire2" method="POST">
+
+        Photo du produit : <br>
+        <input type="file" name="productImage" accept="image/x-png,image/gif,image/jpeg" required/> <br>
 
         Name : <br>
         <input type="text" name="name" required> <br>
