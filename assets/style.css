@@ -82,6 +82,8 @@ input {
   max-width: 1200px;
   border-radius: 25px ;
   border: 5px solid #000;
+  position: absolute;
+  top:250px;
 }
 
 .menu{
