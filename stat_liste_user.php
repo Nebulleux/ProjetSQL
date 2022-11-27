@@ -50,7 +50,7 @@ function get_session() {
 
 <head>
     <meta charset="UTF-8">
-    <title>Notations utilisateur</title>
+    <title>Liste utilisateurs</title>
 
 </head>
 
