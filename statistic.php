@@ -5,28 +5,19 @@ $_SESSION["log"] = get_login();
 if (isset($_SESSION['userName'])) {
 	$root = $_SESSION['userName'];
 	if ($_SESSION['userName'] == 'User') {
-
 		include("configCSS_adm.html");
 		include("header_op.php");
-		echo '<h1 style="color:white;text-align:center;">Bienvenu utilisateur '.$_SESSION['login'].'</h1>';
 
 	} else if ($_SESSION['userName'] == 'Root') {
-
 		include("configCSS_adm.html");
 		include("header_op.php");
-		echo '<h1 style="color:white;text-align:center;">Bienvenu administrateur '.$_SESSION['login'].'</h1>';
-
 	} else {
-
 		include("configCSS.html");
 		include("header.php");
-
 	}
 } else {
-
 	include("configCSS.html");
 	include("header.php");
-
 }
 include("config.php");
 function get_session()
@@ -54,6 +45,60 @@ function get_login() {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Grossiste3D [Invite]</title>
+
+<?php 
+$sqlgraph = 'SELECT CONCAT(UNIX_TIMESTAMP(rating.dateOfPub),"000") as "date", rating.rate as "rat" FROM rating' ;
+$resultarray = array();
+if ($result = mysqli_query($conn, $sqlgraph)) {
+	while ($rowa = mysqli_fetch_row($result)) {
+		$resultarray[] = $rowa;    
+	}
+	$data = '{"user_notes":'.json_encode($resultarray, JSON_NUMERIC_CHECK).'}';
+}
+
+file_put_contents("assets/data.json", "");
+$file = 'assets/data.json';
+file_put_contents($file, $data, FILE_APPEND | LOCK_EX);
+
+?>
+<script>
+window.onload = function() {
+ 
+var dataPoints = [];
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	zoomEnabled: true,
+	title: {
+		text: "Courbe avis utilisateurs"
+	},
+	axisY: {
+		title: "Note utilisateur",
+		titleFontSize: 24,
+		prefix: ""
+	},
+	data: [{
+		type: "line",
+		yValueFormatString: "#,##0.00",
+		dataPoints: dataPoints
+	}]
+});
+ 
+function addData(data) {
+	var dps = data.user_notes;
+	for (var i = 0; i < dps.length; i++) {
+		dataPoints.push({
+			x: new Date(dps[i][0]),
+			y: dps[i][1]
+		});
+	}
+	chart.render();
+}
+$.getJSON("assets/data.json", addData);
+ 
+}
+</script>
 </head>
 
 <h2 id=filtre>🔎 Toutes les statistiques du site 🔍</h2>
@@ -99,6 +144,11 @@ function get_login() {
 	echo $result4['nbfilament'];
 ?>
 </h2>
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
 </body>
 
 </html>
