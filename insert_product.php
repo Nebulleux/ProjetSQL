@@ -184,7 +184,7 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
     <form action="" class="formulaire2" enctype="multipart/form-data" method="POST">
 
         Photo du produit : <br>
-        <input type="file" name="productImage" id="productImage" accept="image/x-png,image/gif,image/jpeg" required/> <br>
+        <input type="file" name="productImage" id="productImage" accept="image/x-png,image/gif,image/jpeg" /> <br>
 
         Name : <br>
         <input type="text" name="name" required> <br>
