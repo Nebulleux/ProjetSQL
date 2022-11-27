@@ -61,33 +61,52 @@ function get_login() {
 	<form method="post">
 		<div class="col">
 			<div class=formulaire>
-				<div>
-					<label for="price">💸 Prix minimum : </label>
-					<input type="price" id="min" name="price_min"> €
-				</div>
-				<div>
-					<label for="price">💳 Prix maximum :</label>
-					<input type="price" id="max" name="price_max"> €
-				</div>
+				<SELECT name="catType" id="catType">
+				<option value="0">-</option>
+				<option value="1">ID</option>
+				<option value="2">Nom</option>
+				<option value="3">Description</option>
+				<option value="4">Prix</option>
+				</SELECT>
 
-				<div>
-					<label for="bobine">🧵 Bobines  </label>
-					<input type="checkbox" id="bobine" name="bobine">
-				</div>
-				<div>
-					<label for="machine">📠 Machines</label>
-					<input type="checkbox" id="machine" name="machine">
-				</div>
+				<SELECT name="orderType" id="orderType">
+				<option value="5">ASC ⬇</option>
+				<option value="6">DESC ⬆</option>
+				</SELECT>
+
+				<SELECT name="basicType" id="basicType">
+				<option value="-">-</option>
+				<option value="7">Machine 📠</option>
+				<option value="8">Filament 🧵</option>
+				<option value="9">Accessoire 👜</option>
+				</SELECT>
 				<br>
-				<input type="submit" value="Trier">
+				<input type="submit" value="Trier" name="sort">
 				<input type="reset" value="Effacer les champs">
+
 			</div>
-		</div>
+		</div></div>
 	</form>
+
+		<form method="post">
+			<div class=formulaire >
+				<input type="search" id="query" name="q" placeholder="Search...">
+				<br>
+				<input type="submit" value="Rechercher" name="recherche">
+			</div>
+		</form>
+
 	<div class="col">
-		<img class="gif" src="assets/bg.gif">
-	</div>
+		<img 
+		<?php 
+		if (isset($_SESSION['userName']) == 'User' || isset($_SESSION['userName']) == 'Root') 
+		{ echo 'style="top:250px;"';
+		} else echo 'style="top:210px;"';;
+		?>
+		 class="gif" src="assets/bg.gif">
+	
 </div>
+
 
 
 <h2>🛒 Articles Disponibles 🛒</h2>
@@ -107,140 +126,164 @@ function get_login() {
 
 	<?php
 
-    function grande_fonction($value, $prixminentre, $prixmaxentre, $foo)
-    {
-	    include("config.php");
-	    $sql = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 1)) as MOY FROM rating,product WHERE rating.idProduct =' . $value['id'];
-	    $resultat = $conn->query($sql);
+if (isset($_POST['sort'])) {
 
-	    if (!empty($prixminentre) && !empty($prixmaxentre)) {
+	if ($_POST['basicType'] == '7') {
+		if ($_POST['catType'] == '1' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.id ASC";
+		} else if($_POST['catType'] == '1' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.id ASC";
 
-		    if ((($value['price'] * 1.2) > $prixminentre) && (($value['price'] * 1.2) < $prixmaxentre) && ($foo == false)) {
-			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
-			    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
-			    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
-			    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
-			    while ($ligne = mysqli_fetch_array($resultat)) {
-				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
-			    }
-			    if ($_SESSION["group"] == 'Root') {
-					echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
-				    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
-				    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
-			    }
-			    if ($_SESSION["group"] == 'User') {
-				    echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
-			    }
-			    $foo = true;
-		    }
-	    }
-	    if (!empty($prixminentre) && empty($prixmaxentre)) {
+		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.name ASC";
+		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.name DESC";
 
-		    if ((($value['price'] * 1.2) > $prixminentre) && ($foo == false)) {
-			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
-			    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
-			    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
-			    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
-			    while ($ligne = mysqli_fetch_array($resultat)) {
-				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
-			    }
-			    if ($_SESSION["group"] == 'Root') {
-					echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
-				    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
-				    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
-			    }
-			    if ($_SESSION["group"] == 'User') {
-				    echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
-			    }
-			    $foo = true;
-		    }
-	    }
+		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.description ASC";
+		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.description DESC";
 
-	    if (empty($prixminentre) && !empty($prixmaxentre)) {
+		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.price ASC";
+		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.price DESC";
 
-		    if ((($value['price'] * 1.2) < $prixmaxentre) && ($foo == false)) {
-			    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
-			    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
-			    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
-			    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
-			    while ($ligne = mysqli_fetch_array($resultat)) {
-				    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
-			    }
-			    if ($_SESSION["group"] == 'Root') {
-					echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
-				    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
-				    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
-			    }
-			    if ($_SESSION["group"] == 'User') {
-				    echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
-			    }
-			    $foo = true;
-		    }
-	    }
+		} else if($_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct";
+		} else if($_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct";
+		} else {
+			return '';
+		}
+	} else if ($_POST['basicType'] == '8') {
+		if ($_POST['catType'] == '1' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.id ASC";
+		} else if($_POST['catType'] == '1' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.id DESC";
 
-	    if (empty($prixminentre) && empty($prixmaxentre)) {
-		    echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
-		    echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
-		    echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
-		    echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
-		    while ($ligne = mysqli_fetch_array($resultat)) {
-			    echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
-		    }
-		    if ($_SESSION["group"] == 'Root') {
-				echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
-			    echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
-			    echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
-		    }
-		    if ($_SESSION["group"] == 'User') {
-			    echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>🤔</a></td>";
-		    }
-		    $foo = true;
-	    }
-    }
-    $foo = false;
-    $connectaumax = $conn->query("SELECT * FROM product");
-    foreach ($connectaumax as $value) {
-	    $foo = false;
+		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.name ASC";
+		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.name DESC";
+
+		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.description ASC";
+		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.description DESC";
+
+		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.price ASC";
+		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.price DESC";
+
+		} else if($_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct";
+		} else if($_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct";
+		} else {
+			return '';
+		}
+	} else if ($_POST['basicType'] == '9') {
+		if ($_POST['catType'] == '1' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.id ASC";
+		} else if($_POST['catType'] == '1' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.id DESC";
+
+		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.name ASC";
+		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.name DESC";
+
+		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.description ASC";
+		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.description DESC";
+
+		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.price ASC";
+		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.price DESC";
+
+		} else if($_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct";
+		} else if($_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct";
+
+		} else {
+			return '';
+		}
+	} else {
+		if ($_POST['catType'] == '1' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product ORDER BY product.id ASC";
+		} else if($_POST['catType'] == '1' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product ORDER BY product.id DESC";
+
+		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product ORDER BY product.name ASC";
+		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product ORDER BY product.name DESC";
+
+		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product ORDER BY product.description ASC";
+		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product ORDER BY product.description DESC";
+
+		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '5') {
+			$connectaumax ="SELECT * FROM product ORDER BY product.price ASC";
+		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product ORDER BY product.price DESC";
+
+		} else if($_POST['orderType'] == '5') {
+			$connectaumax = "SELECT * FROM product";
+		} else if($_POST['orderType'] == '6') {
+			$connectaumax = "SELECT * FROM product";
+
+		} else {
+			return '';
+		}
+	}
+
+} else {
+$connectaumax = "SELECT * FROM product";
+}
+
+if (isset($_POST['recherche'])) {
+	$request1 = $_POST['q'];
+	$connectaumax = "SELECT * FROM product WHERE product.name LIKE \"".$request1.'"';
+
+}
+
+echo $connectaumax;
+$queryaumax = $conn->query($connectaumax);
+
+foreach ($queryaumax as $value) {
     ?>
 
 	<tr id=line onclick="document.location = 'produit.php?id=<?= $value['id'] ?>'">
 
 		<?php
-	    if (!empty($_POST) && isset($_POST['price_min']) && isset($_POST['price_max'])) {
-		    $prixminentre = $_POST['price_min'];
-		    $prixmaxentre = $_POST['price_max'];
-	    } else {
-		    $prixminentre = 0;
-		    $prixmaxentre = PHP_INT_MAX;
-	    }
-        ?>
+		$sql = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 1)) as MOY FROM rating,product WHERE rating.idProduct =' . $value['id'];
+		$resultat = $conn->query($sql);
 
-		<?php
-	    //==============================================================================
-    	if (!empty($_POST['bobine'])) {
-		    if ($value['catégorie'] == "bobine") {
-			    grande_fonction($value, $prixminentre, $prixmaxentre, $foo);
-		    }
-	    }
-        ?>
+		echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
+		echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
+		echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
+		echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
+		while ($ligne = mysqli_fetch_array($resultat)) {
+			echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
+		}
+		if ($_SESSION["group"] == 'Root') {
+			echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>✏️</a></td>";
+			echo "<td><a href='main.php?delete=" . $value['id'] . "' class='delete'>❌</a></td>";
+			echo "<td><a href='update_product.php?id=" . $value['id'] . "' class='modify'>📝</a></td>";
+		}
+		if ($_SESSION["group"] == 'User') {
+			echo "<td class='review'><a href='review.php?id=" . $value['id'] . "'>✏️</a></td>";
+		}
 
-
-		<?php
-	    if (!empty($_POST['machine'])) {
-		    if ($value['catégorie'] == "machine") {
-			    grande_fonction($value, $prixminentre, $prixmaxentre, $foo);
-		    }
-	    }
-        ?>
-
-
-		<?php
-	    if (empty($_POST['bobine']) && empty($_POST['machine'])) {
-		    grande_fonction($value, $prixminentre, $prixmaxentre, $foo);
-	    }
 	    echo "</tr>";
     }
-
 
     if (isset($_GET['delete'])) {
 	    $del = "DELETE FROM product WHERE id=" . $_GET['delete'];

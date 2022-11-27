@@ -41,6 +41,7 @@ td {
 th {
   text-align: left;
 }
+
 thead th {
   background-color: #55608f;
 }
@@ -81,6 +82,8 @@ input {
   max-width: 1200px;
   border-radius: 25px ;
   border: 5px solid #000;
+  position: absolute;
+  /*top:250px;*/
 }
 
 .menu{
@@ -187,7 +190,7 @@ input {
   #line:hover {
     cursor: pointer;
   }
-  
+
   .formulaire {
     background: -webkit-linear-gradient(45deg, #49a09d, #5f2c82);
     background: linear-gradient(45deg, #49a09d, #5f2c82);
@@ -213,6 +216,12 @@ input {
     padding: 15px;
     width: 500px;
   
+  }
+
+  input[type=reset]:hover {
+    color: white;
+    background-color: #6a0902;
+    cursor: pointer;
   }
 
   input[type=submit] {

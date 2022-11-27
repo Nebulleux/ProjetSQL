@@ -92,8 +92,6 @@ include("config.php");
   <?php }
     }
   }
-  //Error messages when user don't fill password &&/|| login
-  
   ?>
 
 

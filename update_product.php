@@ -50,57 +50,25 @@ function get_session() {
 	<?php
     $connectaumax = $conn->query("SELECT * FROM product WHERE id = " . $idget);
     while ($row = $connectaumax->fetch_assoc()) {
-	    $cat = $row['catégorie'];
-	    $lib = $row['libellé'];
-	    $des = $row['description'];
-	    $poi = $row['poids'];
-	    $cou = $row['couleur'];
-	    $dim = $row['dimensions'];
-	    $dia = $row['diamètre_filament'];
-	    $prh = $row['prix_HT'];
-	    $pre = $row['précision'];
-	    $tev = $row['temperature_transi_vitreuse'];
-	    $tef = $row['temperature_point_de_fusion'];
 	    $ima = $row['image'];
+	    $nam = $row['name'];
+	    $des = $row['description'];
+	    $pri = $row['price'];
+	    $rat = $row['rating'];
 
-
-
-	    echo '<form action="update_product.php?id="' . $idget . '" class="formulaire2" method="POST">"';
-	    echo 'Catégorie : <br>';
-	    echo '<input type="text" name="category" value="' . $cat . '"> <br>"';
+	    echo '<form action="update_product.php?id="' . $idget . '" class="formulaire2" method="POST">';
 
 	    echo 'Libellé : <br>';
-	    echo '<input type="text" name="label" value="' . $lib . '"> <br>"';
+	    echo '<input type="text" name="label" value="' . $nam . '" required> <br>';
 
 	    echo 'Description : <br>';
-	    echo '<textarea name="description">' . $des . '</textarea> <br><br>"';
+	    echo '<textarea name="description" required>' . $des . '</textarea> <br><br>';
 
-	    echo 'Poids : <br>';
-	    echo '<input type="text" name="poids" value="' . $poi . '"> <br>"';
-
-	    echo 'Couleur : <br>';
-	    echo '<input type="text" name="couleur" value="' . $cou . '"> <br>"';
-
-	    echo 'Dimensions : <br>';
-	    echo '<input type="text" name="dimensions" value="' . $dim . '"> <br>"';
-
-	    echo 'Diamètre du filament : <br>';
-	    echo '<input type="text" name="diamètre_filament" value="' . $dia . '"> <br>"';
-
-	    echo 'Prix HT : <br>';
-	    echo '<input type="text" name="prix_HT" value="' . $prh . '"> <br>"';
-
-	    echo 'Précision : <br>';
-	    echo '<input type="text" name="précision" value="' . $pre . '"> <br>"';
-
-	    echo 'Température de transition vitreuse : <br>';
-	    echo '<input type="text" name="temperature_transi_vitreuse" value="' . $tev . '"> <br>"';
-
-	    echo 'Température de point de fusion : <br>';
-	    echo '<input type="text" name="temperature_point_de_fusion" value="' . $tef . '"> <br>"';
+	    echo 'Prix : <br>';
+	    echo '<input type="text" name="prix" value="' . $pri . '" required> <br>';
 
 	    echo 'Image : <br>';
-	    echo '<input type="text" name="image" value="' . $ima . '"> <br>"';
+	    echo '<input type="text" name="image" value="' . $ima . '" required> <br>';
     }
     ?>
 	<input type="submit" value="Insérer">
@@ -117,44 +85,6 @@ function get_session() {
 		    echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
 	    }
     }
-    echo "<br><br>";
-    if (empty($_POST['category'])) {
-	    echo "Catégorie manquante ! <br>";
-    }
-    if (empty($_POST['label'])) {
-	    echo "Label manquant ! <br>";
-    }
-    if (empty($_POST['description'])) {
-	    echo "Description manquante ! <br>";
-    }
-    if (empty($_POST['poids'])) {
-	    echo "Poids manquant ! <br>";
-    }
-    if (empty($_POST['couleur'])) {
-	    echo "Couleur manquante ! <br>";
-    }
-    if (empty($_POST['dimensions'])) {
-	    echo "Dimensions manquantes ! <br>";
-    }
-    if (empty($_POST['diamètre_filament'])) {
-	    echo "Diamètre manquant ! <br>";
-    }
-    if (empty($_POST['prix_HT'])) {
-	    echo "Prix hors taxe manquant ! <br>";
-    }
-    if (empty($_POST['précision'])) {
-	    echo "Précision manquante ! <br>";
-    }
-    if (empty($_POST['temperature_transi_vitreuse'])) {
-	    echo "Temp transi vitreuse manquante ! <br>";
-    }
-    if (empty($_POST['temperature_point_de_fusion'])) {
-	    echo "Temp au point de fusion manquante ! <br>";
-    }
-    if (empty($_POST['image'])) {
-	    echo "image manquante ! <br>";
-    }
-
     ?>
 
 

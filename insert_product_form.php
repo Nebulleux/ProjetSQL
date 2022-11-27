@@ -55,6 +55,11 @@ include("config.php");
   <body>
 
     <br><br>
+    <?php
+    if ($_SESSION['userName'] == 'User' || $_SESSION['userName'] == 'Root' ) {
+
+    ?>
+
     <form method="post" class="formulaire2" action="insert_product.php">
         <p style="text-align:center">Ajouter un produit : <br></p>
         <input type="radio" name="produit" class="checkoption" value="1" required> Machine <br> <!-- Machine -->
@@ -62,33 +67,43 @@ include("config.php");
         <input type="radio" name="produit" class="checkoption" value="3" required> Accessoire <br> <!-- Accessoire -->
         <p><input type="submit" value="OK"></p>
     </form>
-
+    <?php
+    }
+    ?>
     <br><br>
 
+    <?php
+    if ($_SESSION['userName'] == 'Root') {
+
+    ?>
     <form method="post" class="formulaire2" action="insert_product_type.php">
         <p style="text-align:center">Ajouter/Modifier/Supprimer un type de produit : <br></p>
 
         Machine :
-        <input type="button" value="Ajouter" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=1&modif=1';">
-        <input type="button" value="Modifier" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=1&modif=2';">
-        <input type="button" value="Supprimer" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=1&modif=3';">
+        <input type="button" value="Ajouter" onclick="window.location.href='http://localhost/ProjetSQL/insert_product_type.php?product=1&modif=1';">
+        <input type="button" value="Modifier" onclick="window.location.href='http://localhost/ProjetSQL/insert_product_type.php?product=1&modif=2';">
+        <input type="button" value="Supprimer" onclick="window.location.href='http://localhost/ProjetSQL/insert_product_type.php?product=1&modif=3';">
 
         <br><br>
 
         Filament :
-        <input type="button" value="Ajouter" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=2&modif=1';">
-        <input type="button" value="Modifier" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=2&modif=2';">
-        <input type="button" value="Supprimer" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=2&modif=3';">
+        <input type="button" value="Ajouter" onclick="window.location.href='http://localhost/ProjetSQL/insert_product_type.php?product=2&modif=1';">
+        <input type="button" value="Modifier" onclick="window.location.href='http://localhost/ProjetSQL/insert_product_type.php?product=2&modif=2';">
+        <input type="button" value="Supprimer" onclick="window.location.href='http://localhost/ProjetSQL/insert_product_type.php?product=2&modif=3';">
 
         <br><br>
 
         Accessoire :
-        <input type="button" value="Ajouter" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=3&modif=1';">
-        <input type="button" value="Modifier" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=3&modif=2';">
-        <input type="button" value="Supprimer" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=3&modif=3';">
+
+        <input type="button" value="Ajouter" onclick="window.location.href='http://localhost/ProjetSQL/insert_product_type.php?product=3&modif=1';">
+        <input type="button" value="Modifier" onclick="window.location.href='http://localhost/ProjetSQL/insert_product_type.php?product=3&modif=2';">
+        <input type="button" value="Supprimer" onclick="window.location.href='http://localhost/ProjetSQL/insert_product_type.php?product=3&modif=3';">
 
     </form>
 
+    <?php
+    }
+    ?>
 
 
 

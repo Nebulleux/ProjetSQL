@@ -55,28 +55,37 @@ function get_session() {
 </head>
 
 <body>
+<div class="box">
+	<form method="post" action="./statistic.php">
+		<div class="col">
+			<div class=formulaire>
+			<input type="submit" value="Retour aux statistiques" name="back">
+				
+			</div>
+		</div></div>
+	</form>
+</div>
+
 <table style="width:70%">
 		<tr>
-            <th>Référence produit</th>
+			<th>User ID</th>
 			<th>Image</th>
-			<th>Date</th>
-			<th>Utilisateur</th>
-			<th>Note</th>
-			<th>Commentaire</th>
+			<th>login</th>
+			<th>Email</th>
+			<th>Mot de passe</th>
 		</tr>
 		<?php
         
         $test = $_SESSION["log"];
-        $sql4 = 'SELECT DISTINCT product.name as "nom", rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" FROM utilisateur,rating,product WHERE product.id = rating.idProduct AND utilisateur.id = rating.idUser AND utilisateur.id ="'.$_SESSION["useracc"].'"';
+        $sql4 = 'SELECT DISTINCT utilisateur.email as "uemail", utilisateur.password as "upwd", utilisateur.id as "userid", utilisateur.username as "user", utilisateur.image as image  FROM utilisateur';
         $connect2 = $conn->query($sql4);
 
         while ($row2 = $connect2->fetch_assoc()) {
-            echo (empty($row2['nom'])) ? "<td> NA </td>" : "<td>" . $row2['nom'] . "</td>";
+            echo (empty($row2['userid'])) ? "<td> NA </td>" : "<td>" . $row2['userid'] . "</td>";
             echo (empty($row2['image'])) ? '<td> <img src="assets/no_pp.png" width="100" height="100" alt="User Image"/> </td>' : '<td> <img src="'.$row2['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
-	        echo (empty($row2['date'])) ? "<td> NA </td>" : "<td>" . $row2['date'] . "</td>";
 	        echo (empty($row2['user'])) ? "<td> NA </td>" : "<td>" . $row2['user'] . "</td>";
-	        echo (empty($row2['rate'])) ? "<td> NA </td>" : "<td>" . $row2['rate'] . "/5 </td>";
-	        echo (empty($row2['comm'])) ? "<td> NA </td>" : "<td>" . $row2['comm'] . "</td>";
+			echo (empty($row2['uemail'])) ? "<td> NA </td>" : "<td>" . $row2['uemail'] . "</td>";
+			echo (empty($row2['upwd'])) ? "<td> NA </td>" : "<td>" . $row2['upwd'] . "</td>";
 	        echo "<tr>";
         }
         ?>

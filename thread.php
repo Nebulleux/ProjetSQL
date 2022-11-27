@@ -57,7 +57,9 @@ function get_session() {
 </head>
 
 <body>
-<table>
+<table style="width:70%">
+
+<col>
 		<tr>
 			<th>Id commentaire</th>
             <th>Référence produit</th>
