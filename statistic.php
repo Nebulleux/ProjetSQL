@@ -79,12 +79,15 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		prefix: ""
 	},
 	data: [{
-		type: "line",
+		type: "scatter",
 		yValueFormatString: "#,##0.00",
-		dataPoints: dataPoints
+		dataPoints: dataPoints,
+		markerType: "square",
+		markerSize: 20
 	}]
 });
  
+
 function addData(data) {
 	var dps = data.user_notes;
 	for (var i = 0; i < dps.length; i++) {
@@ -95,10 +98,12 @@ function addData(data) {
 	}
 	chart.render();
 }
+
 $.getJSON("assets/data.json", addData);
  
 }
 </script>
+
 </head>
 
 <h2 id=filtre>🔎 Toutes les statistiques du site 🔍</h2>

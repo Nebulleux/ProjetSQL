@@ -51,9 +51,9 @@ function get_session() {
         <h1 style="text-align:center ; color:white">Qui sommes-nous ?</h1>
 
         <p style="color:white"> 
-		<img src="assets/IM2.png" style="width:50px; height:50px;"> ROPP Jean-Baptiste 
-		<br> <img src="assets/IM3.png" style="width:50px; height:50px;"> MICHEL Loïc 
-		<br> <img src="assets/IM1.png" style="width:50px; height:50px;"> BENNOUR Yanis 
+		<img src="assets/IM2.png" style="width:50px; height:50px;border-radius:25px"> ROPP Jean-Baptiste 
+		<br> <img src="assets/IM3.png" style="width:50px; height:50px;border-radius:25px"> MICHEL Loïc 
+		<br> <img src="assets/IM1.png" style="width:50px; height:50px;border-radius:25px"> BENNOUR Yanis 
 		</p>
     </div>
 
