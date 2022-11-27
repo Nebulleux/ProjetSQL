@@ -57,7 +57,7 @@ function get_session() {
 </head>
 
 <body>
-<table style="width:100%">
+<table style="width:70%">
 
 <col>
 		<tr>

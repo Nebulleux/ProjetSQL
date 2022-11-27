@@ -66,7 +66,7 @@ function get_session() {
 	</form>
 </div>
 
-<table style="width:100%">
+<table style="width:70%">
 		<tr>
 			<th>User ID</th>
 			<th>Image</th>

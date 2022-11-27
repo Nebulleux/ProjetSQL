@@ -87,7 +87,7 @@ function get_login() {
 
 		<form action="" class="form-container" method="POST">
 			Note : <br>
-			<input style="width:500px;" type="number" step="0.1" min="0" max="5" name="note" placeholder="Veuillez entrez une note de 0 à 5" required> <br>
+			<input style="width:500px;" type="number" step="0.5" min="0" max="5" name="note" placeholder="Veuillez entrez une note de 0 à 5" required> <br>
 
 			Commentaire : <br>
 			<textarea style="width:500px;" type="text" name="comment" placeholder="Veuillez entrez votre commentaire sur ce produit" required ></textarea> <br>
