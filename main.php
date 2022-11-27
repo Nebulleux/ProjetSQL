@@ -97,7 +97,13 @@ function get_login() {
 		</form>
 
 	<div class="col">
-		<img class="gif" src="assets/bg.gif">
+		<img 
+		<?php 
+		if (isset($_SESSION['userName']) == 'User' || isset($_SESSION['userName']) == 'Root') 
+		{ echo 'style="top:250px;"';
+		} else echo 'style="top:210px;"';;
+		?>
+		 class="gif" src="assets/bg.gif">
 	
 </div>
 
@@ -247,10 +253,6 @@ if (isset($_POST['recherche'])) {
 	$connectaumax = "SELECT * FROM product WHERE product.name LIKE \"".$request1.'"';
 
 }
-
-
-
-
 
 echo $connectaumax;
 $queryaumax = $conn->query($connectaumax);
