@@ -71,12 +71,34 @@ function get_login() {
 <h2 id=filtre>Nombre d'utilisateurs =
 <?php
 	$sql = 'SELECT COUNT(*) as "nbuser" FROM utilisateur';
-	$user_query = mysqli_query($conn, $sql);
-	$result = mysqli_fetch_assoc($user_query);
+	$result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 	echo $result['nbuser'];
 ?>
 </h2>
 
+<h2 id=filtre>Nombre d'accessoires =
+<?php
+	$sql2 = 'SELECT COUNT(*) as "nbaccessory" FROM accessory';
+	$result2 = mysqli_fetch_assoc(mysqli_query($conn, $sql2));
+	echo $result2['nbaccessory'];
+?>
+</h2>
+
+<h2 id=filtre>Nombre de machines =
+<?php
+	$sql3 = 'SELECT COUNT(*) as "nbmachine" FROM machine';
+	$result3 = mysqli_fetch_assoc(mysqli_query($conn, $sql3));
+	echo $result3['nbmachine'];
+?>
+</h2>
+
+<h2 id=filtre>Nombre de filaments =
+<?php
+	$sql4 = 'SELECT COUNT(*) as "nbfilament" FROM filament';
+	$result4 = mysqli_fetch_assoc(mysqli_query($conn, $sql4));
+	echo $result4['nbfilament'];
+?>
+</h2>
 </body>
 
 </html>
