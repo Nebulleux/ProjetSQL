@@ -215,6 +215,12 @@ input {
   
   }
 
+  input[type=reset]:hover {
+    color: white;
+    background-color: #6a0902;
+    cursor: pointer;
+  }
+
   input[type=submit] {
     background-color: #cf881c;
     width: 80%;

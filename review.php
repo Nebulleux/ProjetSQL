@@ -54,6 +54,7 @@ function get_login() {
     $connectaumax = $conn->query("SELECT * FROM product WHERE id = " . $idget);
 
     while ($row = $connectaumax->fetch_assoc()) {
+		echo "<div style='display: flex;justify-content: center;'>";
 	    echo (empty($row['image'])) ? '<img class="fit-picture"' . "src=assets/no_image.png" . ">" : '<img class="fit-picture"' . "src=" . $row['image'] . ">";
 	    echo "<br><br>";
 
@@ -72,6 +73,7 @@ function get_login() {
 	    echo "Prix sans TVA: ";
 	    echo $row['price'];
 	    echo "<br>";
+		
     }
     echo "Moyenne des notes: ";
     $sql2 = 'SELECT CAST(AVG(rating.rate) AS DECIMAL(5, 2)) as MOY FROM rating,product WHERE rating.idProduct =' . $idget;
@@ -79,27 +81,21 @@ function get_login() {
     while ($ligne = mysqli_fetch_array($resultat)) {
 	    echo (empty($ligne['MOY'])) ? "0/5" : $ligne['MOY'] . "/5";
     }
+	echo "</div>";
     echo "<br><br>";
     ?>
 
-		<form action="" class="form-container" method="POST">
+		<form action="main.php" class="form-container" method="POST">
 			Note : <br>
-			<input type="number" step="0.1" min="0" max="5" name="note" placeholder="Veuillez entrez une note de 0 à 5" required> <br>
+			<input style="width:500px;" type="number" step="0.1" min="0" max="5" name="note" placeholder="Veuillez entrez une note de 0 à 5" required> <br>
 
 			Commentaire : <br>
-			<textarea type="text" name="comment" placeholder="Veuillez entrez votre commentaire sur ce produit" required> </textarea> <br>
+			<textarea style="width:500px;" type="text" name="comment" placeholder="Veuillez entrez votre commentaire sur ce produit" required ></textarea> <br>
 
 			<input type="submit" name="review_submit" value="Envoyer">
 		</form>
 
-		<?php 
-		  if (empty($_POST['note']) && isset($_POST['comment'])) { ?>
-			<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Commentaire manquant !</div>
-			<?php }
-			if (empty($_POST['note']) && isset($_POST['comment'])) { ?>
-			<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Note manquante !</div>
-			<?php }
-
+<?php
 if (!empty($_POST['note']) && (!empty($_POST['comment']))) {
 
     $review_submit = ($_POST['review_submit']);
@@ -117,7 +113,6 @@ if (!empty($_POST['note']) && (!empty($_POST['comment']))) {
 		$p = $idget;
 		$sql4 = 'INSERT INTO rating (rate, comm, idUser, idProduct) VALUES ('.$n.',"'.$c.'",'.$i.",".$p.')';
 		mysqli_query($conn, $sql4);
-		echo $sql4;
 	}
 }
 		?>
