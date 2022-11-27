@@ -291,7 +291,7 @@ foreach ($queryaumax as $value) {
     if (isset($_GET['delete'])) {
 	    $del = "DELETE FROM product WHERE id=" . $_GET['delete'];
 	    $conn->query($del);
-	    header('Location: main.php');
+		//header('Location: main.php');
     }
         ?>
 

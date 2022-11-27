@@ -9,8 +9,7 @@ CREATE TABLE Product (
  image varchar(255) NOT NULL,
  name varchar(255) NOT NULL,
  description varchar(1000) NOT NULL,
- price double NOT NULL,
- rating double
+ price double NOT NULL
 
 );
 
