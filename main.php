@@ -254,7 +254,7 @@ if (isset($_POST['recherche'])) {
 
 }
 
-echo $connectaumax;
+//echo $connectaumax;
 $queryaumax = $conn->query($connectaumax);
 
 foreach ($queryaumax as $value) {
