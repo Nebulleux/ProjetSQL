@@ -50,7 +50,6 @@ function get_session() {
 	<?php
     $connectaumax = $conn->query("SELECT * FROM product WHERE id = " . $idget);
     while ($row = $connectaumax->fetch_assoc()) {
-	    $ima = $row['image'];
 	    $nam = $row['name'];
 	    $des = $row['description'];
 	    $pri = $row['price'];
@@ -66,9 +65,6 @@ function get_session() {
 
 	    echo 'Prix : <br>';
 	    echo '<input type="text" name="prix" value="' . $pri . '" required> <br>';
-
-	    echo 'Image : <br>';
-	    echo '<input type="text" name="image" value="' . $ima . '" required> <br>';
     }
     ?>
 	<input type="submit" value="Insérer">
