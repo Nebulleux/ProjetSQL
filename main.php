@@ -88,13 +88,15 @@ function get_login() {
 		</div></div>
 	</form>
 
-		<form method="post">
+	<form method="post">
 			<div class=formulaire >
 				<input type="search" id="query" name="q" placeholder="Search...">
 				<br>
 				<input type="submit" value="Rechercher" name="recherche">
 			</div>
-		</form>
+	</form>
+
+		
 
 	<div class="col">
 		<img 
@@ -104,6 +106,7 @@ function get_login() {
 		} else echo 'style="top:210px;"';;
 		?>
 		 class="gif" src="assets/bg.gif">
+	</div>
 	
 </div>
 
