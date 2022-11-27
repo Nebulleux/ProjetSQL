@@ -83,6 +83,7 @@ include("config.php");
         <br><br>
 
         Accessoire :
+
         <input type="button" value="Ajouter" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=3&modif=1';">
         <input type="button" value="Modifier" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=3&modif=2';">
         <input type="button" value="Supprimer" onclick="window.location.href='http://localhost/ProjetSQL-main/insert_product_type.php?product=3&modif=3';">

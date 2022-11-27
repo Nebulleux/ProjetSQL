@@ -133,7 +133,7 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
         <input type="text" name="heatingPlate" required> <br>
 
         Product type : <br>
-        <SELECT name="productType" id="productType">
+        <SELECT name="productType" id="productType" required>
             <?php
             $afficheMachineType = $conn->query("SELECT id,name FROM machinetype");
             while ($row = $afficheMachineType->fetch_assoc()) {
@@ -180,7 +180,7 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
         <input type="number" step="0.01" name="dimension" required> <br>
 
         Product type : <br>
-        <SELECT name="productType" id="productType">
+        <SELECT name="productType" id="productType" required>
             <?php
             $afficheFilamentType = $conn->query("SELECT id,name FROM filamenttype");
             while ($row = $afficheFilamentType->fetch_assoc()) {
@@ -216,7 +216,7 @@ if (!empty($_POST['produit']) && $_POST['produit'] == 1 && (empty($_POST['filame
         <input type="text" name="material" required> <br>
 
         Product type : <br>
-        <SELECT name="productType" id="productType">
+        <SELECT name="productType" id="productType" required>
             <?php
             $afficheAccessoryType = $conn->query("SELECT id,name FROM accessorytype");
             while ($row = $afficheAccessoryType->fetch_assoc()) {

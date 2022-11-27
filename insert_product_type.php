@@ -56,10 +56,6 @@ include("config.php");
 <body>
 <?php
 
-// $product = isset($_GET['product']);
-// $modif = isset($_GET['modif']);
-// echo isset($_GET['product']);
-// echo isset($_GET['modif']);
 
 if(isset($_GET['product'])) {
     $product = $_GET['product'];
@@ -84,7 +80,16 @@ if (!empty($_POST['produit']) && $_POST['produit'] == "machineajouter") { // Mac
     header("Location: main.php");
 }
 
-// if (!empty($_POST['produit']) && $_POST['produit'] == "machinemodifier") {} // Machine / Modifier
+if (!empty($_POST['produit']) && $_POST['produit'] == "machinemodifier") { // Machine / Modifier
+    if (!empty($_POST['productType']) ) {
+        $sql = "UPDATE machinetype SET name = '" . $_POST['name'] . "' WHERE id = '" . $_POST['productType'] . "' ";
+        if (mysqli_query($conn, $sql)) {
+        } else {
+            echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+    header("Location: main.php");
+}
 
 if (!empty($_POST['produit']) && $_POST['produit'] == "machinesupprimer") { // Machine / supprimer
     if (!empty($_POST['productType']) ) {
@@ -108,7 +113,16 @@ if (!empty($_POST['produit']) && $_POST['produit'] == "filamentajouter") { // Fi
     header("Location: main.php");
 }
 
-// if (!empty($_POST['produit']) && $_POST['produit'] == "filamentmodifier") {} // Filament / Modifier
+if (!empty($_POST['produit']) && $_POST['produit'] == "filamentmodifier") { // Filament / Modifier
+    if (!empty($_POST['productType']) ) {
+        $sql = "UPDATE filamenttype SET name = '" . $_POST['name'] . "' WHERE id = '" . $_POST['productType'] . "' ";
+        if (mysqli_query($conn, $sql)) {
+        } else {
+            echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+    header("Location: main.php");
+}
 
 if (!empty($_POST['produit']) && $_POST['produit'] == "filamentsupprimer") { // Filament / supprimer
     if (!empty($_POST['productType']) ) {
@@ -137,7 +151,16 @@ if (!empty($_POST['produit']) && $_POST['produit'] == "accessoireajouter") { // 
     header("Location: main.php");
 }
 
-// if (!empty($_POST['produit']) && $_POST['produit'] == "accessoiremodifier") {} // Accessoire / Modifier
+if (!empty($_POST['produit']) && $_POST['produit'] == "accessoiremodifier") { // Accessoire / Modifier
+    if (!empty($_POST['productType']) ) {
+        $sql = "UPDATE accessorytype SET name = '" . $_POST['name'] . "' WHERE id = '" . $_POST['productType'] . "' ";
+        if (mysqli_query($conn, $sql)) {
+        } else {
+            echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+    header("Location: main.php");
+}
 
 if (!empty($_POST['produit']) && $_POST['produit'] == "accessoiresupprimer") { // Accessoire / supprimer
     if (!empty($_POST['productType']) ) {
@@ -173,14 +196,35 @@ if ($product == 1) { // Machine
 
 
     if ($modif == 2) { // Modifier
+        ?>
+        <br><br>
+        <form action="insert_product_type.php" class="formulaire2" method="POST">
+            Product type : <br>
+            <SELECT name="productType" id="productType" required>
+                <?php
+                $afficheMachineType = $conn->query("SELECT id,name FROM machinetype");
+                while ($row = $afficheMachineType->fetch_assoc()) {
+                    echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+                }
+                ?>
+            </SELECT>
+            <br><br>
+            New name : <br>
+            <input type="text" name="name" required> <br>
 
+            <input type="hidden" name="produit" value="machinemodifier"> <br>
+                <input type="submit" value="Modifier">
+
+        </form>
+        <?php
     }
 
     if ($modif == 3) { // Supprimer
         ?>
+        <br><br>
         <form action="insert_product_type.php" class="formulaire2" method="POST">
             Product type : <br>
-            <SELECT name="productType" id="productType">
+            <SELECT name="productType" id="productType" required>
             <?php
             $afficheMachineType = $conn->query("SELECT id,name FROM machinetype");
             while ($row = $afficheMachineType->fetch_assoc()) {
@@ -217,14 +261,35 @@ if ($product == 2) { // Filament
     }
 
     if ($modif == 2) { // Modifier
+        ?>
+        <br><br>
+        <form action="insert_product_type.php" class="formulaire2" method="POST">
+            Product type : <br>
+            <SELECT name="productType" id="productType" required>
+                <?php
+                $afficheMachineType = $conn->query("SELECT id,name FROM filamenttype");
+                while ($row = $afficheMachineType->fetch_assoc()) {
+                    echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+                }
+                ?>
+            </SELECT>
+            <br><br>
+            New name : <br>
+            <input type="text" name="name" required> <br>
 
+            <input type="hidden" name="produit" value="filamentmodifier"> <br>
+            <input type="submit" value="Modifier">
+
+        </form>
+        <?php
     }
 
     if ($modif == 3) { // Supprimer
         ?>
+        <br><br>
         <form action="insert_product_type.php" class="formulaire2" method="POST">
             Product type : <br>
-            <SELECT name="productType" id="productType">
+            <SELECT name="productType" id="productType" required>
                 <?php
                 $afficheMachineType = $conn->query("SELECT id,name FROM filamenttype");
                 while ($row = $afficheMachineType->fetch_assoc()) {
@@ -260,14 +325,35 @@ if ($product == 3) { // Accessoire
     }
 
     if ($modif == 2) { // Modifier
+        ?>
+        <br><br>
+        <form action="insert_product_type.php" class="formulaire2" method="POST">
+            Product type : <br>
+            <SELECT name="productType" id="productType" required>
+                <?php
+                $afficheMachineType = $conn->query("SELECT id,name FROM accessorytype");
+                while ($row = $afficheMachineType->fetch_assoc()) {
+                    echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+                }
+                ?>
+            </SELECT>
+            <br><br>
+            New name : <br>
+            <input type="text" name="name" required> <br>
 
+            <input type="hidden" name="produit" value="accessoiremodifier"> <br>
+            <input type="submit" value="Modifier">
+
+        </form>
+        <?php
     }
 
     if ($modif == 3) { // Supprimer
         ?>
+        <br><br>
         <form action="insert_product_type.php" class="formulaire2" method="POST">
             Product type : <br>
-            <SELECT name="productType" id="productType">
+            <SELECT name="productType" id="productType" required>
                 <?php
                 $afficheMachineType = $conn->query("SELECT id,name FROM accessorytype");
                 while ($row = $afficheMachineType->fetch_assoc()) {
