@@ -57,6 +57,7 @@ function get_session() {
 </head>
 
 <body>
+<h2 id=filtre>🔎 Cliquez sur l'utilisateur pour voir son historique 🔍</h2>
 <table>
 		<tr>
             <th>Image</th>

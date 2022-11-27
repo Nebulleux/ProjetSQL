@@ -41,6 +41,7 @@ td {
 th {
   text-align: left;
 }
+
 thead th {
   background-color: #55608f;
 }
@@ -187,7 +188,7 @@ input {
   #line:hover {
     cursor: pointer;
   }
-  
+
   .formulaire {
     background: -webkit-linear-gradient(45deg, #49a09d, #5f2c82);
     background: linear-gradient(45deg, #49a09d, #5f2c82);

@@ -85,7 +85,7 @@ function get_login() {
     echo "<br><br>";
     ?>
 
-		<form action="main.php" class="form-container" method="POST">
+		<form action="" class="form-container" method="POST">
 			Note : <br>
 			<input style="width:500px;" type="number" step="0.1" min="0" max="5" name="note" placeholder="Veuillez entrez une note de 0 à 5" required> <br>
 
@@ -97,7 +97,6 @@ function get_login() {
 
 <?php
 if (!empty($_POST['note']) && (!empty($_POST['comment']))) {
-
     $review_submit = ($_POST['review_submit']);
 	
     if ($review_submit) {
@@ -113,6 +112,9 @@ if (!empty($_POST['note']) && (!empty($_POST['comment']))) {
 		$p = $idget;
 		$sql4 = 'INSERT INTO rating (rate, comm, idUser, idProduct) VALUES ('.$n.',"'.$c.'",'.$i.",".$p.')';
 		mysqli_query($conn, $sql4);
+		?>
+		<div class="alert2"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Requête executée avec succès !</div>
+		<?php
 	}
 }
 		?>
