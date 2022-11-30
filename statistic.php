@@ -71,7 +71,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	theme: "dark2",
 	zoomEnabled: true,
 	title: {
-		text: "Courbe des avis utilisateurs sur tous les produits du site"
+		text: "Avis utilisateurs sur tous les produits du site"
 	},
 	axisY: {
 		title: "Notes utilisateurs",
@@ -157,7 +157,6 @@ $.getJSON("assets/data.json", addData);
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-
 </body>
 
 </html>
