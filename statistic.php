@@ -71,10 +71,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	theme: "dark2",
 	zoomEnabled: true,
 	title: {
-		text: "Courbe avis utilisateurs"
+		text: "Courbe des avis utilisateurs sur tous les produits du site"
 	},
 	axisY: {
-		title: "Note utilisateur",
+		title: "Notes utilisateurs",
 		titleFontSize: 24,
 		prefix: ""
 	},
@@ -82,7 +82,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		type: "scatter",
 		yValueFormatString: "#,##0.00",
 		dataPoints: dataPoints,
-		markerType: "square",
+		markerType: "circle",
 		markerSize: 20
 	}]
 });
