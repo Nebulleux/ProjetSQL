@@ -31,7 +31,7 @@ INSERT INTO `accessorytype` (`id`, `name`) VALUES
 (4, 'Pince');
 
 INSERT INTO `product` (`id`, `image`, `name`, `description`, `price`) VALUES
-(1, 'assets/pp/resinerouge.jpg', 'Filament Vert GROS3D', 'Le PLA GROS3D Vert peut être imprimé sur la majorité des imprimantes 3D non propriétaires.', 25),
+(1, 'assets/pp/filamentvert.jpg', 'Filament Vert GROS3D', 'Le PLA GROS3D Vert peut être imprimé sur la majorité des imprimantes 3D non propriétaires.', 25),
 (2, 'assets/pp/resinerouge.jpg', 'Résine Rouge GROS3D', 'La résine GROS3D Rouge peut être imprimé sur la majorité des imprimantes 3D non propriétaires.', 26),
 (3, 'assets/pp/elegoos.png', 'Imprimante SLA ELEGOO SATURN S', 'Digne héritière de la populaire Elegoo Saturn, la première imprimante 3D LCD Elegoo avec écran LCD monochrome, la Saturn S impressionne par des fonctionnalités améliorées et des vitesses et une impression plus rapides.', 300),
 (4, 'assets/pp/cr10.png', 'Imprimante PLA CREALITY CR-10', 'De part son grand volume d’impression (300 x 300 x 400 mm), la qualité de ses impressions 3D (jusqu’à 100 microns) et surtout son prix très attractif, l’imprimante 3D Creality CR-10 a rapidement connu un certain succès.', 500),
