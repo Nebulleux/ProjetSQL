@@ -61,6 +61,16 @@ function get_session() {
 					<label for="price">Trier par vos notes (Moins bonne à la meilleure) : </label>
                     <input type="submit" name="asc_rate_user" id = "asc_rate_user" value="Go">
 				</div>
+
+				<div>
+					<label for="price">Trier par notes globales (Meilleure à la moins bonne) : </label>
+                    <input type="submit" name="desc_rate_global" id = "desc_rate_global" value="Go">
+				</div>
+
+				<div>
+					<label for="price">Trier par notes globales (Moins bonne à la meilleure) : </label>
+                    <input type="submit" name="asc_rate_global" id = "asc_rate_global" value="Go">
+				</div>
   					<br>
 			</div>
 		</div>
@@ -85,7 +95,16 @@ function get_session() {
 		$sql2 = 'SELECT DISTINCT product.name as "nom", rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" 
 		FROM utilisateur,rating,product WHERE product.id = rating.idProduct AND utilisateur.id = rating.idUser AND utilisateur.username ="'.$test.'"'.' ORDER BY rate ASC' ;
 		        
-		if (isset($_POST['desc_rate_user'])) {
+		$sql3 = 'SELECT DISTINCT product.name as "nom", rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" 
+		FROM utilisateur,rating,product WHERE product.id = rating.idProduct AND utilisateur.id = rating.idUser AND utilisateur.username ="'.$test.'"'.' ORDER BY (SELECT rating.dateOfPub FROM rating)
+		 DESC';
+		
+		 $sql4 = 'SELECT DISTINCT product.name as "nom", rating.dateOfPub as "date",utilisateur.username as "user", utilisateur.image as image, rating.rate as "rate",rating.comm as "comm" 
+		 FROM utilisateur,rating,product WHERE product.id = rating.idProduct AND utilisateur.id = rating.idUser AND utilisateur.username ="'.$test.'"'.' ORDER BY (SELECT rating.dateOfPub FROM rating)
+		  ASC';
+		
+		
+				if (isset($_POST['desc_rate_user'])) {
 			$connect1 = $conn->query($sql1);
 			while ($row2 = $connect1->fetch_assoc()) {
 				echo (empty($row2['nom'])) ? "<td> NA </td>" : "<td>" . $row2['nom'] . "</td>";
@@ -99,6 +118,28 @@ function get_session() {
 		} else if (isset($_POST['asc_rate_user'])) {
 			$connect2 = $conn->query($sql2);
 			while ($row2 = $connect2->fetch_assoc()) {
+				echo (empty($row2['nom'])) ? "<td> NA </td>" : "<td>" . $row2['nom'] . "</td>";
+				echo (empty($row2['image'])) ? '<td> <img src="assets/no_pp.png" width="100" height="100" alt="User Image"/> </td>' : '<td> <img src="'.$row2['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
+				echo (empty($row2['date'])) ? "<td> NA </td>" : "<td>" . $row2['date'] . "</td>";
+				echo (empty($row2['user'])) ? "<td> NA </td>" : "<td>" . $row2['user'] . "</td>";
+				echo (empty($row2['rate'])) ? "<td> NA </td>" : "<td>" . $row2['rate'] . "/5 </td>";
+				echo (empty($row2['comm'])) ? "<td> NA </td>" : "<td>" . $row2['comm'] . "</td>";
+				echo "<tr>";
+			}
+		} else if (isset($_POST['desc_rate_global'])) {
+			$connect3 = $conn->query($sql3);
+			while ($row2 = $connect3->fetch_assoc()) {
+				echo (empty($row2['nom'])) ? "<td> NA </td>" : "<td>" . $row2['nom'] . "</td>";
+				echo (empty($row2['image'])) ? '<td> <img src="assets/no_pp.png" width="100" height="100" alt="User Image"/> </td>' : '<td> <img src="'.$row2['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
+				echo (empty($row2['date'])) ? "<td> NA </td>" : "<td>" . $row2['date'] . "</td>";
+				echo (empty($row2['user'])) ? "<td> NA </td>" : "<td>" . $row2['user'] . "</td>";
+				echo (empty($row2['rate'])) ? "<td> NA </td>" : "<td>" . $row2['rate'] . "/5 </td>";
+				echo (empty($row2['comm'])) ? "<td> NA </td>" : "<td>" . $row2['comm'] . "</td>";
+				echo "<tr>";
+			}
+		} else if (isset($_POST['asc_rate_global'])) {
+			$connect4 = $conn->query($sql4);
+			while ($row2 = $connect4->fetch_assoc()) {
 				echo (empty($row2['nom'])) ? "<td> NA </td>" : "<td>" . $row2['nom'] . "</td>";
 				echo (empty($row2['image'])) ? '<td> <img src="assets/no_pp.png" width="100" height="100" alt="User Image"/> </td>' : '<td> <img src="'.$row2['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
 				echo (empty($row2['date'])) ? "<td> NA </td>" : "<td>" . $row2['date'] . "</td>";
