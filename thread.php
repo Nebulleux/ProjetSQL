@@ -110,7 +110,7 @@ function get_session() {
 	$sql7 = 'SELECT DISTINCT utilisateur.id as idUser FROM utilisateur,product,rating WHERE utilisateur.username ="'.$_SESSION["log"].'"';
 	$review_query7 = mysqli_query($conn, $sql7);
 	$result = mysqli_fetch_assoc($review_query7);
-	$actualuserid = $result['idUser'];
+	$actualuserid = (!empty($result['idUser']));
 
 		if (isset($_POST['❌'])) {
 			//get name of user from id

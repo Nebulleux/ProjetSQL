@@ -69,31 +69,33 @@ function get_session() {
         $sql7 = 'SELECT DISTINCT utilisateur.id as idUser FROM utilisateur,product,rating WHERE utilisateur.username ="'.$_SESSION["log"].'"';
         $review_query7 = mysqli_query($conn, $sql7);
         $result = mysqli_fetch_assoc($review_query7);
-        $actualuserid = $result['idUser'];
+        $actualuserid = (!empty($result['idUser']));
 
         //show only followed users
         $sql = 'SELECT DISTINCT utilisateur.id as "userid", utilisateur.username as "user", utilisateur.image as "image" FROM utilisateur,follow WHERE utilisateur.id = follow.idFollowed AND follow.idFollower ='.$actualuserid;
         $connect3 = $conn->query($sql);
 
-		while ($row3 = $connect3->fetch_assoc()) {
-            $b = $row3['userid'];
+  		if (!empty($connect3)) {
+			while ($row3 = $connect3->fetch_assoc()) {
+				$b = $row3['userid'];
 
-            echo '<form id="checkfollow" action="follow.php?idfollowed='.$b.'" method="post" name=thisform>';
-            ?>
-            <tr id=line onclick="document.location = 'user_notes_others.php?id=<?= $row3['userid'] ?>'">
+				echo '<form id="checkfollow" action="follow.php?idfollowed='.$b.'" method="post" name=thisform>';
+				?>
+				<tr id=line onclick="document.location = 'user_notes_others.php?id=<?= $row3['userid'] ?>'">
 
-            <?php
-            echo (empty($row3['image'])) ? '<td> <img src="assets/no_pp.png" width="100" height="100" alt="User Image"/> </td>' : '<td> <img src="'.$row3['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
-            echo (empty($row3['userid'])) ? "<td> NA </td>" : "<td>" . $row3['userid'] . "</td>";
-	        echo (empty($row3['user'])) ? "<td> NA </td>" : "<td>" . $row3['user'] . "</td>";
-            echo '<td>';
-			echo '<input type="submit" name="❌" id = "❌" value="❌">';
-			echo '</td>';
+				<?php
+				echo (empty($row3['image'])) ? '<td> <img src="assets/no_pp.png" width="100" height="100" alt="User Image"/> </td>' : '<td> <img src="'.$row3['image'].'" width="100" height="100" alt="User Image"/> </td>' ;
+				echo (empty($row3['userid'])) ? "<td> NA </td>" : "<td>" . $row3['userid'] . "</td>";
+				echo (empty($row3['user'])) ? "<td> NA </td>" : "<td>" . $row3['user'] . "</td>";
+				echo '<td>';
+				echo '<input type="submit" name="❌" id = "❌" value="❌">';
+				echo '</td>';
 
-            echo '</tr>';
-            echo '</form>';
-            
-        }
+				echo '</tr>';
+				echo '</form>';
+				
+			}
+		}
 
         if (isset($_POST['❌'])) {
             //get name of user from id
