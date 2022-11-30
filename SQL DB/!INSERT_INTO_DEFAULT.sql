@@ -25,7 +25,8 @@ INSERT INTO `accessorytype` (`id`, `name`) VALUES
 (1, 'Tournevis'),
 (2, 'Buse'),
 (3, 'Ruban adhésif'),
-(4, 'Pince');
+(4, 'Spatule'),
+(5, 'Pince');
 
 INSERT INTO `product` (`id`, `image`, `name`, `description`, `price`) VALUES
 (1, 'assets/pp/filamentvert.jpg', 'Filament Vert GROS3D', 'Le PLA GROS3D Vert peut être imprimé sur la majorité des imprimantes 3D non propriétaires.', 25),
@@ -34,3 +35,15 @@ INSERT INTO `product` (`id`, `image`, `name`, `description`, `price`) VALUES
 (4, 'assets/pp/cr10.png', 'Imprimante PLA CREALITY CR-10', 'De part son grand volume d’impression (300 x 300 x 400 mm), la qualité de ses impressions 3D (jusqu’à 100 microns) et surtout son prix très attractif, l’imprimante 3D Creality CR-10 a rapidement connu un certain succès.', 500),
 (5, 'assets/pp/spatule.png', 'Spatule GROS3D', 'La très célèbre spatule GROS3D afin de décoller vos impressions.', 10),
 (6, 'assets/pp/scotch.png', 'Ruban adhésif GROS3D', 'Le très célèbre ruban adhésif GROS3D afin de maintenir vos impressions au plateau.', 5);
+
+INSERT INTO `filament` (`id`, `productType`, `color`, `diameter`, `tempFusion`, `weight`, `dimension`, `idProduct`) VALUES
+(1, 1, 'Vert', 0.02, 200, 1, '200*100*100mm', 1),
+(2, 2, 'Rouge', 0, 30, 1, '200*50*100mm', 2);
+
+INSERT INTO `machine` (`id`, `productType`, `brand`, `model`, `heatingPlate`, `idProduct`) VALUES
+(1, 1, 'Elegoo', 'Saturn S', 'Sans', 3),
+(2, 2, 'Creality', 'CR-10', 'Avec', 4);
+
+INSERT INTO `accessory` (`id`, `productType`, `material`, `idProduct`) VALUES
+(1, 4, 'Fer', 5),
+(2, 3, 'Adhésif' , 6);

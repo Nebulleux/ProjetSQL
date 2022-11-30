@@ -271,7 +271,7 @@ foreach ($queryaumax as $value) {
 
 		echo (empty($value['image'])) ? "<td>" . '<img class="fit-picture"' . "src=assets/no_image.png" . ">" . "</td>" : "<td>" . '<img class="fit-picture"' . "src=" . $value['image'] . ">" . "</td>";
 		echo (empty($value['name'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['name']) . "</td>";
-		echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['description']) . "</td>";
+		echo (empty($value['description'])) ? "<td>" . 'NA' . "</td>" : "<td>" . (substr($value['description'],0,300)) . "...</td>";
 		echo (empty($value['price'])) ? "<td>" . 'NA' . "</td>" : "<td>" . ($value['price'] * 1.2) . "</td>";
 		while ($ligne = mysqli_fetch_array($resultat)) {
 			echo (empty($ligne['MOY'])) ? "<td> 0/5 </td>" : "<td>" . $ligne['MOY'] . "/5 </td>";
