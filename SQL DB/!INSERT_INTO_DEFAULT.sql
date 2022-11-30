@@ -10,9 +10,6 @@ INSERT INTO `groupuser` (`idUser`, `idGroup`) VALUES
 (1, 1),
 (2, 2);
 
-INSERT INTO `follow` (`idFollower`, `idFollowed`) VALUES
-(2, 1);
-
 INSERT INTO `filamenttype` (`id`, `name`) VALUES
 (1, 'PLA'),
 (2, 'Résine'),
