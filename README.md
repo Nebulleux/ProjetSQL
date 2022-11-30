@@ -72,8 +72,11 @@ Then host all php files via localhost (XAMPP) and you're done !
 ## Roadmap
 
 - [x] Main files created
-- [ ] Database up with admin and user features
-- [ ] Integration of the database for admin
+- [x] Database up with admin and user features
+- [x] Integration of the database for admin
+- [x] Statistics
+- [x] Follow system
+- [x] User profiles
 
 See the [open issues](https://github.com/nebulleux/ProjetSQL/issues) for a full list of proposed features (and known issues).
 
