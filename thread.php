@@ -165,10 +165,6 @@ function get_session() {
   				<?php
 			}
 		}
-
-
-
-		//}
 		?>
 
 </body>
