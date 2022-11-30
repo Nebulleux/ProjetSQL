@@ -46,14 +46,15 @@ function get_session() {
 	<?php
     $idget = ($_GET["id"]);
     echo "<br><br><h2>Affichage produit</h2><br>";
+	echo '<div class="formulaire">';
     echo "Vous êtes actuellement sur le produit n°" . $idget;
-    echo "<br><br><br>";
+    echo "<br><br>";
 
     $connectaumax = $conn->query("SELECT * FROM product WHERE id = " . $idget);
 
     while ($row = $connectaumax->fetch_assoc()) {
 	    echo (empty($row['image'])) ? '<img class="fit-picture"' . "src=assets/no_image.png" . ">" : '<img class="fit-picture"' . "src=" . $row['image'] . ">";
-	    echo "<br>";
+	    echo "<br><br>";
 
 	    echo "Libellé: ";
 	    echo $row['name'];
@@ -78,6 +79,7 @@ function get_session() {
 	    echo (empty($ligne['MOY'])) ? "0/5" : $ligne['MOY'] . "/5";
     }
     echo "<br>";
+	echo '</div>';
     echo "<br><br><h2>Avis</h2><br>";
     ?>
 	<table>

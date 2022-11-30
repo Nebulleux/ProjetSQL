@@ -68,7 +68,7 @@ var dataPoints = [];
  
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
-	theme: "light2",
+	theme: "dark2",
 	zoomEnabled: true,
 	title: {
 		text: "Courbe avis utilisateurs"
@@ -105,6 +105,10 @@ $.getJSON("assets/data.json", addData);
 </script>
 
 </head>
+
+<body>
+
+
 
 <h2 id=filtre>🔎 Toutes les statistiques du site 🔍</h2>
 <div class="box">

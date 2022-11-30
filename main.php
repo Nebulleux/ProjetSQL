@@ -113,7 +113,7 @@ function get_login() {
 
 
 <h2>🛒 Articles Disponibles 🛒</h2>
-<table>
+<table style="width:100%">
 	<tr>
 		<th>Image</th>
 		<th>Libellé</th>
