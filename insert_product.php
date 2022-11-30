@@ -68,7 +68,7 @@ if (!empty($_POST['machine']) && $_POST['machine'] == "valid") {
 
         move_uploaded_file($_FILES["productImage"]["tmp_name"], $target_file);
 
-        $sql = "INSERT INTO product (name, description, price) VALUES ('" . $_POST['name'] . "', '" . $_POST['description'] . "', '" . $_POST['price'] . "')";
+        $sql = "INSERT INTO product (name, description, price, image) VALUES ('" . $_POST['name'] . "', '" . $_POST['description'] . "', '" . $_POST['price'] . "', '" . $target_file . "')";
         if (mysqli_query($conn, $sql)) {
             $last_id = mysqli_insert_id($conn);
             $sql2 = "INSERT INTO machine (productType, brand, model, heatingPlate, idProduct) VALUES ('" . $_POST['productType'] . "', '" . $_POST['brand'] . "', '" . $_POST['model'] . "', '" . $_POST['heatingPlate'] . "', '$last_id')";
@@ -116,7 +116,7 @@ if (!empty($_POST['accessoire']) && $_POST['accessoire'] == "valid") {
 
         move_uploaded_file($_FILES["productImage"]["tmp_name"], $target_file);
 
-        $sql = "INSERT INTO product (name, description, price, image) VALUES ('" . $_POST['name'] . "', '" . $_POST['description'] . "', '" . $_POST['price'] . "', '" . $_POST['productImage'] . "')";
+        $sql = "INSERT INTO product (name, description, price, image) VALUES ('" . $_POST['name'] . "', '" . $_POST['description'] . "', '" . $_POST['price'] . "', '" . $target_file . "')";
         if (mysqli_query($conn, $sql)) {
             $last_id = mysqli_insert_id($conn);
             $sql2 = "INSERT INTO accessory (productType, material, idProduct) VALUES ('" . $_POST['productType'] . "', '" . $_POST['material'] . "', '$last_id')";
