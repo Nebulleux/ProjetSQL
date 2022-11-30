@@ -3,8 +3,8 @@ INSERT INTO `groupe` (`id`, `Label`) VALUES
 (2, 'User');
 
 INSERT INTO `utilisateur` (`id`, `email`, `username`, `password`, `image`) VALUES
-(1, 'root@gros3d.com', 'root', 'root', NULL),
-(2, 'user1@gros3d.com', 'user1', 'user1', NULL);
+(1, 'root@gros3d.com', 'root', 'root', 'assets/pp/pp1.jpg'),
+(2, 'user1@gros3d.com', 'user1', 'user1', 'assets/pp/pp2.jpg');
 
 INSERT INTO `groupuser` (`idUser`, `idGroup`) VALUES
 (1, 1),
