@@ -121,7 +121,7 @@ function get_login() {
 		<th>Prix TTC</th>
 		<th>Notation</th>
 		<?php
-        if ($_SESSION["group"] == 'User') {
+        if ($_SESSION["group"] == 'User' || $_SESSION["group"] == 'Root') {
 	        echo '<th>Avis ?</th>';
         }
         ?>
@@ -133,85 +133,85 @@ if (isset($_POST['sort'])) {
 
 	if ($_POST['basicType'] == '7') {
 		if ($_POST['catType'] == '1' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.id ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct ORDER BY product.id ASC";
 		} else if($_POST['catType'] == '1' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.id ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct ORDER BY product.id ASC";
 
 		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.name ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct ORDER BY product.name ASC";
 		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.name DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct ORDER BY product.name DESC";
 
 		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.description ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct ORDER BY product.description ASC";
 		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.description DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct ORDER BY product.description DESC";
 
 		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.price ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct ORDER BY product.price ASC";
 		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct ORDER BY product.price DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct ORDER BY product.price DESC";
 
 		} else if($_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct";
 		} else if($_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN machine ON product.id = machine.idProduct";
+			$connectaumax = "SELECT * FROM product INNER JOIN machine ON product.id = machine.idProduct";
 		} else {
 			return '';
 		}
 	} else if ($_POST['basicType'] == '8') {
 		if ($_POST['catType'] == '1' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.id ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct ORDER BY product.id ASC";
 		} else if($_POST['catType'] == '1' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.id DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct ORDER BY product.id DESC";
 
 		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.name ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct ORDER BY product.name ASC";
 		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.name DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct ORDER BY product.name DESC";
 
 		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.description ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct ORDER BY product.description ASC";
 		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.description DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct ORDER BY product.description DESC";
 
 		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.price ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct ORDER BY product.price ASC";
 		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct ORDER BY product.price DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct ORDER BY product.price DESC";
 
 		} else if($_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct";
 		} else if($_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN filament ON product.id = filament.idProduct";
+			$connectaumax = "SELECT * FROM product INNER JOIN filament ON product.id = filament.idProduct";
 		} else {
 			return '';
 		}
 	} else if ($_POST['basicType'] == '9') {
 		if ($_POST['catType'] == '1' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.id ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct ORDER BY product.id ASC";
 		} else if($_POST['catType'] == '1' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.id DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct ORDER BY product.id DESC";
 
 		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.name ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct ORDER BY product.name ASC";
 		} else if($_POST['catType'] == '2' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.name DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct ORDER BY product.name DESC";
 
 		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.description ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct ORDER BY product.description ASC";
 		} else if($_POST['catType'] == '3' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.description DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct ORDER BY product.description DESC";
 
 		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.price ASC";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct ORDER BY product.price ASC";
 		} else if($_POST['catType'] == '4' && $_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct ORDER BY product.price DESC";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct ORDER BY product.price DESC";
 
 		} else if($_POST['orderType'] == '5') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct";
 		} else if($_POST['orderType'] == '6') {
-			$connectaumax = "SELECT * FROM product RIGHT JOIN accessory ON product.id = accessory.idProduct";
+			$connectaumax = "SELECT * FROM product INNER JOIN accessory ON product.id = accessory.idProduct";
 
 		} else {
 			return '';
